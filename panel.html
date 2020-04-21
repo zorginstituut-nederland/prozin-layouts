@@ -1,0 +1,34 @@
+---
+layout: shell
+page_type: modal
+---
+
+<div id="document-content" class="pat-modal {{ page.panel_class }}">
+    <h1 panel-class-{{ page.panel_class }}>
+        {{ page.title }}
+    </h1>
+    {% if page.action %}
+        <form action="{{ page.action }}" class="wizard-box panel-class-{{ page.panel_class }} {% if page.inject %}pat-inject{% endif %} {% if page.validate %}pat-validation{% endif %}" {% if page.inject %}data-pat-inject="{{page.inject}}"{% endif %}>
+    {% endif %}
+        <div class="panel-body">
+            <div class="container">
+                {{ content }}
+            </div>
+        </div>
+        {% if page.buttons %}
+            <div class="buttons panel-footer">
+                <div class="container">
+                    {% for button in page.buttons  %}
+                        {% if button.type == 'submit' or button.type == 'button' %}
+                            <button type="{{ button.type }}" class="{{ button.class }} pat-button">
+                                {{ button.label }}
+                            </button>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% if page.action %}
+        </form>
+    {% endif %}
+</div>

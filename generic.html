@@ -1,0 +1,14 @@
+---
+layout: shell
+---
+
+<div id="content" class="{% if page.compare_count %}compare-count-{{ page.compare_count }}{% endif %}">
+	{% if page.hero %}
+		<figure id="hero">
+			<img src="{{ page.hero }}" alt="" />
+		</figure>
+	{% endif %}
+    <div class="container">
+        {{ content }}  
+    </div>
+</div>
