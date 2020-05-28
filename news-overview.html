@@ -8,7 +8,7 @@ page_type: news-overview
 <div class="news-feed" id="found-messages">
 	{% assign count = 1 %}
 	{% for item in site.posts %}
-		{% if item.layout == 'news-item' %}
+		{% if item.layout == 'prozin/news-item' %}
 			<article class="item {{ item.type }}">
 				<a class="follow pat-inject" 
 				   href="{{ item.url }}"
