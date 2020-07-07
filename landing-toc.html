@@ -1,0 +1,33 @@
+---
+layout: prozin/generic
+page_type: landing
+---
+
+<div id="main-content">
+    <article class="pat-rich">
+        <h1>
+            {{ page.title }}
+        </h1>
+        <section class="introduction" id="page-intro">
+            {% if page.summary %}
+                <p>
+                    {{ page.summary }}
+                </p>
+            {% endif %}
+        </section>
+    </article>
+
+    <section class="toc">
+        <ul class="link-list">
+            {% for item in site[page.scope] %}
+                {% if item.parent == page.title %}
+                    <li>
+                        <a href="{{ item.url }}" 
+                           class="pat-inject" 
+                           data-pat-inject="history: record">{{ item.title }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
+</div>
