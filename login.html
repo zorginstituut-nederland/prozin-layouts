@@ -1,0 +1,17 @@
+---
+layout: prozin/generic
+title: Login
+parent: home
+page_type: login
+---
+
+<div id="main-content">
+    <div class="pat-rich">
+        <h1>
+            {{ site.data.prozin.ui.snippet_log_in_to[site.lang] }} {{ site.data.ui.label_site_name[site.lang] }}
+        </h1>
+    </div>
+	{% include prozin/login-form.html %}
+	{% include prozin/login-footer.html %}
+
+</div>
