@@ -8,7 +8,13 @@ layout: prozin/shell
 			<img src="{{ page.hero }}" alt="" />
 		</figure>
 	{% endif %}
-    <div class="container">
+    <div class="container">    	
+	    {% if page.notification %}
+	      <p class="pat-notification success"
+	         data-pat-notification="type: banner; class: success">
+	        {{ site.data.prozin.ui[page.notification][site.lang] }}
+	      </p>
+	    {% endif %}
         {{ content }}  
     </div>
 </div>
