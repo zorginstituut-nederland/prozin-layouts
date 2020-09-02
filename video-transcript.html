@@ -3,5 +3,7 @@ layout: generic
 ---
 
 <div id="transcript">
-	{{ content }}
+	<article class="pat-rich">
+		{{ content | markdownify }}
+	</article>
 </div>
