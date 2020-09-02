@@ -10,6 +10,9 @@ page_type: news-item
 		{% include prozin/page-head.html 
 				   byline="document-type, pub-date" %}
 	    {% include prozin/page-module-body-text.html %}
+		{% if page.video %}
+			{% include prozin/page-module-video.html %}
+		{% endif %}
 	    {% if page.banners %}
 		    {% include prozin/page-module-logos.html %}
 		{% endif %}
