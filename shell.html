@@ -36,7 +36,7 @@
             type="text/javascript"></script>
             
     <title>{% if page.title %}{{ site.data.ui.label_site_name[site.lang] }} | {% endif %}{{ site.data.ui.label_site_name[site.lang] }}</title>
-    {% include favicons.html %}
+    {% include prozin/favicons.html %}
 </head>
 <body class="product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
 
@@ -46,8 +46,8 @@
         <form action="{{ page.action }}" 
               class="pat-validation pat-inject pat-form" 
               oninput="impact_max.value=parseInt(volume_max.value)*parseInt(cost_max.value); impact_real.value=parseInt(volume_real.value)*parseInt(cost_real.value)">
-            {% include alert-bar.html %}
-            {% include sub-nav.html %}
+            {% include prozin/alert-bar.html %}
+            {% include prozin/sub-nav.html %}
             <div class="main" role="main" id="main">
                 {{ content }}
             </div>
@@ -57,7 +57,7 @@
         {{ content }}
     {% else %}
         <div class="main" role="main" id="main">
-            {% include sub-nav.html %}
+            {% include prozin/sub-nav.html %}
             {{ content }}
 
             {% if page.layout contains 'homepage' %}
@@ -68,8 +68,8 @@
         </div>
     {% endif %}
     
-    {% include site-header.html %}
-    {% include site-footer.html %}
+    {% include prozin/site-header.html %}
+    {% include prozin/site-footer.html %}
     {% include prozin/site-language-switch.html %}
 </body>
 </html>
