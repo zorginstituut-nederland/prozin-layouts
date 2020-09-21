@@ -56,6 +56,9 @@
     {% elsif layout.page_type == 'modal' %}
         {{ content }}
     {% else %}
+        {% if page.browse-bar or layout.browse-bar %}
+            {% include prozin/browse-bar.html %}
+        {% endif %}
         <div class="main" role="main" id="main">
             {% include prozin/sub-nav.html %}
             {{ content }}

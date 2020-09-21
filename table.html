@@ -1,0 +1,49 @@
+---
+layout: shell
+user: Nicole
+page_type: landing
+browse-bar: true
+---
+
+{% assign int = 0 %}
+
+{% for item in site.posts %}
+	{% if item.title == page.title %}
+		{% if item.layout == "interpretation" %}
+			{% assign int = 1 %}
+		{% endif %}
+	{% endif %}
+{% endfor %}
+
+<div id="content">
+    <div class="container has-parent" id="gen-data">
+    	<p class="canvas-toolbar page-nav-control">
+    		<a href="#" class="icon level-up pat-inject" data-pat-inject="history: record; source: #gen-data::element; target: #gen-data::element" title="Ga een niveau omhoog.">Ga omhoog…</a>
+    	</p>
+		{% include news-list.html %}
+		
+		{% if int == 1 %}
+			<div class="row">
+				<div class="eight columns table">
+					<a href="{{ page.table }}" class="pat-inject" data-pat-inject="trigger: autoload; source: body; target: self::element">Tabel laden…</a>
+				</div>
+				{% for item in site.posts %}
+					{% if page.title == item.title %}
+						{% if item.layout == 'interpretation' %}
+							<article class="four columns interpretation">
+								<section class="pat-well pat-rich">
+									{{ item.content | markdownify }}
+								</section>
+							</article>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% else %}
+			<a href="{{ page.table }}" class="pat-inject" data-pat-inject="trigger: autoload; source: body; target: self::element">Tabel laden…</a>
+		{% endif %}
+	</div>
+</div>
+
+<a hidden href="#browse-bar" class="pat-scroll" data-pat-scroll="selector: #browse-bar; trigger: auto">Selecteer een andere tabel</a>
+
