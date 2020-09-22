@@ -19,7 +19,8 @@ page_type: landing
 
     <section class="toc">
         <ul class="link-list">
-            {% for item in site[page.scope] %}
+            {% assign pages = site[page.scope] | sort: 'title' %}
+            {% for item in pages %}
                 {% if item.parent == page.title %}
                     <li>
                         <a href="{{ item.url }}" 
