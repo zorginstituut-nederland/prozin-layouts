@@ -1,5 +1,5 @@
 ---
-layout: prozin/generic
+layout: prozin/shell
 page_type: landing
 ---
 
@@ -19,7 +19,8 @@ page_type: landing
 
     <section class="toc">
         <ul class="link-list">
-            {% assign pages = site[page.scope] | sort: 'title' %}
+            {% assign this_scope = site.editorial %}
+            {% assign pages = this_scope | sort: 'title' %}
             {% for item in pages %}
                 {% if item.parent == page.title %}
                     <li>
