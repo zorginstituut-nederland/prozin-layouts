@@ -1,5 +1,5 @@
 ---
-layout: prozin/shell
+layout: prozin/generic
 page_type: landing
 ---
 
@@ -19,16 +19,16 @@ page_type: landing
 
     <section class="toc">
         <ul class="link-list">
-            {% assign this_scope = site.editorial %}
-            {% assign pages = this_scope | sort: 'title' %}
-            {% for item in pages %}
-                {% if item.parent == page.title %}
+            {% capture this_scope %}{{ page.collection }}{% endcapture %}
+
+            {% for item in site[this_scope] %}
+                {% unless page.title == item.title %}
                     <li>
                         <a href="{{ item.url }}" 
                            class="pat-inject" 
                            data-pat-inject="history: record">{{ item.title }}</a>
                     </li>
-                {% endif %}
+                {% endunless %}
             {% endfor %}
         </ul>
     </section>
