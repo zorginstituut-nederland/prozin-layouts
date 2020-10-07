@@ -8,7 +8,8 @@ page_type: modal
         {{ site.data.prozin.ui[page.title][site.lang] }}
     </h1>
     {% if page.action %}
-        <form action="{{ page.action }}" class="wizard-box panel-class-{{ page.panel_class }} {% if page.inject %}pat-inject{% endif %} {% if page.validate %}pat-validation{% endif %}" {% if page.inject %}data-pat-inject="{{page.inject}}"{% endif %} {% if page.target %}target="{{ page.target }}"{% endif %}>
+        <form action="{{ page.action }}" 
+              class="pat-form wizard-box panel-class-{{ page.panel_class }} {% if page.inject %}pat-inject{% endif %} {% if page.validate %}pat-validation{% endif %}" {% if page.inject %}data-pat-inject="{{page.inject}}"{% endif %} {% if page.target %}target="{{ page.target }}"{% endif %}>
     {% endif %}
         <div class="panel-body">
             <div class="container">
