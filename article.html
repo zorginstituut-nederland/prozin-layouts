@@ -8,7 +8,11 @@ byline: date
 		{% include prozin/page-head.html %}
 	    {% include prozin/page-toc.html %}
 
-	    {% include prozin/page-module-body-text.html %}
+	    {% if page.sections %}
+		    {% include prozin/page-module-body-text-segmented.html %}
+		{% else %}
+			{% include prozin/page-module-body-text.html %}
+	    {% endif %}
 		{% include prozin/page-module-downloads.html %}
 		{% include prozin/page-module-links.html title="Zie ook" %}
     </article>
