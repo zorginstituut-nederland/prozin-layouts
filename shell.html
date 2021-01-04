@@ -38,7 +38,7 @@
     <title>{% if page.title %}{{ site.data.ui.label_site_name[site.lang] }} | {% endif %}{{ site.data.ui.label_site_name[site.lang] }}</title>
     {% include prozin/favicons.html %}
 </head>
-<body class="product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
+<body class="environment-prototype product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
 
     {% include prozin/global-nav.html %}
     {% if page.layout == 'medicine-edit' or page.layout == 'medicine-manufacturer-edit' or page.layout == 'medicine-create' or page.layout == 'medicine-saved' or page.layout == 'medicine-create-manufacturer' or page.layout == 'medicine-manufacturer-check-edit' %}
