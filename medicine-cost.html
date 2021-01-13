@@ -14,7 +14,7 @@ layout: prozin/generic
 				id="kosten">
 				{% for group in page.groups %}
 				    {% for measure in group.measures %}
-				        {% include cost-table.html %}
+				        {% include prozin/cost-table.html %}
 				    {% endfor %}
 				{% endfor %}
                 <p 
