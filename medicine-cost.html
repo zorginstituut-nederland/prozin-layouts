@@ -1,0 +1,27 @@
+---
+layout: prozin/generic
+---
+
+<div 
+	class="row">
+	<div 
+		class="eight columns" 
+		id="main-content">
+	    <article 
+	    	class="pat-rich content">
+			<section 
+				class="content-block" 
+				id="kosten">
+				{% for group in page.groups %}
+				    {% for measure in group.measures %}
+				        {% include cost-table.html %}
+				    {% endfor %}
+				{% endfor %}
+                <p 
+                	class="discrete">
+                    {{ site.data.ui.disclaimer_cost_overview[site.lang] }}
+                </p>
+			</section>
+		</article>
+	</div>
+</div>
