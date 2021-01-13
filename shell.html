@@ -22,8 +22,16 @@
     <meta content="Zorginstituut Nederland" name="DCTERMS.creator" title="ZORGINSTITUUT.Organisatie">
     <meta content="Zorginstituut Nederland" name="DCTERMS.publisher" title="ZORGINSTITUUT.Organisatie">
     <meta content="Nederland" name="DCTERMS.spatial" title="OVERHEID.Koninkrijksdeel">
-    <meta content="{{ site.data.ui.label_site_name[site.lang] }}" property="og:title">
-    <meta content="" property="og:image">
+    
+    <meta 
+        content="{{ site.data.ui.label_site_name[site.lang] }}" 
+        property="og:title">
+    <meta 
+        content="" 
+        property="og:image">
+    <meta 
+        content="{{ page.summary }}" 
+        property="og:description">
 
     {% include prozin/launch-screen.html %}
 
