@@ -28,9 +28,15 @@
     <meta 
         content="{{ site.data.ui.label_site_name[site.lang] }}" 
         property="og:title">
-    <meta 
-        content="" 
-        property="og:image">
+    {% if page.image %}
+        <meta 
+            content="{{ page.image }}" 
+            property="og:image">
+    {% else %}
+        <meta 
+            content="/assets/favicon/touch-icon.png" 
+            property="og:image">
+    {% endif %}
     <meta 
         content="{{ page.summary }}" 
         property="og:description">
