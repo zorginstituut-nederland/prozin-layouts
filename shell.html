@@ -3,6 +3,11 @@
     lang="nl" 
     class="no-js">
 <head>
+    {% include prozin/dcterms.html %}
+    {% include prozin/launch-screen.html %}
+    {% include prozin/favicons.html %}
+    {% include prozin/metadata.html %}
+
     <!-- Robots are only blocked in the prototype, not in production. -->
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content = "width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" />
@@ -15,18 +20,6 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta content="{{ page.summary }}" name="keywords">
-    <meta content="{{ site.data.ui.label_site_name[site.lang] }}" name="DCTERMS.title">
-    <meta content="31-03-2016" name="DCTERMS.modified" title="XSD.dateTime">
-    <meta content="{{ site.domain }}" name="DCTERMS.identifier">
-    <meta content="webcontent" name="DCTERMS.type" title="FARMACOTHERAPEUTISCHKOMPAS.content">
-    <meta content="nl-NL" name="DCTERMS.language" title="XSD.language">
-    <meta content="Zorginstituut Nederland" name="DCTERMS.creator" title="ZORGINSTITUUT.Organisatie">
-    <meta content="Zorginstituut Nederland" name="DCTERMS.publisher" title="ZORGINSTITUUT.Organisatie">
-    <meta content="Nederland" name="DCTERMS.spatial" title="OVERHEID.Koninkrijksdeel">
-    
-
-
-    {% include prozin/launch-screen.html %}
 
     <link rel="stylesheet" 
           media="all" 
@@ -35,9 +28,6 @@
 
     <script src="/assets/script/bundle.js" 
             type="text/javascript"></script>
-            
-    {% include prozin/favicons.html %}
-    {% include prozin/metadata.html %}
 </head>
 <body class="environment-prototype product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
 
