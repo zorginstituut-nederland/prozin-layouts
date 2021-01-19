@@ -14,7 +14,6 @@
 
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta content="{{ page.summary }}" name="description">
     <meta content="{{ page.summary }}" name="keywords">
     <meta content="{{ site.data.ui.label_site_name[site.lang] }}" name="DCTERMS.title">
     <meta content="31-03-2016" name="DCTERMS.modified" title="XSD.dateTime">
@@ -25,21 +24,7 @@
     <meta content="Zorginstituut Nederland" name="DCTERMS.publisher" title="ZORGINSTITUUT.Organisatie">
     <meta content="Nederland" name="DCTERMS.spatial" title="OVERHEID.Koninkrijksdeel">
     
-    <meta 
-        content="{% if page.title %}{{ page.title }}{% else %}{{ site.data.ui.label_site_name[site.lang] }}{% endif %}" 
-        property="og:title">
-    {% if page.image %}
-        <meta 
-            content="{{ page.image }}" 
-            property="og:image">
-    {% else %}
-        <meta 
-            content="/assets/favicon/touch-icon.png" 
-            property="og:image">
-    {% endif %}
-    <meta 
-        content="{{ page.summary }}" 
-        property="og:description">
+
 
     {% include prozin/launch-screen.html %}
 
@@ -51,8 +36,8 @@
     <script src="/assets/script/bundle.js" 
             type="text/javascript"></script>
             
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.data.ui.label_site_name[site.lang] }}{% endif %}</title>
     {% include prozin/favicons.html %}
+    {% include prozin/metadata.html %}
 </head>
 <body class="environment-prototype product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
 
