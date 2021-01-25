@@ -3,13 +3,17 @@ layout: prozin/generic
 page_type: contact
 ---
 
-<div id="main-content">
+<div 
+    id="main-content">
 
-    <article class="pat-rich">
+    <article 
+        class="pat-rich">
         <h1>
             {{ site.data.prozin.ui.label_contact[site.lang] }}
         </h1>
-        <section class="introduction" id="page-intro">
+        <section 
+            class="introduction" 
+            id="page-intro">
             <p>
                 {{ site.data.prozin.ui.message_contact_us_via_form[site.lang] }}
             </p>
@@ -19,7 +23,9 @@ page_type: contact
         </section>
     </article>
 		
-	{% include prozin/contact-form.html root="fieldset" %}
+	{% include 
+        prozin/contact-form.html 
+        root="fieldset" %}
 
 </div>
 
