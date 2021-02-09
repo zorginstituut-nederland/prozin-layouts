@@ -1,0 +1,19 @@
+---
+layout: prozin/generic
+title: label_change_password
+page_type: login
+---
+
+<div 
+	id="main-content">
+
+    {% include prozin/page-head-password-dialogues.html %}
+    
+	<p 
+		class="pat-message warning">
+		{{ site.data.prozin.ui.message_double_ip[site.lang] }}
+	</p>
+
+	{% include prozin/login-form.html %}
+
+</div>
