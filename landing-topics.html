@@ -1,0 +1,57 @@
+---
+layout: prozin/generic
+page_type: landing-topics
+---
+
+<div 
+    id="main-content">
+    <article 
+        class="pat-rich">
+<!--         <h1>
+            {{ page.title }}
+        </h1> -->
+        <div 
+            class="introduction" 
+            id="page-intro">
+            {% if page.summary %}
+                <p>
+                    {{ page.summary }}
+                </p>
+            {% endif %}
+        </div>
+
+        {{ content }}
+
+    </article>
+</div>
+
+<div 
+    class="topic-list">
+
+    {% capture this_scope %}{{ page.collection }}{% endcapture %}
+
+    {% for item in site[this_scope] %}
+        {% unless page.title == item.title %}
+            {% unless item.parent %}
+                <div 
+                    class="topic-list-section">
+                    <h3 class="topic-list-section-title">
+                        {{ item.title }}</a>
+                    </h3>
+                    <ul 
+                        class="link-list col-4">
+                        {% for subitem in site[this_scope] %}
+                            {% if subitem.parent == item.title %}
+                                <li>
+                                    <a 
+                                        href="#">{{ subitem.title }}</a>
+                                </li>                            
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endunless %}
+        {% endunless %}
+    {% endfor %}
+
+</div>
