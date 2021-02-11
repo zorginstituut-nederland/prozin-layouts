@@ -44,7 +44,8 @@ page_type: landing-topics
                             {% if subitem.parent == item.title %}
                                 <li>
                                     <a 
-                                        href="#">{{ subitem.title }}</a>
+                                        href="#"
+                                        title="{{ item.summary }}">{{ subitem.title }}</a>
                                 </li>                            
                             {% endif %}
                         {% endfor %}
