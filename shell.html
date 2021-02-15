@@ -100,6 +100,8 @@
     
     {% include prozin/site-header.html %}
     {% include prozin/site-footer.html %}
-    {% include prozin/site-language-switch.html %}
+    {% if site.languages %}
+        {% include prozin/site-language-switch.html %}
+    {% endif %}
 </body>
 </html>
