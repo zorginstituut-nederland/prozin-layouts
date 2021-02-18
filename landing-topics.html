@@ -44,7 +44,9 @@ page_type: landing-topics
                             {% if subitem.parent == item.title %}
                                 <li>
                                     <a 
-                                        href="#"
+                                        href="{{ subitem.url }}"
+                                        class="pat-inject"
+                                        data-pat-inject="history: record" 
                                         title="{{ item.summary }}">{{ subitem.title }}</a>
                                 </li>                            
                             {% endif %}
