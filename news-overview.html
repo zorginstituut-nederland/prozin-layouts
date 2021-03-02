@@ -4,6 +4,37 @@ title: Nieuws
 parent: home
 ---
 
+{% if page.sections %}
+	<form 
+		class="canvas-toolbar pat-inject pat-autosubmit" 
+		action="{{ page.url }}"
+		id="toolbar-{{ layout.page_type }}" 
+		data-pat-inject="source: #news-feed; target: #news-feed">
+		<fieldset 
+			class="button-cluster pat-checklist free-form align-centre">
+			<label
+				class="button">
+				Alle nieuws 
+				<input 
+					type="radio" 
+					name="category"
+					value="all"
+					checked>
+			</label>
+			{% for category in page.sections %}
+				<label
+					class="button">
+					{{ category.name }}
+					<input 
+						type="radio" 
+						name="category"
+						value="{{ category.name | slugify }}">
+				</label>
+			{% endfor %}
+		</fieldset>
+	</form>
+{% endif %}
+
 {% include prozin/news-feed.html 
 	       mode=page.mode 
 	       max=99999 %}
