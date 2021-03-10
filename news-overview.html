@@ -4,9 +4,9 @@ title: Nieuws
 parent: home
 ---
 
-{% if page.sections %}
+{% if site.news_tags %}
 	<form 
-		class="canvas-toolbar pat-inject pat-autosubmit" 
+		class="canvas-toolbar" 
 		action="{{ page.url }}"
 		id="toolbar-news-overview" 
 		data-pat-inject="source: #news-feed; target: #news-feed">
@@ -21,14 +21,14 @@ parent: home
 					value="all"
 					checked>
 			</label>
-			{% for category in page.sections %}
+			{% for tag in site.news_tags %}
 				<label
 					class="button">
-					{{ category.name }}
+					{{ tag }}
 					<input 
 						type="radio" 
 						name="category"
-						value="{{ category.name | slugify }}">
+						value="{{ tag | slugify }}">
 				</label>
 			{% endfor %}
 		</fieldset>
