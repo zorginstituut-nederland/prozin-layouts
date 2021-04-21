@@ -48,7 +48,7 @@
         href="/assets/style/style.css"/>
 
     <script 
-        src="/assets/script/bundle.js" 
+        src="/assets/script/{% if site.script_path %}{{ site.script_path}}{% else %}bundle.js{% endif %}" 
         type="text/javascript"></script>
 </head>
 <body 
