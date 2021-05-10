@@ -1,0 +1,54 @@
+---
+layout: prozin/generic
+title: Login
+parent: home
+page_type: login
+---
+
+<div id="main-content">
+	<div class="row user-info">
+		<div class="four columns">
+			{% include prozin/profile-image-form.html %}	
+		</div>
+		<div class="eight columns">
+		    <div class="pat-rich">
+		        <h1>
+		            {{ site.data.personae[page.persona].first_name }} {{ site.data.personae[page.persona].last_name }}
+		        </h1>
+		    </div>
+			<dl class="pat-grid-list user-details">
+				<dt>
+					{{ site.data.prozin.ui.label_role[site.lang] }}
+				</dt>
+				<dd>
+					{% if site.data.personae[page.persona].role == 'scanner' %}
+						{{ site.data.prozin.ui.label_role_scanner[site.lang] }}
+					{% elsif site.data.personae[page.persona].role == 'workgroup-member' %}
+						{{ site.data.prozin.ui.label_role_werkgroeplid[site.lang] }}
+					{% elsif site.data.personae[page.persona].role == 'bystander' %}
+						{{ site.data.prozin.ui.label_role_lezer[site.lang] }}
+					{% elsif site.data.personae[page.persona].role == 'administrator' %}
+						{{ site.data.prozin.ui.label_role_beheerder[site.lang] }}
+					{% elsif site.data.personae[page.persona].role == 'manufacturer' %}
+						{{ site.data.prozin.ui.label_role_fabrikant[site.lang] }}
+					{% endif %}
+				</dd>
+				{% if site.data.personae[page.persona].domain %}
+					<dt>
+						{{ site.data.prozin.ui.label_domain[site.lang] }}
+					</dt>
+					<dd>
+						<!-- The following link points to the respective domain page. -->
+						<a href="#"
+						   class="pat-inject"
+						   data-pat-inject="history: record">{{ site.data.personae[page.persona].domain }}</a>
+					</dd>
+				{% endif %}
+				<dt>{{ site.data.prozin.ui.label_email[site.lang] }}</dt>
+				<dd>
+					<a href="mailto:{{ site.data.personae[page.persona].email }}">{{ site.data.personae[page.persona].email }}</a>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
