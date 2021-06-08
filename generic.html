@@ -3,19 +3,26 @@ layout: prozin/shell
 ---
 
 {% if page.layout == 'medicine-group' %}
-    <div id="card-nav">
-        <div class="container">
-            <div class="canvas-toolbar" id="section-geneesmiddelen">
+    <div 
+        id="card-nav">
+        <div 
+            class="container">
+            <div 
+                class="canvas-toolbar" id="section-geneesmiddelen">
                 <h2>
                     Geneesmiddelenoverzicht van {{ page.title }}
                     {% if page.indications.size >= 2 %} 
-                    <label class="pat-select bare">
-                        <select name="indication">
-                            <option value="all">
+                    <label 
+                        class="pat-select bare">
+                        <select 
+                            name="indication">
+                            <option 
+                                value="all">
                                 voor alle indicaties
                             </option>
                             {% for indication in page.indications %}
-                                <option value="{{ indication.name | downcase | replace: 'ë','e' | replace: ' ','-'| replace: ',','-' | remove: '(' | remove: ')' }}">
+                                <option 
+                                    value="{{ indication.name | downcase | replace: 'ë','e' | replace: ' ','-'| replace: ',','-' | remove: '(' | remove: ')' }}">
                                     voor {{ indication.name }}
                                 </option>
                             {% endfor %}
@@ -27,7 +34,8 @@ layout: prozin/shell
 
             {% include cards.html %}
             
-            <article class="pat-rich indication-reference">
+            <article    
+                class="pat-rich indication-reference">
                 <p>
                     {% for indication in page.indications %}
                         <span {% unless page.indications.size == 1 %}class="pat-depends"{% endunless %} data-pat-depends="condition: indication = {{ indication.name | downcase | replace: 'ë','e' | replace: ' ','-'| replace: ',','-' | remove: '(' | remove: ')' }}; transition: fade">
@@ -42,18 +50,23 @@ layout: prozin/shell
 {% endif %}
 
 
-<div id="content" class="{% if page.compare_count %}compare-count-{{ page.compare_count }}{% endif %}">
+<div 
+    id="content" 
+    class="{% if page.compare_count %}compare-count-{{ page.compare_count }}{% endif %}">
 	{% if page.hero %}
-		<figure id="hero">
+		<figure 
+            id="hero">
 			<img src="{{ page.hero }}" alt="" />
 		</figure>
 	{% endif %}
-    <div class="container">    	
+    <div 
+        class="container">    	
 	    {% if page.notification %}
-	      <p class="pat-notification success"
-	         data-pat-notification="type: banner; class: success">
-	        {{ site.data.prozin.ui[page.notification][site.lang] }}
-	      </p>
+	       <p   
+                class="pat-notification success"
+	           data-pat-notification="type: banner; class: success">
+	           {{ site.data.prozin.ui[page.notification][site.lang] }}
+	        </p>
 	    {% endif %}
         {{ content }}  
     </div>
