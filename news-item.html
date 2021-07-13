@@ -4,11 +4,11 @@ byline: date
 page_type: news-item
 ---
 
-<article class="pat-rich" 
+<div 
 	     id="main-content">
 	<article>
 		{% include prozin/page-head.html 
-				   byline="document-type, pub-date" %}
+			byline="document-type, pub-date" %}
 	    {% include prozin/page-module-body-text.html %}
 		{% if page.video %}
 			{% include prozin/page-module-video.html %}
@@ -18,6 +18,6 @@ page_type: news-item
 		{% endif %}
 		{% include prozin/page-module-downloads.html %}
 		{% include prozin/page-module-links.html 
-				   title="Zie ook" %}
+			title="Zie ook" %}
     </article>
-</article>
+</div>
