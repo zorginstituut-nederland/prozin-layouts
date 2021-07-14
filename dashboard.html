@@ -1,0 +1,33 @@
+---
+layout: prozin/generic
+title: bladeren
+page_type: bladeren
+---
+
+{{ content }}
+
+<!-- <form class="canvas-toolbar pat-autosubmit pat-inject">
+    <div class="icons">
+    	<a class="icon more pat-tooltip" 
+    	   data-pat-tooltip="position-list: tr; source: ajax" 
+    	   href="#more-menu">Opties</a>
+    </div>
+</form> -->
+
+<div 
+    id="dashboard" 
+	class="row pat-masonry" 
+	data-pat-masonry="column-width: .grid-sizer; gutter: 0; item-selector: .portlet; stamp: .stamp;">
+	{% assign tool = site.collections | where: "label", "tool" | first %}
+    <div 
+        class="grid-sizer"></div>
+        {% for dashboard in page.dashboards %}
+            {% if dashboard.name == page.dashboard_name %}
+                {% for portlet in dashboard.portlets %}
+                    {% assign this_id = portlet.id %}
+                    {% assign this_height = portlet.height %}
+                    {% include {{this_id}}.html height=this_height %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+</div>
