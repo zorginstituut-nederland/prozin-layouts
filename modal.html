@@ -3,30 +3,43 @@ layout: prozin/shell
 page_type: modal
 ---
 
-<div id="document-content" class="pat-modal {{ page.panel_class }}">
-    <h1 class="panel-class-{{ page.panel_class }}">
+<div 
+    id="document-content" 
+    class="pat-modal {{ page.panel_class }}">
+    <h1 
+        class="panel-class-{{ page.panel_class }}">
         {{ site.data.prozin.ui[page.title][site.lang] }}
     </h1>
     {% if page.action %}
-        <form action="{{ page.action }}" 
-              class="pat-form wizard-box panel-class-{{ page.panel_class }} {% if page.inject %}pat-inject{% endif %} {% if page.validate %}pat-validation{% endif %}" {% if page.inject %}data-pat-inject="{{page.inject}}"{% endif %} {% if page.target %}target="{{ page.target }}"{% endif %}>
+        <form 
+            action="{{ page.action }}" 
+            class="pat-form wizard-box panel-class-{{ page.panel_class }} {% if page.inject %}pat-inject{% endif %} {% if page.validate %}pat-validation{% endif %}" 
+            {% if page.inject %}data-pat-inject="{{page.inject}}"{% endif %} 
+            {% if page.target %}target="{{ page.target }}"{% endif %}>
     {% endif %}
-        <div class="panel-body">
-            <div class="container">
+        <div 
+            class="panel-body">
+            <div 
+                class="container">
                 {{ content }}
             </div>
         </div>
         {% if page.buttons %}
-            <div class="buttons panel-footer">
-                <div class="container">
+            <div 
+                class="buttons panel-footer">
+                <div 
+                    class="container">
                     {% for button in page.buttons  %}
                         {% if button.type == 'submit' or button.type == 'button' %}
-                            <button type="{{ button.type }}" class="{{ button.class }} pat-button" {{ button.validate }}>
+                            <button 
+                                type="{{ button.type }}" 
+                                class="{{ button.class }} pat-button" {{ button.validate }}>
                                 {{ site.data.prozin.ui[button.label][site.lang] }}
                             </button>
                         {% elsif button.type == 'link' %}
-                            <a class="pat-button {{ button.class }} pat-inject" 
-                               href="{{ button.action }}#{{ button.fragment }}">{{ site.data.prozin.ui[button.label][site.lang] }}</a>
+                            <a 
+                                class="pat-button {{ button.class }} pat-inject" 
+                                href="{{ button.action }}#{{ button.fragment }}">{{ site.data.prozin.ui[button.label][site.lang] }}</a>
                         {% endif %}
                     {% endfor %}
                 </div>
