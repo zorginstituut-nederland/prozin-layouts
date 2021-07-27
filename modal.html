@@ -17,13 +17,20 @@ page_type: modal
             {% if page.inject %}data-pat-inject="{{page.inject}}"{% endif %} 
             {% if page.target %}target="{{ page.target }}"{% endif %}>
     {% endif %}
-        <div 
-            class="panel-body">
+        {% if page.source %}
+            <object
+                data="{{ page.source }}">
+                
+            </object>
+        {% else %}
             <div 
-                class="container">
-                {{ content }}
+                class="panel-body">
+                <div 
+                    class="container">
+                    {{ content }}
+                </div>
             </div>
-        </div>
+        {% endif %}
         {% if page.buttons %}
             <div 
                 class="buttons panel-footer">
