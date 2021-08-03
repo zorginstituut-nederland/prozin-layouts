@@ -9,6 +9,10 @@ page_type: modal
     <h1 
         class="panel-class-{{ page.panel_class }}">
         {{ site.data.prozin.ui[page.title][site.lang] }}
+        <button 
+            type="button"
+            class="button-fullscreen pat-fullscreen" 
+            data-pat-fullscreen="selector:#modal-object">Full screen</button>
     </h1>
     {% if page.action %}
         <form 
@@ -19,6 +23,7 @@ page_type: modal
     {% endif %}
         {% if page.source %}
             <object
+                id="modal-object"
                 data="{{ page.source }}">
                 
             </object>
