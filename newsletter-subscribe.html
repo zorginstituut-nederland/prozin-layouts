@@ -1,0 +1,35 @@
+---
+layout: prozin/generic
+byline: date
+---
+
+<div 
+	id="main-content">
+	<article>
+		{% include prozin/page-head.html %}
+		<form 
+			action="/dialogues/newsletter/subscribed" 
+			class="pat-form pat-validate pat-inject">
+			<fieldset 
+				class="form-panel">
+				<fieldset 
+					class="horizontal">
+					{% include prozin/newsletters-checklist.html %}
+					<label>
+						{{ site.data.prozin.ui.label_email[site.lang] }} 
+						<input 
+							type="email" 
+							required 
+							name="e-mail" />
+					</label>
+				</fieldset>
+				<fieldset 
+					class="button-bar">
+					<button 
+						class="default pat-button" 
+						type="submit">{{ site.data.prozin.ui.label_subscribe[site.lang] }}</button>
+				</fieldset>
+			</fieldset>
+		</form>
+    </article>
+</div>
