@@ -1,0 +1,28 @@
+---
+layout: prozin/generic
+byline: date
+---
+
+<div 
+	id="main-content">
+	<article>
+		<div 
+			id="page-head" 
+			class="pat-rich">
+			<h1 {% if include.icon %}class="icon-{{ include.icon }}"{% endif %}>
+				{% include patterns/i18n id="label_unsubscribed" %}
+			</h1>
+		</div>
+		<div 
+			class="pat-well pat-rich">
+			<p>
+				{% include patterns/i18n id="message_unsubscribed_newsletter" %}
+			</p>
+			<ul>
+				<li>
+					Driemaandelijkse nieuwsbrief
+				</li>
+			</ul>
+		</div>
+    </article>
+</div>

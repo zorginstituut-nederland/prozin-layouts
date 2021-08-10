@@ -1,0 +1,41 @@
+---
+layout: prozin/generic
+byline: date
+---
+
+<div 
+	id="main-content">
+	<article>
+		<div 
+			id="page-head" 
+			class="pat-rich">
+			<h1 {% if include.icon %}class="icon-{{ include.icon }}"{% endif %}>
+				{% include patterns/i18n id="label_thank_you" %}
+			</h1>	
+<!-- 			<div 
+			class="introduction" 
+				id="page-intro">
+		        <p>
+		            {{ page.summary }}
+		        </p>
+		    </div> -->
+		</div>
+		<div 
+			class="pat-well pat-rich">
+			<p>
+				{% include patterns/i18n id="message_subscribed_newsletters" %}
+			</p>
+			<ul>
+				<li>
+					Driemaandelijkse nieuwsbrief
+				</li>
+				<li>
+					Nieuwsflitsen
+				</li>
+				<li>
+					iWlz
+				</li>
+			</ul>
+		</div>
+    </article>
+</div>
