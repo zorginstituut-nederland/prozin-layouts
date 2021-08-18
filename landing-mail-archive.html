@@ -1,0 +1,51 @@
+---
+layout: prozin/generic
+user: Nicole
+page_type: landing-mail-archive
+---
+
+<div 
+    id="main-content">
+    <article 
+        class="pat-rich">
+        <h1>
+            {{ page.title }}
+        </h1>
+        <div 
+            class="introduction" 
+            id="page-intro">
+            {% if page.summary %}
+                <p>
+                    {{ page.summary }}
+                </p>
+            {% endif %}
+        </div>
+
+        {{ content }}
+
+    </article>
+
+    <table 
+        class="toc">
+        <tbody 
+            class="link-list">
+            {% capture this_scope %}{{ page.collection }}{% endcapture %}
+			{% assign archive = (site[this_scope] | sort: 'date') | reverse %}
+            {% for item in archive %}
+                {% unless item.layout == 'prozin/landing-mail-archive' %}
+                    <tr>
+                    	<td>
+	                        <a 
+	                        	target="_new" 
+	                            href="{{ item.url }}">{{ item.title }}</a>
+                        </td>
+                        <td>
+                        	{{ item.date | date: '%B %d, %Y' }}
+                        </td>
+                    </tr>
+                {% endunless %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
