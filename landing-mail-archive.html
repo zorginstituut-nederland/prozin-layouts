@@ -14,14 +14,20 @@ page_type: landing-mail-archive
         <div 
             class="introduction" 
             id="page-intro">
-            {% if page.summary %}
-                <p>
-                    {{ page.summary }}
-                </p>
-            {% endif %}
+            <p>
+                {% include patterns/i18n 
+                    id="message_newsletter_archive" %}
+            </p>
         </div>
 
-        {{ content }}
+        <p>
+            {% include patterns/i18n 
+                id="message_newsletter_keep_abreast" %}
+            <a 
+                class="pat-inject"
+                data-pat-inject="history: record" 
+                href="/dialogues/newsletter/subscribe">{% include patterns/i18n id="label_then_subscribe_to_our_newsletters" %}</a>.
+        </p>
 
     </article>
 
