@@ -29,8 +29,8 @@ page_type: landing-mail-archive
         class="toc">
         <tbody 
             class="link-list">
-            {% capture this_scope %}{{ page.collection }}{% endcapture %}
-			{% assign archive = (site[this_scope] | sort: 'date') | reverse %}
+			{% assign archive = site.mails | sort: 'date' | reverse %}
+			
             {% for item in archive %}
                 {% unless item.layout == 'prozin/landing-mail-archive' %}
                     <tr>
