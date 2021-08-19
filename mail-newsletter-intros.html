@@ -1,0 +1,61 @@
+---
+layout: prozin/mail-base
+---
+
+{% assign base_url = "https://ist.cornelis.amsterdam" %}
+{% assign default_styles = 'font-family: Verdana,Geneva,sans-serif; line-height: 1.5em' %}
+
+<table
+	border="0" 
+	cellpadding="0" 
+	cellspacing="0" 
+	style="border-collapse: collapse; width: 800px; text-align: left; margin: 0 auto; float: none"
+	align="left" 
+	width="800">
+	{% include prozin/mail-intro-lane.html colspan="2" %}
+	{% for item in site.news %}
+		{% if item.layout == 'prozin/news-item' %}
+			<tr
+				style="line-height: 1.5">
+				<td
+					style="padding: 6px 20px 50px 0; width: 30%; vertical-align: top;"
+					width="30%; max-width: 300px;">
+					{% if item.image %}
+						<a 
+							href="{{ base_url }}/{{ item.url }}" 
+							style="border: none">
+							<img 
+								src="{{ base_url }}/{{ item.image }}"
+								style="width: 100%; max-width: 250px;"
+								width="250"
+								class="news-item-image"
+								alt="">
+						</a>
+					{% else %}
+						&nbsp;
+					{% endif %}
+				</td>
+				<td
+					class="news-item-text"
+					style="padding-bottom: 50px; vertical-align: top; {{ default_styles }}">
+					<h2
+						style="margin: 0 0 10px 0; font-size: 1.2em; font-weight: bold; clear: both; {{ default_styles }}">
+						<a 
+							href="{{ base_url }}/{{ item.url }}" 
+							style="text-decoration: none; color: black;">{{ item.title }}</a>
+					</h2>
+					<p
+						style="margin: 0 0 10px; {{ default_styles }}">
+						{{ item.summary }}
+					</p>
+					<p
+						style="margin: 0 0 10px; {{ default_styles }}">
+						<a 
+							href="{{ base_url }}/{{ item.url }}" 
+							style="color: #01689b">Read more…</a>.
+					</p>
+				</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+</table>

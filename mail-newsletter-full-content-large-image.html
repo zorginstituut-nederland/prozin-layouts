@@ -1,0 +1,86 @@
+---
+layout: prozin/mail-base
+---
+
+{% assign base_url = "https://ist.cornelis.amsterdam" %}
+{% assign default_styles = 'font-family: Verdana,Geneva,sans-serif; line-height: 1.5em' %}
+{% assign header_2 = 'font-family: Verdana,Geneva,sans-serif; line-height: 1.5em; font-size: 1.2em' %}
+{% assign header_3 = 'font-family: Verdana,Geneva,sans-serif; line-height: 1.5em; font-size: 1em' %}
+
+<table
+	border="0" 
+	cellpadding="0" 
+	cellspacing="0" 
+	style="border-collapse: collapse; width: 800px; text-align: left; margin: 0 auto; float: none"
+	align="left" 
+	width="800">
+	{% include prozin/mail-intro-lane.html colspan="1" %}
+	{% for item in site.news %}
+		{% if item.layout == 'prozin/news-item' %}
+			<tr>
+				<td
+					class="news-item-text"
+					style="padding-bottom: 50px; vertical-align: top; {{ default_styles }}">
+					<h1
+						style="margin: 0 0 30px 0; font-size: 28px; font-weight: bold; clear: both; {{ default_styles }}; line-height: 45px;">
+						{{ item.title }}
+					</h1>
+					{% if item.image %}
+						<p>
+							<img 
+								src="{{ base_url }}/{{ item.image }}"
+								style="width: 100%; max-width: 800px; display: block; margin: 40px auto"
+								width="800"
+								class="news-item-image"
+								alt="">
+						</p>
+					{% endif %}
+					<p
+						style="margin: 0 0 10px; {{ default_styles }}; font-weight: bold">
+						{{ item.summary }}
+					</p>
+					<div 
+						style="{{ default_styles }}">
+						<p>Contrary to what you might think, this article is not meant to be a hate-fest on Internet Explorer—in fact, since IE 9, they have continued to improve the performance, add new features, and generally make it standards-compliant.</p>
+						<h2 style="{{ header_2 }}">In the Beginning There Was IE, and It Was Good?</h2>
+						<p>We’ve all been so used to thinking of Internet Explorer as that slow, buggy browser that is behind the times, but it wasn’t always that way—in fact, way back when, Internet Explorer pioneered many innovations that made the web what it is today.</p>
+						<p>Here’s a quick tour through the easily forgotten history of the infamous browser:</p>
+						<h3 style="{{ header_3 }}">1996: Internet Explorer 3</h3>
+						<p>This version of the browser, introduced in 1997, was the first browser to implement CSS (Cascading Style Sheets). Yes, you’re reading that correctly—in fact, it introduced many new features like Java applets and sadly, ActiveX controls.</p>
+						<h3 style="{{ header_3 }}">1997: Internet Explorer 4</h3>
+						<p>IE4 introduced a blazing fast (at the time) rendering engine as an embeddable component that could be used in other applications—this was a lot more important than people realize. This version also introduced Dynamic HTML, which allows web pages to dynamically change the page using JavaScript, and added Active Desktop integration.</p>
+						<p>Even more weird? Seems like nobody remembers this anymore, but IE4 was actually cross-platform—you could install it on Mac OS, Solaris, and HP-UX—and by the time IE5 was released, IE4 had reached a 60 percent market share.</p>
+						<h3 style="{{ header_3 }}">1999: Internet Explorer 5.x</h3>
+						<p>Microsoft invented Ajax. Wait… what? That’s right, it was this version of IE that introduced the XMLHttpRequest feature in JavaScript, which forms the underlying technology behind every web application you’re using today—you know, like Gmail. Of course, the term “Ajax” wasn’t actually coined until years later by somebody other than Microsoft, but this release supported everything required to make it work.</p>
+						<h3 style="{{ header_3 }}">So Yes, Microsoft Innovated</h3>
+						<p>From IE3 until IE6, Microsoft used all their resources to simply out-innovate the competition, releasing new features and better browsers faster than Netscape. In fact, Netscape 3 Gold was a buggy piece of junk that crashed all the time, and Netscape 4 was extremely slow and could barely render tables—much less CSS, which would often cause the browser to crash.</p>
+						<p>To put it in context: web developers used to complain about Netscape the same way they complain about IE6 now.</p>
+						<h2 style="{{ header_2 }}">What Made It Go So Very Wrong?</h2>
+						<p>The trouble all started when Microsoft integrated IE into Windows as a required component, and made it difficult to uninstall and use an alternate browser. Then there was the whole business with them exploiting their monopoly to try and push Netscape out of the market, and a lot of people started to view Microsoft as the evil empire.</p>
+						<h3 style="{{ header_3 }}">Microsoft Stopped Trying</h3>
+						<p>By the time Microsoft released Internet Explorer 6 in 2001, complete with lots of new features for web developers, since there was no competition and they had a 95 percent market share, Microsoft just stopped trying—seriously, they did nothing for five years even after Firefox was released, and geeks started migrating left and right.</p>
+						<h3 style="{{ header_3 }}">Microsoft-Specific Features</h3>
+						<p>The whole problem with Microsoft’s innovation is that much of it was done in ways that didn’t follow the web standards—this wasn’t as big of a problem when Internet Explorer was the only game in town, but once Firefox and Webkit came around and started following the standards correctly, suddenly it became a huge problem for web developers.</p>
+						<p>Security Holes and Crashing
+						Since Microsoft decided they didn’t need to try anymore, and they didn’t keep up with the competition from Firefox and other browsers, bugs and security holes just cropped up left and right—really terrible ones, too. For instance, this code is all that is required to crash IE6:</p>
+						<p>In fact, the screenshot at the beginning of this section was a live example of testing out this particular bug.</p>
+						<h3 style="{{ header_3 }}">IE7 and IE8 Were Too Little, Too Late</h3>
+						<p>It took five years after IE6 for Microsoft to finally get around to releasing IE7, which added tabs and made the browser slightly more tolerable, but for web designers it was still a nightmare to deal with, and only complicated the issue since now you had to make pages render correctly in two lousy browsers instead of just one.</p>
+						<p>It took another 2.5 years for Microsoft to finally release Internet Explorer 8, which greatly improved CSS support for web developers, and added new features like Private browsing, tab isolation to prevent one bad page from taking down the whole browser, and phishing protection. By this point, most geeks had already moved on to Firefox, and then some of us to Google Chrome.</p>
+						<h2 style="{{ header_2 }}">The Real Reason Geeks Hate IE</h2>
+						<p>Just because we’re geeks doesn’t mean we hate everything that’s inferior and outdated—in fact, we often love retro computing—that’s why we love Atari, NES, Commodore 64, etc. We take pride in our geek knowledge. So why’s Internet Explorer a different story?</p>
+						<p>Here are a couple of reasons that fueled our hatred of the buggy browser, and finally put us all over the edge:</p>
+						<h3 style="{{ header_3 }}">Supporting IE is Like a Fork in the Eye for Web Devs</h3>
+						<p>Here’s a sample of a day in the life of a web designer: You spend hours making sure that your page looks great, and you test it out in Google Chrome, Firefox, Safari, and even Opera. It looks great, awesome!</p>
+						<p>Now you open up IE and the page looks like somebody put it into a blender and hit the Whip button. Then you spend double the amount of time trying to fix it to look tolerable in IE6 and IE7, cursing loudly the entire time.</p>
+						<p>Luckily by 2014, Internet Explorer 6 and 7 are a statistical anomaly in actual Internet usage, and most of the bigger websites have completely stopped supporting them. Even Internet Explorer 8 usage has dropped to single-digit percentages for many websites.</p>
+						<h3 style="{{ header_3 }}">Geeks Being Forced to Use Internet Explorer</h3>
+						<p>And here’s where we come to the real issue—the whole reason that geeks can’t stand Internet Explorer:</p>
+						<p>Geeks everywhere were forced to use Internet Explorer at work even when there are better browsers, forced to support it for corporate applications, forced to make sure web sites still work in IE, and we couldn’t convince everybody to switch to a better browser.</p>
+						<p>Geeks don’t hate something that’s inferior—but they do hate it when it’s forced on them.</p>
+					</div>	
+				</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+</table>
