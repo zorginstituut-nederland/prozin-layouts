@@ -1,0 +1,89 @@
+---
+layout: prozin/generic
+title: Organisaties
+title_in_breadcrumbs: true
+page_type: organisations
+---
+
+<form 
+    action="/beheer/organisations#organisations" 
+    class="canvas-toolbar pat-inject pat-autosubmit">
+    <div 
+        class="functions">
+        <a 
+            class="button icon-plus pat-modal" 
+            data-pat-modal="class: medium panel" 
+            href="/feedback/create-indicator#document-content">Organisatie</a>
+        <label  
+            class="canvas-toolbar-function canvas-toolbar-search-field"
+            title="Zoeken">
+            <input 
+                type="search" 
+                placeholder="Zoeken">
+        </label>
+    </div>
+</form>
+
+<div 
+    id="organisations">
+    <div    
+        class="scroll-table">  
+        <table
+            id="organisations-overview">
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Type</th>
+                    <th>Beheerder</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in page.organisations %}
+                    <tr>
+                        <th>
+                             <a 
+                                href="/organisations/{{ item.name | slugify }}"
+                                class="pat-modal"
+                                data-pat-modal="class: medium panel">{{ item.name }}</a>
+                            <div 
+                                hidden="" 
+                                id="org-{{ item.name | slugify }}">
+                                <ul 
+                                    class="menu">
+                                    <li>
+                                        <a 
+                                            href="/dialogues/organisations/edit#document-content" 
+                                            class="icon-edit pat-modal close-panel" 
+                                            data-pat-modal="class: small panel" 
+                                            title="Voeg een fabrikant toe">Bewerk</a>
+                                    </li>
+                                    <li>
+                                        <a 
+                                            href="/dialogues/organisations/delete#document-content" 
+                                            class="close-panel icon-3909-kruis">Verwijder</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </th>
+                        <td>{{ item.type }}</td>
+                        <td
+                            class="administrator">
+                            <a 
+                                href="/users/{{ item.administrator | slugify }}"
+                                class="pat-inject"
+                                data-pat-inject="history: record">{{ item.administrator }}</a>
+                        </td>
+                        <td
+                            class="functions">
+                            <a 
+                                class="iconified icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+                                href="#org-{{ item.name | slugify }}" 
+                                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
