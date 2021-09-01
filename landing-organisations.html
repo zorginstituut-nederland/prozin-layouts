@@ -44,8 +44,8 @@ page_type: organisations
                         <th>
                              <a 
                                 href="/organisations/{{ item.name | slugify }}"
-                                class="pat-modal"
-                                data-pat-modal="class: medium panel">{{ item.name }}</a>
+                                class="pat-inject"
+                                data-pat-inject="history: record">{{ item.name }}</a>
                             <div 
                                 hidden="" 
                                 id="org-{{ item.name | slugify }}">

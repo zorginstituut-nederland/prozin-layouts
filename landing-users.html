@@ -13,7 +13,7 @@ page_type: users
         <a 
             class="button icon-plus pat-modal" 
             data-pat-modal="class: medium panel" 
-            href="/dialogues/users/new#document-content">Gebruiker</a>
+            href="/dialogues/users/new{% unless page.role == 'owner' %}-organisation{% endunless %}#document-content">Gebruiker</a>
         <label  
             class="canvas-toolbar-function canvas-toolbar-search-field"
             title="Zoeken">
@@ -33,7 +33,9 @@ page_type: users
             <thead>
                 <tr>
                     <th>Naam</th>
-                    <th>Organisation</th>
+                    {% if page.role == 'Owner' %}
+                        <th>Organisation</th>
+                    {% endif %}
                     <th>Rol</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -41,7 +43,11 @@ page_type: users
             <tbody>
                  {% for item in site.data.personae %}
                     {% assign this_persona = item[1] %}
-                    <tr>
+                    {% if page.role == 'Regular' and this_persona.role == 'Owner' %}
+                        {% assign show_this = false %}
+                    {% endif %}
+                    {% unless show_this == false %}
+                        <tr>
                         <th>
                              <a 
                                 href="/users/{{ this_persona.first_name | slugify }}-{{ this_persona.last_name | slugify }}"
@@ -69,7 +75,9 @@ page_type: users
                                 </ul>
                             </div>
                         </th>
-                        <td>{{ this_persona.organisation }}</td>
+                        {% if page.role == 'Owner' %}
+                            <td>{{ this_persona.organisation }}</td>
+                        {% endif %}
                         <td>{{ this_persona.role }}</td>
                         <td
                             class="functions">
@@ -77,8 +85,9 @@ page_type: users
                                 class="iconified icon-ellipsis-hor pat-tooltip tooltip-inactive" 
                                 href="#org-{{ item.name | slugify }}" 
                                 data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    {% endunless %}
                 {% endfor %}
             </tbody>
         </table>

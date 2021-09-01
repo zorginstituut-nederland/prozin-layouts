@@ -1,0 +1,52 @@
+---
+layout: prozin/generic
+page_type: organisation
+title: Organisatie
+parent: Beheer
+---
+
+<div 
+    class="canvas-toolbar">
+    <div 
+        class="functions">
+        <a 
+            class="button icon-pencil pat-modal" 
+            data-pat-modal="class: medium panel" 
+            href="/dialogues/organisations/edit#document-content">Bewerk</a>
+    </div>
+</div>
+
+<div 
+    id="main-content">
+
+    <article 
+        class="pat-rich">
+        <h1>
+            {{ page.name }}
+        </h1>
+    </article>
+        
+    <dl class="pat-grid-list">
+        <dt>
+            Type organisatie
+        </dt>   
+        <dd>
+            Zorginstelling
+        </dd>
+        <dt>
+            Beheerder
+        </dt>
+        <dd>
+            <a 
+                href="#">John Doe</a>
+        </dd>
+        <dt>
+            Aantal <a href="/dialogues/users-organisation">gebruikers</a>
+        </dt>
+        <dd>
+            26
+        </dd>
+    </dl>
+
+</div>
+
