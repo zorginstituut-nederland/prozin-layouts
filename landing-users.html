@@ -54,36 +54,64 @@ page_type: users
                                 class="pat-inject"
                                 data-pat-inject="history: record">{{ this_persona.first_name }} {{ this_persona.last_name }}</a>
                             <div 
-                                hidden="" 
-                                id="org-{{ item.name | slugify }}">
+                                hidden
+                                id="user-{{ this_persona.last_name | slugify }}">
                                 <ul 
                                     class="menu">
                                     <li>
-                                        <a 
-                                            href="/dialogues/users/edit#document-content" 
-                                            class="icon-edit pat-modal close-panel" 
-                                            data-pat-modal="class: medium panel" 
-                                            title="Bewerk organisatie">Bewerk</a>
+                                        {% if page.role == 'Owner' %}
+                                            <a 
+                                                href="/dialogues/users/edit#document-content" 
+                                                class="icon-pencil pat-modal close-panel" 
+                                                data-pat-modal="class: medium panel" 
+                                                title="Bewerk gebruikersgegevens">Bewerk</a>
+                                        {% else %}
+                                            <a 
+                                                href="/dialogues/users/edit-regular#document-content" 
+                                                class="icon-pencil pat-modal close-panel" 
+                                                data-pat-modal="class: medium panel" 
+                                                title="Bewerk gebruikersgegevens">Bewerk</a>
+                                        {% endif %}
                                     </li>
-                                    <li>
-                                        <a 
-                                            href="/dialogues/users/delete#document-content" 
-                                            title="Verwijder organisatie" 
-                                            data-pat-modal="class: small panel" 
-                                            class="close-panel pat-modal icon-3909-kruis">Verwijder</a>
-                                    </li>
+                                    {% if this_persona.last_name == 'Papadopoulus' %}
+                                        <!-- In case the user is deactivated, print the following markup: -->
+                                        <li>
+                                            <form
+                                                class="pat-inject"
+                                                action="/dialogues/users/#content">
+                                                <button 
+                                                    title="Heractiveer gebruiker" 
+                                                    class="close-panel icon-ok-1">Heractiveer</button>
+                                            </form>
+                                        </li>
+                                    {% else %}  
+                                        <li>
+                                            <a 
+                                                href="/dialogues/users/deactivate#document-content" 
+                                                title="Deactiveer gebruiker" 
+                                                data-pat-modal="class: small panel" 
+                                                class="close-panel pat-modal icon-3909-kruis">Deactiveer</a>
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </div>
                         </th>
                         {% if page.role == 'Owner' %}
                             <td>{{ this_persona.organisation }}</td>
                         {% endif %}
-                        <td>{{ this_persona.role }}</td>
+                        <td>
+                            {% if this_persona.last_name == 'Papadopoulus' %}
+                                <em
+                                    class="inactive">Inactief</em>
+                            {% else %}
+                                {{ this_persona.role }} 
+                            {% endif %}
+                        </td>
                         <td
                             class="functions">
                             <a 
                                 class="iconified icon-ellipsis-hor pat-tooltip tooltip-inactive" 
-                                href="#org-{{ item.name | slugify }}" 
+                                href="#user-{{ this_persona.last_name | slugify }}" 
                                 data-pat-tooltip="source: ajax; position-list: tr">More…</a>
                             </td>
                         </tr>
