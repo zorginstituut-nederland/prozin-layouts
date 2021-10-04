@@ -27,17 +27,20 @@ page_type: login
 					{{ site.data.prozin.ui.label_role[site.lang] }}
 				</dt>
 				<dd>
-					{% if site.data.prozin.personae[page.persona].role == 'scanner' %}
-						{{ site.data.prozin.ui.label_role_scanner[site.lang] }}
-					{% elsif site.data.prozin.personae[page.persona].role == 'workgroup-member' %}
-						{{ site.data.prozin.ui.label_role_werkgroeplid[site.lang] }}
-					{% elsif site.data.prozin.personae[page.persona].role == 'bystander' %}
-						{{ site.data.prozin.ui.label_role_lezer[site.lang] }}
-					{% elsif site.data.prozin.personae[page.persona].role == 'administrator' %}
+					{% if site.data.prozin.personae[page.persona].role == 'Administrator' %}
 						{{ site.data.prozin.ui.label_role_beheerder[site.lang] }}
-					{% elsif site.data.prozin.personae[page.persona].role == 'manufacturer' %}
-						{{ site.data.prozin.ui.label_role_fabrikant[site.lang] }}
+					{% elsif site.data.prozin.personae[page.persona].role == 'Regular user' %}
+						{{ site.data.prozin.ui.label_regular_user[site.lang] }}
 					{% endif %}
+				</dd>
+				<dt>
+					{{ site.data.prozin.ui.label_organisation[site.lang] }}
+				</dt>
+				<dd>
+					<a 
+						class="pat-inject"
+						data-pat-inject="history: record" 
+						href="/organisations/mees-mcrooy-makelaars">{{ site.data.prozin.personae[page.persona].organisation }}</a>
 				</dd>
 				{% if site.data.prozin.personae[page.persona].domain %}
 					<dt>
