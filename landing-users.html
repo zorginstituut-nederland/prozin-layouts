@@ -41,7 +41,7 @@ page_type: users
                 </tr>
             </thead>
             <tbody>
-                 {% for item in site.data.personae %}
+                 {% for item in site.data.prozin.personae %}
                     {% assign this_persona = item[1] %}
                     {% if page.role == 'Regular' and this_persona.role == 'Owner' %}
                         {% assign show_this = false %}
