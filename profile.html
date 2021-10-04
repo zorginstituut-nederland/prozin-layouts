@@ -24,6 +24,15 @@ page_type: login
 			<dl 
 				class="pat-grid-list user-details">
 				<dt>
+					{{ site.data.prozin.ui.label_organisation[site.lang] }}
+				</dt>
+				<dd>
+					<a 
+						class="pat-inject"
+						data-pat-inject="history: record" 
+						href="/organisations/mees-mcrooy-makelaars">{{ site.data.prozin.personae[page.persona].organisation }}</a>
+				</dd>
+				<dt>
 					{{ site.data.prozin.ui.label_role[site.lang] }}
 				</dt>
 				<dd>
@@ -32,15 +41,6 @@ page_type: login
 					{% elsif site.data.prozin.personae[page.persona].role == 'Member' %}
 						{{ site.data.prozin.ui.label_regular_user[site.lang] }}
 					{% endif %}
-				</dd>
-				<dt>
-					{{ site.data.prozin.ui.label_organisation[site.lang] }}
-				</dt>
-				<dd>
-					<a 
-						class="pat-inject"
-						data-pat-inject="history: record" 
-						href="/organisations/mees-mcrooy-makelaars">{{ site.data.prozin.personae[page.persona].organisation }}</a>
 				</dd>
 				{% if site.data.prozin.personae[page.persona].domain %}
 					<dt>
