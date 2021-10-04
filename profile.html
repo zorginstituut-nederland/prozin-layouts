@@ -29,7 +29,7 @@ page_type: login
 				<dd>
 					{% if site.data.prozin.personae[page.persona].role == 'Administrator' %}
 						{{ site.data.prozin.ui.label_role_beheerder[site.lang] }}
-					{% elsif site.data.prozin.personae[page.persona].role == 'Regular user' %}
+					{% elsif site.data.prozin.personae[page.persona].role == 'Member' %}
 						{{ site.data.prozin.ui.label_regular_user[site.lang] }}
 					{% endif %}
 				</dd>
