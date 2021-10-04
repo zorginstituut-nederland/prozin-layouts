@@ -28,9 +28,11 @@ page_type: landing-toc
         class="toc">
         <ul 
             class="link-list">
-            {% capture this_scope %}{{ page.collection }}{% endcapture %}
+            {% capture this_collection %}{{ page.collection }}{% endcapture %}
+            {% assign this_scope = site[this_collection] | sort: 'title' %}
 
-            {% for item in site[this_scope] %}
+
+            {% for item in this_scope %}
                 {% unless page.title == item.title %}
                     <li>
                         <a 
