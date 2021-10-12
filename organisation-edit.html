@@ -31,52 +31,7 @@ organisation: "Mees & mcRooy"
 
         <fieldset 
             class="horizontal">
-            <label>
-                Naam organisatie
-                <input 
-                    value="{{ page.organisation }}" 
-                    type="text" 
-                    class="pat-autofocus" 
-                    name="name">
-            </label>
-            <label>
-                Type
-                <select
-                    disabled>
-                    <!-- <option>Zorginstelling</option> -->
-                    <option
-                        selected>Gegevensmakelaar</option>
-                    <!-- <option>Beheerorganisatie</option> -->
-                </select>
-            </label>
-            <label>
-                Contactpersoon
-                <select>
-                    <option>
-                        {{ site.data.prozin.ui.label_contact_person_not_selected[site.lang] }}
-                    </option>
-                    {% for item in site.data.personae %}
-                        {% assign this_persona = item[1] %}
-                        <option>
-                            {{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;
-                        </option>
-                    {% endfor %}
-                </select>
-            </label>
-            <label>
-                Beheerder
-                <select>
-                    <option>
-                        {{ site.data.prozin.ui.label_administrator_not_selected[site.lang] }}
-                    </option>
-                    {% for item in site.data.personae %}
-                        {% assign this_persona = item[1] %}
-                        <option>
-                            {{ this_persona.first_name }} {{ this_persona.last_name }} &lt;{{ this_persona.email }}&gt;
-                        </option>
-                    {% endfor %}
-                </select>
-            </label>
+            {% include prozin/organisations-edit-form.html %}
         </fieldset>
     </div>
 </form>
