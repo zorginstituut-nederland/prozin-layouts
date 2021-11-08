@@ -32,7 +32,7 @@ parent: Beheer
             Type organisatie
         </dt>   
         <dd>
-            Zorginstelling
+            {{ page.type }}
         </dd>
             <dt>
                 Locatienaam
@@ -69,7 +69,7 @@ parent: Beheer
                 03867563
             </dd>
 
-
+            {% if page.type == 'Zorginstelling' %}
             <dt>
                 Vestigingsnummer
             </dt>
@@ -84,6 +84,8 @@ parent: Beheer
             <dd>
                 10294385
             </dd>
+            
+            {% endif %}
 
         <dt>Contactpersoon</dt>
         <dd>
@@ -98,7 +100,7 @@ parent: Beheer
             <a 
                 href="#"
                 class="pat-inject"
-                data-pat-inject="history: record">Sarai Santini</a>
+                data-pat-inject="history: record">{{ page.administrator }}</a>
         </dd>
         <dt>
             Aantal <a href="/dialogues/users/users-organisation" class="pat-inject" data-pat-inject="history: record">gebruikers</a>
