@@ -24,7 +24,7 @@ page_type: organisations
     </div>
 </form>
 
-{% assign brokers = site.data.prozin.organisations | sort: 'name' %}
+{% assign organisations = site.data.organisations | sort: 'name' %}
 
 <div 
     id="organisations">
@@ -41,7 +41,7 @@ page_type: organisations
                 </tr>
             </thead>
             <tbody>
-                {% for item in brokers %}
+                {% for item in organisations %}
                     <tr>
                         <th>
                              <a 
