@@ -1,0 +1,34 @@
+---
+layout: prozin/generic
+title: label_confirm_account
+parent: home
+---
+
+<div 
+	id="main-content">
+ 
+    {% include prozin/page-head-password-dialogues.html %}
+    
+	<form 
+		action="/dialogues/login/account-confirmed" 
+		class="pat-form pat-validate pat-inject">
+		<fieldset 
+			class="form-panel">
+			<fieldset 
+				class="horizontal">
+				<label>
+					{{ site.data.prozin.ui.label_new_password[site.lang] }} <input type="password" class="pat-autofocus" autofocus required name="password" />
+				</label>
+				<label>
+					{{ site.data.prozin.ui.label_repeat_new_password[site.lang] }} <input type="password" required name="password-repeat" />
+				</label>
+			</fieldset>
+			<fieldset 
+				class="button-bar">
+				<button 
+					class="default pat-button" 
+					type="submit">{{ site.data.prozin.ui.label_confirm[site.lang] }}</button>
+			</fieldset>
+		</fieldset>
+	</form>
+</div>
