@@ -94,6 +94,15 @@ page_type: users
                                                     class="close-panel pat-modal icon-3909-kruis">Deactiveer</a>
                                             </li>
                                         {% endif %}
+                                        {% if this_persona.accepted == false %}
+                                            <li>
+                                                <a 
+                                                    href="/dialogues/users/resend-invite#document-content" 
+                                                    title="Stuur opnieuw de uitnodiging om het gebruikersaccount te accepteren." 
+                                                    data-pat-modal="class: small panel" 
+                                                    class="close-panel pat-modal icon-mail">{% include patterns/i18n id="label_resend_invite" %}</a>
+                                            </li>
+                                        {% endif %}
                                         <li>
                                             <a 
                                                 href="/dialogues/users/remove#document-content" 
@@ -107,12 +116,15 @@ page_type: users
                             {% if page.role == 'Owner' %}
                                 <td>{{ this_persona.organisation }}</td>
                             {% endif %}
-                            <td>
+                            <td
+                                class="role">
+                                {{ this_persona.role }}
                                 {% if this_persona.last_name == 'Papadopoulus' %}
                                     <em
-                                        class="inactive">Inactief</em>
-                                {% else %}
-                                    {{ this_persona.role }} 
+                                        class="status-marker inactive">Inactief</em>
+                                {% elsif this_persona.accepted == false %}
+                                    <em
+                                        class="status-marker unapproved warning">(Nog niet geaccepteerd)</em>
                                 {% endif %}
                             </td>
                             <td
