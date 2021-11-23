@@ -1,0 +1,66 @@
+---
+layout: prozin/generic
+title: Login
+parent: home
+page_type: login
+---
+
+<form
+	action="/users/riwka-rubinstein"
+	class="pat-inject">
+	<div 
+		class="canvas-toolbar">
+		<div 
+			class="functions">
+	        <button 
+	        	class="default button pat-inject">{% include patterns/i18n id="label_save" %}</button>
+	    </div>
+	</div>
+
+	<div 
+		id="main-content">
+		<div 
+			class="row user-info">
+			<div 
+				class="four columns">
+				{% include prozin/profile-image-form.html
+					editable=true
+					form=false %}	
+			</div>
+			<div 
+				class="eight columns">
+				<form
+					action="/users/riwka-rubinstein"
+					class="pat-form pat-inject">
+					<fieldset 
+						class="horizontal">
+						<label>
+							{% include patterns/i18n id="label_first_name" %}
+							<input 
+								required
+								type="text" 
+								value="{{ site.data.prozin.personae[site.persona].first_name }}"
+								name="">
+						</label>
+						<label>
+							{% include patterns/i18n id="label_last_name" %}
+							<input 
+								required
+								value="{{ site.data.prozin.personae[site.persona].last_name }}"
+								type="text" 
+								name="">
+						</label>
+						<label>
+							{% include patterns/i18n id="label_email" %}
+							<input 
+								required
+								type="email" 
+								name=""
+								value="{{ site.data.prozin.personae[site.persona].email }}">
+						</label>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</form>
