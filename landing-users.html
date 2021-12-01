@@ -74,25 +74,27 @@ page_type: users
                                                     title="Bewerk gebruikersgegevens">Bewerk</a>
                                             {% endif %}
                                         </li>
-                                        {% if this_persona.last_name == 'Papadopoulus' %}
-                                            <!-- In case the user is deactivated, print the following markup: -->
-                                            <li>
-                                                <form
-                                                    class="pat-inject"
-                                                    action="/dialogues/users/#content">
-                                                    <button 
-                                                        title="Heractiveer gebruiker" 
-                                                        class="close-panel icon-ok-1">Heractiveer</button>
-                                                </form>
-                                            </li>
-                                        {% else %}  
-                                            <li>
-                                                <a 
-                                                    href="/dialogues/users/deactivate#document-content" 
-                                                    title="Deactiveer gebruiker" 
-                                                    data-pat-modal="class: small panel" 
-                                                    class="close-panel pat-modal icon-3909-kruis">Deactiveer</a>
-                                            </li>
+                                        {% if page.role == 'Owner' %}
+                                            {% if this_persona.last_name == 'Papadopoulus' %}
+                                                <!-- In case the user is deactivated, print the following markup: -->
+                                                <li>
+                                                    <form
+                                                        class="pat-inject"
+                                                        action="/dialogues/users/#content">
+                                                        <button 
+                                                            title="Heractiveer gebruiker" 
+                                                            class="close-panel icon-ok-1">Heractiveer</button>
+                                                    </form>
+                                                </li>
+                                            {% else %}  
+                                                <li>
+                                                    <a 
+                                                        href="/dialogues/users/deactivate#document-content" 
+                                                        title="Deactiveer gebruiker" 
+                                                        data-pat-modal="class: small panel" 
+                                                        class="close-panel pat-modal icon-3909-kruis">Deactiveer</a>
+                                                </li>
+                                            {% endif %}
                                         {% endif %}
                                         {% if this_persona.accepted == false %}
                                             <li>
