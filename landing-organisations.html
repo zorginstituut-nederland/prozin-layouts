@@ -13,7 +13,7 @@ page_type: organisations
         <a 
             class="button icon-plus pat-modal" 
             data-pat-modal="class: medium panel" 
-            href="/dialogues/organisations/new#document-content">Organisatie</a>
+            href="/dialogues/organisations/new-zin#document-content">Organisatie</a>
         <label  
             class="canvas-toolbar-function canvas-toolbar-search-field"
             title="Zoeken">
@@ -23,6 +23,8 @@ page_type: organisations
         </label>
     </div>
 </form>
+
+{% assign organisations = site.data.organisations | sort: 'name' %}
 
 <div 
     id="organisations">
@@ -39,7 +41,7 @@ page_type: organisations
                 </tr>
             </thead>
             <tbody>
-                {% for item in site.data.prozin.organisations %}
+                {% for item in organisations %}
                     <tr>
                         <th>
                              <a 
@@ -58,13 +60,13 @@ page_type: organisations
                                             data-pat-modal="class: medium panel" 
                                             title="Bewerk organisatie">Bewerk</a>
                                     </li>
-                                    <li>
+<!--                                     <li>
                                         <a 
                                             href="/dialogues/organisations/delete#document-content" 
                                             title="Verwijder organisatie" 
                                             data-pat-modal="class: small panel" 
-                                            class="close-panel pat-modal icon-3909-kruis">Verwijder</a>
-                                    </li>
+                                            class="close-panel pat-modal icon-3909-kruis">Verwijder uit {{ site.title }}</a>
+                                    </li> -->
                                 </ul>
                             </div>
                         </th>

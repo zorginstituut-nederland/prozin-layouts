@@ -74,38 +74,59 @@ page_type: users
                                                     title="Bewerk gebruikersgegevens">Bewerk</a>
                                             {% endif %}
                                         </li>
-                                        {% if this_persona.last_name == 'Papadopoulus' %}
-                                            <!-- In case the user is deactivated, print the following markup: -->
-                                            <li>
-                                                <form
-                                                    class="pat-inject"
-                                                    action="/dialogues/users/#content">
-                                                    <button 
-                                                        title="Heractiveer gebruiker" 
-                                                        class="close-panel icon-ok-1">Heractiveer</button>
-                                                </form>
-                                            </li>
-                                        {% else %}  
+                                        {% if page.role == 'Owner' %}
+                                            {% if this_persona.last_name == 'Papadopoulus' %}
+                                                <!-- In case the user is deactivated, print the following markup: -->
+                                                <li>
+                                                    <form
+                                                        class="pat-inject"
+                                                        action="/dialogues/users/#content">
+                                                        <button 
+                                                            title="Heractiveer gebruiker" 
+                                                            class="close-panel icon-ok-1">Heractiveer</button>
+                                                    </form>
+                                                </li>
+                                            {% else %}  
+                                                <li>
+                                                    <a 
+                                                        href="/dialogues/users/deactivate#document-content" 
+                                                        title="Deactiveer gebruiker" 
+                                                        data-pat-modal="class: small panel" 
+                                                        class="close-panel pat-modal icon-3909-kruis">Deactiveer</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endif %}
+                                        {% if this_persona.accepted == false %}
                                             <li>
                                                 <a 
-                                                    href="/dialogues/users/deactivate#document-content" 
-                                                    title="Deactiveer gebruiker" 
+                                                    href="/dialogues/users/resend-invite#document-content" 
+                                                    title="Stuur opnieuw de uitnodiging om het gebruikersaccount te accepteren." 
                                                     data-pat-modal="class: small panel" 
-                                                    class="close-panel pat-modal icon-3909-kruis">Deactiveer</a>
+                                                    class="close-panel pat-modal icon-mail">{% include patterns/i18n id="label_resend_invite" %}</a>
                                             </li>
                                         {% endif %}
+                                        <li>
+                                            <a 
+                                                href="/dialogues/users/remove#document-content" 
+                                                title="Verwijder gebruiker" 
+                                                data-pat-modal="class: small panel" 
+                                                class="close-panel pat-modal icon-3909-kruis">Verwijder {{ this_persona.first_name }} {{ this_persona.last_name }} uit {{ site.title }} </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </th>
                             {% if page.role == 'Owner' %}
                                 <td>{{ this_persona.organisation }}</td>
                             {% endif %}
-                            <td>
+                            <td
+                                class="role">
+                                {{ this_persona.role }}
                                 {% if this_persona.last_name == 'Papadopoulus' %}
                                     <em
-                                        class="inactive">Inactief</em>
-                                {% else %}
-                                    {{ this_persona.role }} 
+                                        class="status-marker inactive">Inactief</em>
+                                {% elsif this_persona.accepted == false %}
+                                    <em
+                                        class="status-marker unapproved warning">(Nog niet geaccepteerd)</em>
                                 {% endif %}
                             </td>
                             <td
