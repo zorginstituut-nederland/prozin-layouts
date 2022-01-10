@@ -3,6 +3,10 @@ layout: prozin/generic
 page_type: landing-toc
 ---
 
+{% capture this_collection %}{{ page.collection }}{% endcapture %}
+{% assign this_scope = site[this_collection] | sort: 'title' %}
+{% assign page_path = page.url | split: "/" | reverse %}
+
 <div 
     id="main-content">
     <article 
@@ -26,21 +30,49 @@ page_type: landing-toc
 
     <div 
         class="toc">
+
+<!-- <pre>
+PATH: {{ page.path }}
+URL: {{ page.url }}
+This page: {{ page_path[0] }}
+This folder: {{ page_path[1] }}
+Parent folder: {{ page_path[2] }}
+</pre> -->
+
         <ul 
             class="link-list">
-            {% capture this_collection %}{{ page.collection }}{% endcapture %}
-            {% assign this_scope = site[this_collection] | sort: 'title' %}
-
 
             {% for item in this_scope %}
-                {% unless page.title == item.title %}
-                    <li>
-                        <a 
-                            href="{{ item.url }}" 
-                            class="pat-inject" 
-                            data-pat-inject="history: record">{{ item.title }}</a>
-                    </li>
-                {% endunless %}
+
+                {% assign item_path = item.url | split: "/" | reverse %}
+
+                {% if item_path[0] == 'index' %}
+                    {% unless item.title == page.title %}
+                         {% if item_path[2] == page_path[1] %}
+                            <li>
+                                <a 
+                                    href="{{ item.url }}" 
+                                    class="pat-inject" 
+                                    data-pat-inject="history: record">{{ item.title }}</a>
+                            </li>     
+                        {% endif %}  
+                    {% endunless %}
+                {% endif %}
+
+            {% endfor %}
+
+            {% for item in this_scope %}
+                {% assign item_path = item.url | split: "/" | reverse %}
+                {% if item_path[1] == page_path[1] %}
+                    {% unless item.title == page.title %}
+                        <li>
+                            <a 
+                                href="{{ item.url }}" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record">{{ item.title }}</a>
+                        </li>    
+                    {% endunless %}
+                {% endif %}
             {% endfor %}
         </ul>
     </div>
