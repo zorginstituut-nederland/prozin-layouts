@@ -1,0 +1,120 @@
+---
+layout: prozin/generic
+page_type: search-results
+---
+
+<div 
+    id="main-content">
+    <div 
+        class="pat-rich">
+        <div 
+            class="summary discrete-injection" 
+            id="summary">
+            <h2>
+                <strong>8</strong> zoekresultaten
+            </h2>
+        </div>
+    </div>
+
+    <form 
+        id="search-form" 
+        class="search-box view-compact pat-inject pat-autosubmit pat-form" action="zoekresultaten.html" 
+        data-pat-inject="source: #summary; target: #summary && source: #result-list; target: #result-list && source: #sorting; target: #sorting; history: record;">
+        <p 
+            class="meta req"><strong>*</strong>&nbsp;Verplichte velden</p>
+        <fieldset 
+            class="form-panel">
+            <fieldset class="horizontal">
+                <label class="search-field">
+                    Trefwoord<sup class="required">*</sup>
+                    <input value="{{ page.lemma }}" autocomplete="off" name="search-field" type="search" size="80" autofocus="autofocus" />
+                </label>
+            </fieldset>
+            <fieldset class="group pat-collapsible filters closed" data-pat-collapsible="open-trigger: #open-trigger; close-trigger: #close-trigger">
+                <h3 class="filter-toggle">Filters</h3>
+                {% include patterns/form.html class="panel-content" src="search-filters" root="fieldset" layout="horizontal" %}
+            </fieldset>
+            <fieldset 
+                class="button-bar">
+                <button 
+                    class="default pat-button" 
+                    type="submit">Zoek</button>
+                <a 
+                    href="#search-form" 
+                    class="pat-scroll filter-toggle" 
+                    type="button" 
+                    id="open-trigger">Toon filters</a>
+                <a 
+                    href="#search-form" 
+                    class="pat-scroll filter-toggle" 
+                    type="button" 
+                    id="close-trigger">Verberg filters</a>
+            </fieldset>
+        </fieldset>
+
+        <div 
+            class="sorting" 
+            id="sorting">
+            <p>
+                Sorteren op: <button type="submit" name="sorting" value="by_date" class="pat-button link">Datum</button> / <!-- <button type="submit" name="sorting" value="by_relevance" class="link">Relevantie</button> --><strong>Relevantie</strong>
+            </p>
+        </div>
+    </form>
+
+    <div 
+        id="result-list" 
+        class="search-results visible-injection">
+
+        {% for item in site.posts %}
+            {% if item.title contains page.lemma %}
+                <a href="{{ item.url }}" data-pat-inject="history: record" class="pat-inject result-item generic">
+                    <h3 class="result-title">
+                        {{ item.title }}
+                    </h3>
+                    {% if item.summary %}
+                        <p class="result-description">
+                            {{ item.summary }}
+                        </p>
+                    {% endif %}
+                    {% if item.type or item.pub-date or item.layout == 'tool' %}
+                        <p class="meta">
+                            {% if item.type %}
+                                {% if item.type == 'qs' %}
+                                    <span class="byline-item">Kwaliteitsinstrument | Kwaliteitsstandaard</span>
+                                {% elsif item.type == 'is' %}
+                                    <span class="byline-item">Kwaliteitsinstrument | Informatiestandaard</span>
+                                {% elsif item.type == 'mi' %}
+                                    <span class="byline-item">Kwaliteitsinstrument | Meetinstrument</span>
+                                {% elsif item.type == 'news' %}
+                                    <span class="byline-item">Nieuwsbericht</span>
+                                {% elsif item.layout == 'tool' %}
+                                    <span class="byline-item">Ontwikkeltool</span>
+                                {% elsif item.type == 'meerjarentabel' %}
+                                    <span class="byline-item">Meerjarentabel</span>
+                                {% elsif item.type == 'leeftijd-en-geslacht' %}
+                                    <span class="byline-item">Leeftijd en geslacht</span>
+                                {% elsif item.type == 'dure-intramurale-geneesmiddelen' %}
+                                    <span class="byline-item">Dure intramurale geneesmiddelen</span>
+                                {% elsif item.type == 'dure-extramurale-geneesmiddelen' %}
+                                    <span class="byline-item">Dure extramurale geneesmiddelen</span>
+                                {% endif %}         
+                            {% endif %}
+                            {% if item.pub-date %}
+                                <span class="byline-item"><time datetime="{{ item.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ item.date | date: "%-d %B %Y" }}</time></span>
+                            {% endif %}
+                            {% if item.layout == 'news-item' %}
+                                <span class="byline-item"><time datetime="{{ item.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ item.date | date: "%-d %B %Y" }}</time></span>
+                            {% endif %}
+                        </p>
+                        </p>
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+
+        <p id="pagination">
+            <a href="/zoekresultaten.html" class="btn next pat-inject" data-pat-inject="trigger: autoload-visible; source: #result-list; target: #pagination::element">Meer resultaten laden…</a>
+        </p>
+        
+    </div>
+</div>
