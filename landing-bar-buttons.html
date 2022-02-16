@@ -11,9 +11,11 @@ page_type: landing-toc
     id="main-content">
     <article 
         class="pat-rich">
-        <h1>
-            {{ page.title }}
-        </h1>
+        {% if title_on_page == true %}
+            <h1>
+                {{ page.title }}
+            </h1>
+        {% endif %}
         <div 
             class="introduction" 
             id="page-intro">
