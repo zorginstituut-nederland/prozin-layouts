@@ -32,11 +32,20 @@ page_type: landing-toc
 
     <nav 
         class="bar-buttons col-1">
-        {% for item in page.nav %}                            
-            <a 
-                href="{{ item.url }}" 
-                class="pat-inject default item" 
-                data-pat-inject="history: record">{{ item.title }}</a>     
-        {% endfor %}
+        {% if page.nav %}
+            {% for item in page.nav %}                            
+                <a 
+                    href="{{ item.url }}" 
+                    class="pat-inject default item" 
+                    data-pat-inject="history: record">{{ item.title }}</a>     
+            {% endfor %}
+        {% else %}
+            {% for item in site.data.sectors %}                            
+                <a 
+                    href="{{ item.url }}" 
+                    class="pat-inject default item" 
+                    data-pat-inject="history: record">{{ item.title }}</a>     
+            {% endfor %}
+        {% endif %}    
     </nav>
 </div>
