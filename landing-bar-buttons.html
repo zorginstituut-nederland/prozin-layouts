@@ -30,6 +30,16 @@ page_type: landing-toc
 
     </article>
 
+    {% unless page.nav %}
+        <nav 
+            class="bar-buttons col-1">                  
+            <a 
+                href="#" 
+                class="pat-inject default item" 
+                data-pat-inject="history: record">Alle sectoren</a>     
+        </nav>
+    {% endunless %}
+    
     <nav 
         class="bar-buttons col-1">
         {% if page.nav %}
