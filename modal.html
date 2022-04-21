@@ -5,7 +5,7 @@ page_type: modal
 
 <div 
     id="document-content" 
-    class="pat-modal {{ page.panel_class }}">
+    class="pat-modal {{ page.panel_class }} {% if layout.panel_class %}{{ layout.panel_class }}{% else %}{{ page.panel_class }}{% endif %} {% if layout.panel_size %}{{ layout.panel_size }}{% else %}{{ page.panel_size }}{% endif %} {% if layout.panel_style %}{{ layout.panel_style }}{% else %}{{ page.panel_style }}{% endif %} {{ page.panel_instance }} {{ layout.panel_class }}">
     <h1 
         class="panel-class-{{ page.panel_class }}">
         {{ site.data.prozin.ui[page.title][site.lang] }}
