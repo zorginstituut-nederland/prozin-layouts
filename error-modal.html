@@ -20,9 +20,7 @@ template: error
             class="container">
             <article 
             	class="pat-rich">
-				<p>
-					{{ page.message }}
-				</p>
+				{{ page.content | markdownify }}
 			</article>
 			<div 
 				class="button-bar">
