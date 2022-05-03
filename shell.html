@@ -86,7 +86,7 @@
         </form>
 
     {% elsif layout.page_type == 'modal' %}
-        {% unless layout.template == 'error' or page.template == 'error' %}
+        {% unless layout.template contains 'error' or page.template contains 'error' %}
             {{ content }}
         {% endunless %}
     {% else %}
@@ -98,7 +98,7 @@
             role="main" 
             id="main">
             {% include prozin/sub-nav.html %}
-            {% unless layout.template == 'error' or page.template == 'error' %}
+            {% unless layout.template contains 'error' or page.template contains 'error' %}
                 {{ content }}
             {% endunless %}
 
@@ -133,7 +133,8 @@
     </div> -->
     <div 
         id="error-zone">
-        {% if layout.template == 'error' or page.template == 'error' %}
+        {% if layout.template contains 'error' 
+           or page.template contains 'error' %}
             {{ content }}
         {% endif %} 
     </div>
