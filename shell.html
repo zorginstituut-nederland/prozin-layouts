@@ -50,6 +50,22 @@
     <script 
         src="/assets/script/{% if site.script_path %}{{ site.script_path}}{% else %}bundle.min.js{% endif %}" 
         type="text/javascript"></script>
+
+    <meta 
+        name="pat-inject-status-401"
+        content="/assets/templates/401.html#error-zone"> <!-- So sorry… -->
+    <meta
+        name="pat-inject-status-403"
+        content="/assets/templates/403.html#error-zone"> <!-- Not here! -->
+    <meta 
+        name="pat-inject-status-404"
+        content="/assets/templates/404-modal.html#error-zone"> <!-- Oops! -->
+    <meta 
+        name="pat-inject-status-500"
+        content="/assets/templates/500.html#error-zone"> <!-- Oh dear… -->
+    <meta 
+        name="pat-inject-status-503"
+        content="/assets/templates/503.html#error-zone"> 
 </head>
 <body 
     class="pat-scroll-box environment-prototype product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
@@ -70,7 +86,9 @@
         </form>
 
     {% elsif layout.page_type == 'modal' %}
-        {{ content }}
+        {% unless layout.template == 'error' or page.template == 'error' %}
+            {{ content }}
+        {% endunless %}
     {% else %}
         {% if page.browse-bar or layout.browse-bar %}
             {% include prozin/browse-bar.html %}
@@ -80,7 +98,9 @@
             role="main" 
             id="main">
             {% include prozin/sub-nav.html %}
-            {{ content }}
+            {% unless layout.template == 'error' or page.template == 'error' %}
+                {{ content }}
+            {% endunless %}
 
             {% if page.layout contains 'homepage' %}
                 <a 
@@ -111,5 +131,11 @@
         <a href="/algemeen/cookies" class="pat-inject" data-pat-inject="hooks: raptor; history: record" title="Lees meer over cookies en hoe u cookies kunt uitschakelen">Lees meer over cookies en hoe u cookies kunt uitschakelen</a>
         <button class="cookiewarning_yes close-button">Sluiten</button>
     </div> -->
+    <div 
+        id="error-zone">
+        {% if layout.template == 'error' or page.template == 'error' %}
+            {{ content }}
+        {% endif %} 
+    </div>
 </body>
 </html>

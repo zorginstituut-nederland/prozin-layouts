@@ -1,0 +1,36 @@
+---
+layout: prozin/shell
+title: label_error
+application: error
+application_name: Error 404
+sidebar_left: none
+code: 404
+template: error
+---
+
+<div 
+	class="pat-modal small panel">
+	<h1>
+		{% include patterns/i18n id="label_error" %}
+	</h1>
+	<div
+        class="panel-body"
+        id="modal-panel-body">
+        <div
+            class="container">
+            <article 
+            	class="pat-rich">
+				<p>
+					{{ page.message }}
+				</p>
+			</article>
+			<div 
+				class="button-bar">
+				<button
+					class="default pat-button close-panel">
+					{% include patterns/i18n id="label_close" %}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
