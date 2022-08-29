@@ -43,7 +43,7 @@ page_type: users
             <tbody>
                  {% for item in site.data.personae %}
                     {% assign this_persona = item[1] %}
-                    {% if this_persona.role == 'Member' or this_persona.role == 'Administrator' %}
+                    {% if this_persona.role == 'Member' or this_persona.role == 'Administrator' or this_persona.role == 'Contributor' %}
                         {% if page.role == 'Regular' and this_persona.role == 'Owner' %}
                             {% assign show_this = false %}
                         {% endif %}
