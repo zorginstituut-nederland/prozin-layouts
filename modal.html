@@ -36,9 +36,23 @@ page_type: modal
     {% if page.action %}
         <form 
             action="{{ page.action }}" 
-            class="pat-form wizard-box panel-class-{{ page.panel_class }} {% if page.inject %}pat-inject{% endif %} {% if page.validate %}pat-validation{% endif %}" 
-            {% if page.inject %}data-pat-inject="{{page.inject}}"{% endif %} 
-            {% if page.target %}target="{{ page.target }}"{% endif %}>
+            class="
+                pat-form wizard-box panel-class-{{ page.panel_class }} 
+                {% if page.inject %}
+                    pat-inject
+                {% endif %} 
+                {% if page.validate %}
+                    pat-validation
+                {% endif %}" 
+            {% if page.validate %}
+                data-pat-validation="disable-selector:#modal-main-submit"
+            {% endif %}
+            {% if page.inject %}
+                data-pat-inject="{{page.inject}}"
+            {% endif %} 
+            {% if page.target %}
+                target="{{ page.target }}"
+            {% endif %}>
     {% endif %}
         {% if page.source %}
             <object
@@ -63,6 +77,7 @@ page_type: modal
                     {% for button in page.buttons  %}
                         {% if button.type == 'submit' or button.type == 'button' %}
                             <button 
+                                id="modal-main-submit" 
                                 type="{{ button.type }}" 
                                 class="{{ button.class }} pat-button" {{ button.validate }}>
                                 {{ site.data.prozin.ui[button.label][site.lang] }}
