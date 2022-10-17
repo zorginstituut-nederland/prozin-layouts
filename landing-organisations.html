@@ -40,7 +40,8 @@ page_type: organisations
                     <th>&nbsp;</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody
+                id="organisations-overview-body">
                 {% for item in organisations %}
                     <tr>
                         <th>
@@ -87,6 +88,19 @@ page_type: organisations
                         </td>
                     </tr>
                 {% endfor %}
+                <tr
+                    id="organisations-overview-load-more">
+                    <td
+                        colspan="4">
+                        <a  
+                            class="pat-inject infinite-scrolling-trigger"
+                            data-pat-inject="
+                                source: #organisations-overview-body; 
+                                target: #organisations-overview-load-more::element;
+                                trigger: autoload-visible" 
+                            href="{{ page.url }}">Loading more…</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
