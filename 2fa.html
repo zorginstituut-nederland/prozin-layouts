@@ -1,0 +1,34 @@
+---
+layout: generic
+title: Login
+application: login
+brand: default
+---
+
+<p>
+	{% include patterns/i18n id="message_first_time_login_from_device" %}
+</p>
+
+<fieldset
+	class="code-field">
+	<label class="pat-verification-code">
+		<input
+			class="code pat-autofocus"
+			type="text"
+			required
+			minlength="6"
+			maxlength="6"
+			length="6"
+			size="6"
+			value=""
+			name="verification">
+	</label>
+</fieldset>
+
+<p
+	class="button-bar">
+	<button
+		class="default pat-button"
+		type="submit"
+		id="submit-button">{% include patterns/i18n id="label_continue" %}</button>
+</p>
