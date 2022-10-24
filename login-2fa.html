@@ -1,0 +1,48 @@
+---
+layout: prozin/generic
+page_type: login
+---
+<div 
+	id="main-content">
+    <div 
+    	class="pat-rich">
+        <h1>
+            {{ site.data.prozin.ui.snippet_log_in_to[site.lang] }} {{ site.data.ui.label_site_name[site.lang] }}
+        </h1>
+		<p>
+			{% include patterns/i18n id="message_first_time_login_from_device" %}
+		</p>
+    </div>
+	<form 
+		action="/" 
+		class="pat-form pat-inject two-factor-authentication">
+		<fieldset 
+			class="form-panel">
+			<fieldset class="group">
+			<fieldset
+				class="code-field">
+				<label 
+					class="pat-verification-code">
+					<input
+						class="code pat-autofocus"
+						type="text"
+						required
+						minlength="6"
+						maxlength="6"
+						length="6"
+						size="6"
+						value=""
+						name="verification">
+				</label>
+			</fieldset>
+			</fieldset>
+			<div
+				class="button-bar">
+				<button
+					class="default pat-button"
+					type="submit"
+					id="submit-button">{% include patterns/i18n id="label_continue" %}</button>
+			</div>
+		</fieldset>
+	</form>
+</div>
