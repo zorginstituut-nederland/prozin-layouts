@@ -19,11 +19,11 @@ page_type: login
 		class="pat-form pat-inject two-factor-authentication">
 		<fieldset 
 			class="form-panel">
-			<fieldset class="group">
 			<fieldset
 				class="code-field">
 				<label 
 					class="pat-verification-code">
+					Code
 					<input
 						class="code pat-autofocus"
 						type="text"
@@ -36,7 +36,16 @@ page_type: login
 						name="verification">
 				</label>
 			</fieldset>
+			<fieldset 
+				class="pat-checklist">
+				<label>
+					{% include patterns/i18n id="label_remember_device" %}
+					<input 
+						type="checkbox" 
+						name="remember">
+				</label>	
 			</fieldset>
+			
 			<div
 				class="button-bar">
 				<button
