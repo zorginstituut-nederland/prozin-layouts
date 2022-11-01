@@ -1,6 +1,7 @@
 ---
 layout: prozin/generic
 byline: date
+parent: Beheer
 page_type: news-item-edit
 ---
 
@@ -18,14 +19,6 @@ page_type: news-item-edit
     	<fieldset 
             class="horizontal form-panel metadata">
             {% include prozin/cms-standard-metadata.html %}
-            <label>
-                Sector
-                <select>
-                    {% for item in site.data.sectors %}
-                        <option>{{ item.title }}</option>
-                    {% endfor %}
-                </select>
-            </label>
         </fieldset>
 
         {% include prozin/cms-page-module-rich.html
