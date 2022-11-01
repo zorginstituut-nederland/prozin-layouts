@@ -1,0 +1,38 @@
+---
+layout: prozin/generic
+byline: date
+page_type: news-item-edit
+---
+
+<form
+    class="pat-inject pat-form">
+    
+    {% include toolbar-standard-edit.html %}
+
+    <div 
+        class="cms-edit-form" 
+    	id="main-content">
+
+        {% include prozin/cms-title-block.html %}
+
+    	<fieldset 
+            class="horizontal form-panel metadata">
+            {% include prozin/cms-standard-metadata.html %}
+            <label>
+                Sector
+                <select>
+                    {% for item in site.data.sectors %}
+                        <option>{{ item.title }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </fieldset>
+
+        {% include prozin/cms-page-module-rich.html
+            state="open"
+            title="Broodtekst" %}
+
+
+    </div>
+
+</form>
