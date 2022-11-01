@@ -25,6 +25,12 @@ meta:
     	<fieldset 
             class="horizontal form-panel metadata">
             {% include prozin/cms-standard-metadata.html %}
+            <fieldset 
+            	class="group image-selection">
+            	<legend>{% include patterns/i18n id="label_hero_image" %}</legend>
+            	<a 
+            		class="button">{% include patterns/i18n id="label_select_from_image_bank_imp" %}</a>
+            </fieldset>
         </fieldset>
 
         {% include prozin/cms-page-module-rich.html
