@@ -14,7 +14,24 @@ meta:
 <form
     class="pat-inject pat-form">
     
-    {% include toolbar-standard-edit.html %}
+    {% include prozin/toolbar-cms-edit.html
+        allow="
+            header 2,
+            header 3,
+            header 4,
+            paragraph,
+            blockquote,
+            strong,
+            emphasised,
+            deleted,
+            link,
+            horizontal rule,
+            unordered list,
+            ordered list,
+            image,
+            video,
+            table"
+             %}
 
     <div 
         class="cms-edit-form" 
