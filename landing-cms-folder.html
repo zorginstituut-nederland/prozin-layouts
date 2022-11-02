@@ -54,10 +54,13 @@ page_type: landing-cms-folder
 <div 
     id="listing">
     <table 
-        class="pat-sortable-table hd">
+        class="hd">
         <thead>
             <tr>
-                <th>Naam</th>
+                <th>
+                    <a 
+                        href="{{ page.url }}#listing"
+                        class="pat-inject sorting sorting-asc">Naam</a></th>
                 <th>Laatst bewerkt</th>
                 <th></th>
             </tr>
