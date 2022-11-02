@@ -36,7 +36,7 @@ page_type: landing-toc
             <a 
                 href="#" 
                 class="pat-inject default item" 
-                data-pat-inject="history: record">Alle sectoren</a>     
+                data-pat-inject="history: record; scroll: #main">Alle sectoren</a>     
         </nav>
     {% endunless %}
     
@@ -47,14 +47,14 @@ page_type: landing-toc
                 <a 
                     href="{{ item.url }}" 
                     class="pat-inject default item" 
-                    data-pat-inject="history: record">{{ item.title }}</a>     
+                    data-pat-inject="history: record; scroll: #main">{{ item.title }}</a>     
             {% endfor %}
         {% else %}
             {% for item in site.data.sectors %}                            
                 <a 
                     href="{{ item.url }}" 
                     class="pat-inject default item" 
-                    data-pat-inject="history: record">{{ item.title }}</a>     
+                    data-pat-inject="history: record; scroll: #main">{{ item.title }}</a>     
             {% endfor %}
         {% endif %}    
     </nav>

@@ -53,7 +53,7 @@ page_type: users
                                  <a 
                                     href="/users/{{ this_persona.first_name | slugify }}-{{ this_persona.last_name | slugify }}"
                                     class="pat-inject"
-                                    data-pat-inject="history: record">{{ this_persona.first_name }} {{ this_persona.last_name }}</a>
+                                    data-pat-inject="history: record; scroll: #main">{{ this_persona.first_name }} {{ this_persona.last_name }}</a>
                                 <div 
                                     hidden
                                     id="user-{{ this_persona.last_name | slugify }}">

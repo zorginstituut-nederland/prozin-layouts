@@ -40,7 +40,7 @@ page_type: login
 				<dd>
 					<a 
 						class="pat-inject"
-						data-pat-inject="history: record" 
+						data-pat-inject="history: record; scroll: #main" 
 						href="/organisations/mees-mcrooy-makelaars">{{ site.data.prozin.personae[page.persona].organisation }}</a>
 				</dd>
 				<dt>
@@ -62,7 +62,7 @@ page_type: login
 						<a 
 							href="#"
 						   	class="pat-inject"
-						   	data-pat-inject="history: record">{{ site.data.prozin.personae[page.persona].domain }}</a>
+						   	data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.personae[page.persona].domain }}</a>
 					</dd>
 				{% endif %}
 				<dt>{{ site.data.prozin.ui.label_email[site.lang] }}</dt>

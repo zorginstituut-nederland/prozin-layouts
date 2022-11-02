@@ -52,8 +52,8 @@ Parent folder: {{ page_path[2] }}
                             <li>
                                 <a 
                                     href="{{ item.url }}" 
-                                    class="pat-inject" 
-                                    data-pat-inject="history: record">{{ item.title }}</a>
+                                    class="pat-inject; scroll: #main" 
+                                    data-pat-inject="history: record; scroll: #main">{{ item.title }}</a>
                             </li>     
                         {% endif %}  
                     {% endunless %}
@@ -68,8 +68,8 @@ Parent folder: {{ page_path[2] }}
                         <li>
                             <a 
                                 href="{{ item.url }}" 
-                                class="pat-inject" 
-                                data-pat-inject="history: record">{{ item.title }}</a>
+                                class="pat-inject; scroll: #main" 
+                                data-pat-inject="history: record; scroll: #main">{{ item.title }}</a>
                         </li>    
                     {% endunless %}
                 {% endif %}

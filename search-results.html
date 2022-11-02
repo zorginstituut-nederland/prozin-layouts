@@ -67,7 +67,7 @@ page_type: search-results
 
         {% for item in site.posts %}
             {% if item.title contains page.lemma %}
-                <a href="{{ item.url }}" data-pat-inject="history: record" class="pat-inject result-item generic">
+                <a href="{{ item.url }}" data-pat-inject="history: record; scroll: #main" class="pat-inject result-item generic">
                     <h3 class="result-title">
                         {{ item.title }}
                     </h3>

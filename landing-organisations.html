@@ -48,7 +48,7 @@ page_type: organisations
                              <a 
                                 href="/organisations/{{ item.name | slugify }}"
                                 class="pat-inject"
-                                data-pat-inject="history: record">{{ item.name }}</a>
+                                data-pat-inject="history: record; scroll: #main">{{ item.name }}</a>
                             <div 
                                 hidden="" 
                                 id="org-{{ item.name | slugify }}">
@@ -77,7 +77,7 @@ page_type: organisations
                             <a 
                                 href="/users/{{ item.administrator | slugify }}"
                                 class="pat-inject"
-                                data-pat-inject="history: record">{{ item.administrator }}</a>
+                                data-pat-inject="history: record; scroll: #main">{{ item.administrator }}</a>
                         </td>
                         <td
                             class="functions">
