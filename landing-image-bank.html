@@ -1,0 +1,86 @@
+---
+layout: prozin/generic
+title: Beeldbank
+page_type: landing-image-bank
+---
+
+<form 
+    action="{{ page.url }}#listing" 
+    class="pat-toolbar pat-bumper pat-inject pat-autosubmit pat-form"
+    id="image-bank-toolbar">
+
+    <div 
+        id="indicators-toolbar-functions-area"
+        class="toolbar-functions-area pat-inject pat-form pat-autosubmit">
+        <div
+            class="toolbar-section view-options"
+            id="image-bank-toolbar-view-options">
+            <label 
+                class="pat-select">  
+                <select>
+                    <option>Sorteer op datum</option>
+                    <option>Sorteer alfabetisch</option>
+                    <option>Sorteer op populariteit</option>
+                </select>
+            </label>
+        </div>
+        <div 
+            class="toolbar-section quick-functions"
+            id="image-bank-toolbar-quick-functions">
+            <a 
+                class="icon new pat-tooltip" 
+                data-pat-tooltip="position-list: tr; source: ajax" 
+                href="#new-menu">Nieuw</a>
+
+            <label 
+                class="pat-toolbar-search-field">
+                <input 
+                    type="search" 
+                    placeholder="Zoeken">
+                <button
+                    class="assistive"
+                    type="submit">Verstuur</button>
+            </label>
+
+            <div 
+                hidden 
+                id="new-menu">
+                <ul 
+                    class="menu">
+                    <li>
+                        <a 
+                            class="close-panel pat-inject" 
+                            href="/dialogues/cms/new">{% include patterns/i18n id="label_new_image" %}</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div 
+    id="listing">
+    <nav
+        id="image-collection-image-bank"
+        class="image-selector col-6 cropping-cover titles-hidden pat-navigation">        {% for item in site.pages %}
+            {% if item.layout == 'prozin/image' %}
+                <a
+                    class="item image pat-inject"
+                    data-pat-inject="scroll: #main; history: record"
+                    href="{{ item.url }}">
+                    <img
+                        src="{{ item.url }}.jpg"
+                        alt="{{ item.alt_text }}" />
+                </a>
+            {% endif %}
+        {% endfor %}
+        <a  
+            class="pat-inject infinite-scrolling-trigger"
+            data-pat-inject="
+                source: #image-collection-image-bank; 
+                target: self::element;
+                trigger: autoload-visible" 
+            href="{{ page.url }}">Loading more…</a>
+    </nav>
+</div>

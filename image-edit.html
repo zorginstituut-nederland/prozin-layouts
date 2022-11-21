@@ -1,0 +1,52 @@
+---
+layout: prozin/generic
+byline: date
+page_type: news-item
+parent: Beeldbank
+---
+
+<form
+    class="pat-inject pat-form">
+    
+    {% include prozin/toolbar-cms-edit.html
+        allow="
+            header 2,
+            header 3,
+            header 4,
+            paragraph,
+            blockquote,
+            strong,
+            emphasised,
+            deleted,
+            link,
+            horizontal rule,
+            unordered list,
+            ordered list,
+            image,
+            video,
+            table"
+    %}
+
+    <div 
+        class="cms-edit-form" 
+    	id="main-content">
+
+        {% include prozin/cms-title-block.html %}
+
+    	<fieldset 
+            class="horizontal form-panel metadata">
+            {% include prozin/cms-standard-metadata.html %}
+            <fieldset 
+            	class="group image-selection">
+            	<legend>{% include patterns/i18n id="label_image" %}</legend>
+            	<input 
+            		type="file" 
+            		name="" />
+            </fieldset>
+        </fieldset>
+
+        {% include prozin/cms-page-module-see-also.html %}
+
+    </div>
+
+</form>
