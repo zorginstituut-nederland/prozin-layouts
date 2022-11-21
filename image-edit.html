@@ -3,6 +3,8 @@ layout: prozin/generic
 byline: date
 page_type: news-item
 parent: Beeldbank
+alt_text: Man met rood-bruin haar in blauw pak met de handen over elkaar op een vel wit papier op een tafel, tegen een decor van een nieuwsuitzending van omroep NOS.
+tags: Nieuws, Mens, Man, Man in pak, Televisie, NOS
 ---
 
 <form
@@ -63,11 +65,11 @@ parent: Beeldbank
     	<fieldset 
             class="horizontal form-panel metadata">
             {% include prozin/form-field-tags.html
-                tags="Nieuws, Mens, Man, Man in pak, Televisie, NOS" %}
+                tags=layout.tags %}
             <label>
                 {% include patterns/i18n id="label_alternate_text" %}
                 <textarea
-                    rows="3"></textarea>
+                    rows="4">{{ page.alt_text }}</textarea>
             </label>
             <fieldset 
                 class="group pat-checklist radio">
@@ -108,8 +110,10 @@ parent: Beeldbank
             	<input 
             		type="file" 
             		name="" />
-                <span 
-                    class="info message">U kunt dit beeld overschrijven door een nieuwe versie op te laden.</span>
+                {% if page.layout == "prozin/image-edit" %}
+                    <span 
+                        class="info message">U kunt dit beeld overschrijven door een nieuwe versie op te laden.</span>
+                {% endif %}
             </label>
         </fieldset>
 
