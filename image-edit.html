@@ -7,6 +7,49 @@ parent: Beeldbank
 
 <form
     class="pat-inject pat-form">
+
+    <div 
+    class="pat-toolbar pat-bumper"
+    id="image-edit-toolbar">
+
+        <div 
+            id="image-edit-toolbar-functions-area"
+            class="toolbar-functions-area">
+            <div 
+                class="toolbar-section quick-functions"
+                id="image-edit-toolbar-quick-functions">
+
+                <a 
+                    class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+                    href="#id-{{ item.title | slugify }}" 
+                    data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+
+                <div
+                    hidden
+                    id="id-{{ item.title | slugify }}">
+                    <ul 
+                        class="menu">
+                        <li>
+                            <a 
+                                href="/feedback/delete-content-object#document-content" 
+                                data-pat-modal="class: small panel"
+                                class="icon-trash pat-modal close-panel">{% include patterns/i18n id="patterns.label_delete_imp" %}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a  
+                    href="/dialogues/image-bank/andre-van-gameren" 
+                    class="pat-inject pat-button">{% include patterns/i18n id="patterns.label_cancel_imp" %}</a>
+
+                <button
+                    class="default pat-button"
+                    type="submit">{% include patterns/i18n id="label_save_imp" %}</button>
+
+            </div>
+        </div>
+    </div>
+
     <div 
         class="cms-edit-form" 
     	id="main-content">
@@ -18,7 +61,8 @@ parent: Beeldbank
 
     	<fieldset 
             class="horizontal form-panel metadata">
-            {% include prozin/form-field-tags.html %}
+            {% include prozin/form-field-tags.html
+                tags="Nieuws, Mens, Man, Man in pak, Televisie, NOS" %}
             <fieldset 
                 class="group pat-checklist radio">
                 <legend>Auteursrecht</legend>
