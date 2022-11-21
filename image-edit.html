@@ -6,6 +6,7 @@ parent: Beeldbank
 ---
 
 <form
+    action="/dialogues/image-bank/andre-van-gameren"
     class="pat-inject pat-form">
 
     <div 
@@ -63,6 +64,11 @@ parent: Beeldbank
             class="horizontal form-panel metadata">
             {% include prozin/form-field-tags.html
                 tags="Nieuws, Mens, Man, Man in pak, Televisie, NOS" %}
+            <label>
+                {% include patterns/i18n id="label_alternate_text" %}
+                <textarea
+                    rows="3"></textarea>
+            </label>
             <fieldset 
                 class="group pat-checklist radio">
                 <legend>Auteursrecht</legend>
