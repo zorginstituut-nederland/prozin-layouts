@@ -7,46 +7,61 @@ parent: Beeldbank
 
 <form
     class="pat-inject pat-form">
-    
-    {% include prozin/toolbar-cms-edit.html
-        allow="
-            header 2,
-            header 3,
-            header 4,
-            paragraph,
-            blockquote,
-            strong,
-            emphasised,
-            deleted,
-            link,
-            horizontal rule,
-            unordered list,
-            ordered list,
-            image,
-            video,
-            table"
-    %}
-
     <div 
         class="cms-edit-form" 
     	id="main-content">
 
-        {% include prozin/cms-title-block.html %}
+        <fieldset 
+            class="pat-rich">
+            {% include prozin/cms-title-block-title.html %}
+        </fieldset>
 
     	<fieldset 
             class="horizontal form-panel metadata">
-            {% include prozin/cms-standard-metadata.html %}
+            {% include prozin/form-field-tags.html %}
             <fieldset 
-            	class="group image-selection">
-            	<legend>{% include patterns/i18n id="label_image" %}</legend>
+                class="group pat-checklist radio">
+                <legend>Auteursrecht</legend>
+                <label>
+                    Publiek domein
+                    <input 
+                        type="radio" 
+                        checked
+                        name="copyright"
+                        value="pd">
+                </label>
+                <label>
+                    Creative commons
+                    <input 
+                        type="radio" 
+                        name="copyright"
+                        value="cc">
+                </label>
+                <label>
+                    Copyright
+                    <input 
+                        type="radio" 
+                        name="copyright"
+                        value="copyright">
+                </label>
+            </fieldset>
+            <label
+                class="pat-depends"
+                data-pat-depends="condition: copyright=cc or copyright=copyright">
+                Auteur
+                <input 
+                    type="text" 
+                    name="copyright" />
+            </label>
+            <label>
+            	{% include patterns/i18n id="patterns.label_image" %}
             	<input 
             		type="file" 
             		name="" />
-            </fieldset>
+                <span 
+                    class="info message">U kunt dit beeld overschrijven door een nieuwe versie op te laden.</span>
+            </label>
         </fieldset>
 
-        {% include prozin/cms-page-module-see-also.html %}
-
     </div>
-
 </form>
