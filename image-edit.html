@@ -64,57 +64,7 @@ tags: Nieuws, Mens, Man, Man in pak, Televisie, NOS
 
     	<fieldset 
             class="horizontal form-panel metadata">
-            {% include prozin/form-field-tags.html
-                tags=layout.tags %}
-            <label>
-                {% include patterns/i18n id="label_alternate_text" %}
-                <textarea
-                    rows="4">{{ page.alt_text }}</textarea>
-            </label>
-            <fieldset 
-                class="group pat-checklist radio">
-                <legend>Auteursrecht</legend>
-                <label>
-                    Publiek domein
-                    <input 
-                        type="radio" 
-                        checked
-                        name="copyright"
-                        value="pd">
-                </label>
-                <label>
-                    Creative commons
-                    <input 
-                        type="radio" 
-                        name="copyright"
-                        value="cc">
-                </label>
-                <label>
-                    Copyright
-                    <input 
-                        type="radio" 
-                        name="copyright"
-                        value="copyright">
-                </label>
-            </fieldset>
-            <label
-                class="pat-depends"
-                data-pat-depends="condition: copyright=cc or copyright=copyright">
-                Auteur
-                <input 
-                    type="text" 
-                    name="copyright" />
-            </label>
-            <label>
-            	{% include patterns/i18n id="patterns.label_image" %}
-            	<input 
-            		type="file" 
-            		name="" />
-                {% if page.layout == "prozin/image-edit" %}
-                    <span 
-                        class="info message">U kunt dit beeld overschrijven door een nieuwe versie op te laden.</span>
-                {% endif %}
-            </label>
+            {% include form-fields-image.html %}
         </fieldset>
 
     </div>
