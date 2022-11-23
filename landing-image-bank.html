@@ -20,6 +20,18 @@ title_in_breadcrumbs: true
             <label 
                 class="pat-select">  
                 <select>
+                    <option>Ongegroepeerd</option>
+                    <option
+                        disabled>Gegroepeerd op collectie</option>
+                    <option
+                        disabled>Gegroepeerd op tag</option>
+                    <option
+                        disabled>Gegroepeerd op beeldtype</option>
+                </select>
+            </label>
+            <label 
+                class="pat-select">  
+                <select>
                     <option>Sorteer op datum</option>
                     <option>Sorteer alfabetisch</option>
                     <option>Sorteer op populariteit</option>
@@ -71,7 +83,8 @@ title_in_breadcrumbs: true
                 <a
                     class="item image pat-inject"
                     data-pat-inject="scroll: #main; history: record"
-                    href="{{ item.url }}">
+                    href="{{ item.url }}"
+                    title="{{ item.title }}">
                     <img
                         src="{{ item.url }}.jpg"
                         alt="{{ item.alt_text }}" />
