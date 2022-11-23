@@ -58,6 +58,12 @@ page_type: landing-cms-folder
                                     class="close-panel pat-inject" 
                                     href="/beheer/new-article">{% include patterns/i18n id="label_new_folder" %}</a>
                             </li>
+                        {% elsif item.name == 'prozin/landing-smart' %}
+                            <li>
+                                <a 
+                                    class="close-panel pat-inject" 
+                                    href="/beheer/new-article">{% include patterns/i18n id="label_new_smart_folder" %}</a>
+                            </li>
                         {% elsif item.name == 'quality-registration' %}
                             <li>
                                 <a 
