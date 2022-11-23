@@ -62,6 +62,7 @@ page_type: landing-cms-folder
                         href="{{ page.url }}#listing"
                         class="pat-inject sorting sorting-asc">Naam</a></th>
                 <th>Laatst bewerkt</th>
+                <th>Status</th>
                 <th></th>
             </tr>
         </thead>
@@ -78,6 +79,9 @@ page_type: landing-cms-folder
                         </td> 
                         <td>
                             {{ item.date | date: "%e %B, %Y %H:%M" }}, door <a href="#" class="pat-inject">{{ item.author | default: 'Riwka Rubinstein'}}</a>
+                        </td>
+                        <td>
+                            Gepubliceerd
                         </td>
                         <td 
                             class="functions">
