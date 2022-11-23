@@ -39,11 +39,21 @@ page_type: landing-cms-folder
                 id="new-menu">
                 <ul 
                     class="menu">
-                    <li>
-                        <a 
-                            class="close-panel pat-inject" 
-                            href="/dialogues/cms/new">{% include patterns/i18n id="label_new_quality_registration" %}</a>
-                    </li>
+                    {% for item in page.content_types %}
+                        {% if item.name == 'prozin/news-item' %}
+                            <li>
+                                <a 
+                                    class="close-panel pat-inject" 
+                                    href="/dialogues/cms/new-news-item">{% include patterns/i18n id="label_new_news_item" %}</a>
+                            </li>
+                        {% elsif item.name == 'quality-registration' %}
+                            <li>
+                                <a 
+                                    class="close-panel pat-inject" 
+                                    href="/beheer/new-quality-registration">{% include patterns/i18n id="label_new_quality_registration" %}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -67,50 +77,13 @@ page_type: landing-cms-folder
             </tr>
         </thead>
         <tbody>
-            {% for item in site.quality-registrations %}
-                {% if item.type == 'rs' %}
-                    <tr>
-                        <td> 
-                            <a 
-                                href="{{ item.url }}" 
-                                class="pat-inject" 
-                                data-pat-inject="history: record; scroll: #main" 
-                                title="{{ item.summary }}">{{ item.title }}</a>  
-                        </td> 
-                        <td>
-                            {{ item.date | date: "%e %B, %Y %H:%M" }}, door <a href="#" class="pat-inject">{{ item.author | default: 'Riwka Rubinstein'}}</a>
-                        </td>
-                        <td>
-                            Gepubliceerd
-                        </td>
-                        <td 
-                            class="functions">
-                            <a 
-                                class="iconified icon-ellipsis-hor pat-tooltip tooltip-inactive" 
-                                href="#id-{{ item.title | slugify }}" 
-                                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-                            <div
-                                hidden
-                                id="id-{{ item.title | slugify }}">
-                                <ul 
-                                    class="menu">
-                                    <li>
-                                        <a 
-                                            href="/feedback/approve-delivery#document-content" 
-                                            data-pat-modal="class: small panel"
-                                            class="icon-edit pat-modal close-panel">Bewerken</a>
-                                    </li>
-                                    <li>
-                                        <a 
-                                            href="/feedback/delete-content-object#document-content" 
-                                            data-pat-modal="class: small panel"
-                                            class="icon-trash pat-modal close-panel">Verwijderen</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                {% endif %}
+
+            {% for item in site[page.collection] %}
+                {% for content_type in page.content_types %}
+                    {% if content_type.name == item.layout %}
+                        {% include prozin/table-row-cms-folder.html %}
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
         </tbody>
     </table>
