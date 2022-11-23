@@ -85,6 +85,56 @@ parent: Beeldbank
 				    	{% endif %}
                     </picture>
 	    		</a>
+	    	</figure>
 	    </article>
-    </figure>
+
+	    <div 
+	        class="page-module type-links" 
+	        id="section-links">
+	        <h2 
+	            class="page-module-title">
+	            Zie ook
+	        </h2>
+            <h3>
+                Toepassingen
+            </h3>
+            <h4>Farmacotherapeutisch Kompas</h4>
+	        <ul 
+	        	class="link-list">
+	        	<li>
+	        		<a 
+	        			href="#">The anchorman</a>
+	        	</li>
+	        </ul>
+	        <h4>
+	        	Horizonscan geneesmiddelen
+	        </h4>
+	        <ul 
+	        	class="link-list">
+	        	<li>
+	        		<a 
+	        			href="#">Zie, ginds komt de stoomboot</a>
+	        	</li>
+	        	<li>
+	        		<a 
+	        			href="#">Nieuwe inzichten financiering dure geneesmiddelen</a>
+	        	</li>
+	        </ul>   
+	        {% if page.tags.size >= 1 %}
+	            <h3>
+	                Tags
+	            </h3>
+	            <ul 
+	                class="link-list">
+	                {% for tag in page.tags %}
+	                    <li>
+	                        <a 
+	                            href="/tags/{{ tag | slugify }}" 
+	                            class="type-tag pat-inject" 
+	                            data-pat-inject="history: record; scroll: #main">{{ tag }}</a>
+	                    </li>  
+	                {% endfor %}
+	            </ul>
+	        {% endif %}
+	    </div>
 </div>
