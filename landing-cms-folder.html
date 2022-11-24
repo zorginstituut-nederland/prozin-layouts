@@ -98,11 +98,13 @@ page_type: landing-cms-folder
                 <th></th>
             </tr>
         </thead>
-        <tbody>            
+        <tbody>               
             {% for content_type in page.content_types %}
                 {% for item in site[page.collection] %}
                     {% if content_type.name == item.layout %}
-                        {% include prozin/table-row-cms-folder.html %}
+                        {% unless item.url contains '-edit' %}
+                            {% include prozin/table-row-cms-folder.html %}
+                        {% endunless %}
                     {% endif %}
                 {% endfor %}
             {% endfor %}
