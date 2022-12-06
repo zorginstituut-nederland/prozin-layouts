@@ -47,9 +47,14 @@
         type="text/css" 
         href="/assets/style/style.css"/>
 
-    <script 
-        src="/assets/script/{% if site.script_path %}{{ site.script_path}}{% else %}bundle.min.js{% endif %}" 
-        type="text/javascript"></script>
+    {% if site.bundle_url %}
+        <script 
+            src="{{ site.bundle_url }}"></script>
+    {% else %}
+        <script 
+            src="/assets/script/{% if site.script_path %}{{ site.script_path}}{% else %}bundle.min.js{% endif %}" 
+            type="text/javascript"></script>
+    {% endif %}
 
     <meta 
         name="pat-inject-status-401"
