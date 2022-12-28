@@ -1,0 +1,137 @@
+---
+layout: prozin/modal  
+---
+
+<!-- <article 
+    class="pat-rich">
+    <h1>
+        Documentgeschiedenis van “{{ page.active_substance }}”
+    </h1>
+</article> -->
+
+<a 
+    href="#final-item" 
+    class="pat-scroll assistive" 
+    data-pat-scroll="selector: #final-item; trigger: auto; delay: 0.4s">Scroll naar het einde</a>
+
+<ul 
+    class="object-history user-centric" id="object-history"> 
+
+    <li 
+        class="object">
+        <a 
+            class="meta" 
+            href="mailto:user@company.com">
+            <img 
+                {% if page.creator %}
+                src="/assets/style/placeholder-1x1.png" 
+                alt="" class="pat-avatar"
+                style="background-image: url(/media/users/{{ page.creator | slugify }}.jpg)"
+                {% else %}
+                src="/media/users/andré-van-gameren.jpg" alt="" class="pat-avatar default"
+                {% endif %}>
+            <strong 
+                class="user-name">
+                {% if page.creator %}{{ page.creator }}{% else %}André Van Gameren{% endif %}
+            </strong>
+        </a>
+        <p 
+            class="byline">
+            <em 
+                class="action">Aangemaakt</em> | <time class="modification-date pat-display-time" 
+                                                       data-pat-display-time="from-now: true; locale: {{ site.lang }}" 
+                                                       datetime="{{ page.last_edited_date | date: '%Y-%m-%d' }}T09:42Z" 
+                                                       title="{{ page.date | date_to_long_string }}, 9:42">{{ page.last_edited_date | date_to_long_string }}, 9:42</time>
+        </p>
+        {% if page.message %}
+            <p 
+                class="save-message">
+                {{ page.message }}
+            </p>
+        {% endif %}
+    </li>
+
+    {% for object in page.history %}
+            
+        {% for node in site.posts %}
+            {% capture nodeid %}{{ node.id | remove: "/" }}{% endcapture %}
+            {% if  nodeid == object.user %}
+                {% assign user = node %}
+            {% endif %}
+        {% endfor %}
+
+        <li 
+            {% if forloop.last == true %}id="final-item"{% endif %} 
+            class="object {% if user.state == 'inactive' %}user-inactive{% endif %}">
+            <a 
+                class="meta" 
+                {% unless user.state == 'inactive' %}href="mailto:user@company.com"{% endunless %}>
+                <img 
+                    src="/assets/style/placeholder-1x1.png" 
+                    alt="" 
+                    class="pat-avatar"
+                    style="background-image: url(/media/users/{{ object.user | slugify }}.jpg)">
+                <strong 
+                    class="user-name" {% if user.state == 'inactive' %}title="This user is no longer active."{% endif %}>
+                    {{ object.user }}
+                </strong>
+            </a>
+            <p 
+                class="byline">
+                <em 
+                    class="action">{{ object.mutation }}</em> | <time class="modification-date pat-display-time" 
+                                                                      data-pat-display-time="from-now: true; locale: {{ site.lang }}" 
+                                                                      datetime="{{ object.date | date: '%Y-%m-%d' }}T09:42Z"
+                                                                      title="{{ object.date | date_to_long_string }}, {{ object.time }}">{{ object.date | date_to_long_string }}, {{ object.time }}</time>
+            </p>
+            {% if object.message %}
+                <div 
+                    class="save-message">
+                    {% if object.message_original %}
+                        <p
+                            class="generated-message">
+                            {{ object.message }}
+                        </p>
+                        <h4
+                            class="original-message-header">Original save message</h4>
+                        <p 
+                            class="original-message-content">
+                            “{{ object.message_original }}”
+                        </p>
+                    {% else %}
+                        <p
+                            class="original-message-content">
+                            {{ object.message }}
+                        </p>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if object.mutation == 'Bewerkt' or object.mutation == 'Becommentarieerd' or object.mutation == 'Wijziging geaccepteerd' %}
+                <form>
+                    {% if object.user == 'Max Meijer' %}
+                        <a 
+                            href="{{ page.url | replace: '-history','-revisie-x-preview' }}" 
+                            target="_blank" 
+                            title="Bekijk deze revisie"
+                            class="">Bekijk</a>
+                    {% else %}
+                        <a 
+                            href="{{ page.url | replace: '-history','-revisie-x' }}" 
+                            target="_blank" 
+                            title="Bekijk deze revisie"
+                            class="">Bekijk</a>
+                    {% endif %}
+                    {% unless object.user == 'Max Meijer' %}
+                     |
+                    <button 
+                        type="submit" 
+                        formaction="{{ page.url | remove: '-history' }}" 
+                        title="Herstel naar deze versie" 
+                        class="pat-inject pat-button link close-panel">Herstel</button>
+                    {% endunless %}
+                </form>
+            {% endif %}
+        </li>
+
+    {% endfor %}
+</ul>
