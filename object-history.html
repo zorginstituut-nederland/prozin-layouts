@@ -1,13 +1,13 @@
 ---
-layout: prozin/modal  
+layout: prozin/modal
+panel_style: panel
+pabel_size: medium  
+title: label_history
+buttons:
+  - label: label_close_imp
+    type: submit
+    class: 'default close-panel icon-ok-circle'
 ---
-
-<!-- <article 
-    class="pat-rich">
-    <h1>
-        Documentgeschiedenis van “{{ page.active_substance }}”
-    </h1>
-</article> -->
 
 <a 
     href="#final-item" 
@@ -20,8 +20,9 @@ layout: prozin/modal
     <li 
         class="object">
         <a 
-            class="meta" 
-            href="mailto:user@company.com">
+            data-pat-inject="history: record; scroll: #main"
+            class="meta pat-inject close-panel" 
+            href="/users/riwka-rubinstein">
             <img 
                 {% if page.creator %}
                 src="/assets/style/placeholder-1x1.png" 
@@ -64,8 +65,11 @@ layout: prozin/modal
             {% if forloop.last == true %}id="final-item"{% endif %} 
             class="object {% if user.state == 'inactive' %}user-inactive{% endif %}">
             <a 
-                class="meta" 
-                {% unless user.state == 'inactive' %}href="mailto:user@company.com"{% endunless %}>
+                data-pat-inject="history: record; scroll: #main"
+                class="meta pat-inject close-panel"
+                {% unless user.state == 'inactive' %} 
+                    href="/users/riwka-rubinstein"
+                {% endunless %}>
                 <img 
                     src="/assets/style/placeholder-1x1.png" 
                     alt="" 

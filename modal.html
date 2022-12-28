@@ -25,14 +25,25 @@ page_type: modal
         {% endif %} 
         {{ page.panel_instance }} 
         {{ layout.panel_class }}">
-    <h1 
-        class="panel-class-{{ page.panel_class }}">
-        {{ site.data.prozin.ui[page.title][site.lang] }}
-        <button 
-            type="button"
-            class="button-fullscreen pat-fullscreen" 
-            data-pat-fullscreen="selector:#modal-object">Full screen</button>
-    </h1>
+    {% if layout.title %}
+         <h1 
+            class="panel-class-{{ page.panel_class }}">
+            {{ site.data.prozin.ui[layout.title][site.lang] }}
+            <button 
+                type="button"
+                class="button-fullscreen pat-fullscreen" 
+                data-pat-fullscreen="selector:#modal-object">Full screen</button>
+        </h1>
+    {% else %}
+        <h1 
+            class="panel-class-{{ page.panel_class }}">
+            {{ site.data.prozin.ui[page.title][site.lang] }}
+            <button 
+                type="button"
+                class="button-fullscreen pat-fullscreen" 
+                data-pat-fullscreen="selector:#modal-object">Full screen</button>
+        </h1>
+    {% endif %}
     {% if page.action %}
         <form 
             action="{{ page.action }}" 
@@ -69,12 +80,26 @@ page_type: modal
                 </div>
             </div>
         {% endif %}
-        {% if page.buttons %}
+        {% if page.buttons or layout.buttons %}
             <div 
                 class="buttons panel-footer">
                 <div 
                     class="container">
                     {% for button in page.buttons  %}
+                        {% if button.type == 'submit' or button.type == 'button' %}
+                            <button 
+                                id="modal-main-submit" 
+                                type="{{ button.type }}" 
+                                class="{{ button.class }} pat-button" {{ button.validate }}>
+                                {{ site.data.prozin.ui[button.label][site.lang] }}
+                            </button>
+                        {% elsif button.type == 'link' %}
+                            <a 
+                                class="pat-button {{ button.class }} pat-inject" 
+                                href="{{ button.action }}#{{ button.fragment }}">{{ site.data.prozin.ui[button.label][site.lang] }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% for button in layout.buttons  %}
                         {% if button.type == 'submit' or button.type == 'button' %}
                             <button 
                                 id="modal-main-submit" 
