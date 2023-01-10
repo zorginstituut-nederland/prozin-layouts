@@ -58,14 +58,25 @@ meta:
         </div>
 
         <div 
-            id="page-modules">
+            id="variable-page-modules">
+            {% include prozin/cms-page-module-downloads.html %}
             {% for section in page.sections %}
+
                 {% assign this_content = section.content %}
                 {% include prozin/cms-page-module-rich.html
                     content=this_content
                     title=section.name
                     state="open" %}
             {% endfor %}
+        </div>
+
+        <div 
+            id="button-bar-organise-sections" 
+            class="pat-button-bar">
+            <a 
+                class="default pat-button icon-plus">Sectie</a>
+            <a 
+                class="pat-button">Beheer secties</a>
         </div>
 
         {% include prozin/cms-page-module-see-also.html %}
