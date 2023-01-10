@@ -1,0 +1,79 @@
+---
+layout: prozin/generic
+byline: date
+parent: Beheer
+page_type: news-item-edit
+meta:
+  - label: label_summary
+    type: textarea
+    rows: 3
+  - label: label_publication_date
+    type: date
+---
+
+<form
+    class="pat-inject pat-form">
+    
+    {% include prozin/toolbar-cms-edit.html
+        cancel="/dialogues/cms/news"
+        allow="
+            header 2,
+            header 3,
+            header 4,
+            paragraph,
+            blockquote,
+            strong,
+            emphasised,
+            deleted,
+            link,
+            horizontal rule,
+            unordered list,
+            ordered list,
+            image,
+            video,
+            table"
+             %}
+
+    <div 
+        class="cms-edit-form" 
+    	id="main-content">
+
+        {% include prozin/cms-title-block.html %}
+
+        <div
+            id="section-metadata-{{ page.url | slugify }}"
+            data-pat-collapsible="store: local; scroll-selector: self; scroll-offset: 120px"
+            class="cms-page-module type-metadata pat-collapsible open">
+            <div
+                class="page-module-title">
+                <h2
+                    class="title-segment">
+                    Metadata
+                </h2>
+            </div>
+        	<fieldset 
+                class="horizontal form-panel metadata">
+                {% include prozin/cms-standard-metadata.html %}
+            </fieldset>
+        </div>
+
+        <div 
+            id="page-modules">
+            {% include prozin/cms-page-module-rich.html
+            state="open" %}
+
+            {% include prozin/cms-page-module-video.html %}
+
+            {% include prozin/cms-page-module-see-also.html %}
+        </div>
+
+        {% include prozin/cms-page-module-rich.html
+            state="open" %}
+
+        {% include prozin/cms-page-module-video.html %}
+
+        {% include prozin/cms-page-module-see-also.html %}
+
+    </div>
+
+</form>
