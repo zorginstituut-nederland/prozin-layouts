@@ -59,18 +59,14 @@ meta:
 
         <div 
             id="page-modules">
-            {% include prozin/cms-page-module-rich.html
-            state="open" %}
-
-            {% include prozin/cms-page-module-video.html %}
-
-            {% include prozin/cms-page-module-see-also.html %}
+            {% for section in page.sections %}
+                {% assign this_content = section.content %}
+                {% include prozin/cms-page-module-rich.html
+                    content=this_content
+                    title=section.name
+                    state="open" %}
+            {% endfor %}
         </div>
-
-        {% include prozin/cms-page-module-rich.html
-            state="open" %}
-
-        {% include prozin/cms-page-module-video.html %}
 
         {% include prozin/cms-page-module-see-also.html %}
 
