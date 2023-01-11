@@ -37,49 +37,24 @@ meta:
     <div 
         class="cms-edit-form" 
     	id="main-content">
-
         {% include prozin/cms-title-block.html %}
-
-        <div
-            id="section-metadata-{{ page.url | slugify }}"
-            data-pat-collapsible="store: local; scroll-selector: self; scroll-offset: 120px"
-            class="cms-page-module type-metadata pat-collapsible open">
-            <div
-                class="page-module-title">
-                <h2
-                    class="title-segment">
-                    Metadata
-                </h2>
-            </div>
-        	<fieldset 
-                class="horizontal form-panel metadata">
-                {% include prozin/cms-standard-metadata.html %}
-                <fieldset
-                    class="pat-checklist">
-                    <legend>{% include patterns/i18n id="label_toc" %}</legend>
-                    <label>
-                       {% include patterns/i18n id="label_show_toc" %}
-                        <input 
-                            type="checkbox" 
-                            checked
-                            name="toc">
-                    </label>
-                </fieldset>
-            </fieldset>
-        </div>
-
-        <div 
-            id="variable-page-modules">
-            {% include prozin/cms-page-module-downloads.html %}
-            {% for section in page.sections %}
-
-                {% assign this_content = section.content %}
+        
+        {% for section in page.sections %}
+            {% assign this_content = section.content %}
+            {% if section.type == 'downloads' %}
+                {% include prozin/cms-page-module-downloads.html
+                    title="Bijlagen" %}
+            {% elsif section.type == 'image' %}
+                {% include prozin/cms-page-module-image.html %}
+            {% elsif section.type == 'video' %}
+                {% include prozin/cms-page-module-video.html %}
+            {% else %}
                 {% include prozin/cms-page-module-rich.html
                     content=this_content
                     title=section.name
                     state="open" %}
-            {% endfor %}
-        </div>
+            {% endif %}
+        {% endfor %}
 
         <div 
             id="button-bar-organise-sections" 
