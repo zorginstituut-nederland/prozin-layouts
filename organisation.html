@@ -22,7 +22,7 @@ title_in_breadcrumbs: true
     <article 
         class="pat-rich">
         <h1>
-            {{ page.name }}
+            {% if page.logo %}<img class="logo" src="{{ page.logo }}" alt="Logo">{% endif %}{{ page.name }}
         </h1>
     </article>
         
