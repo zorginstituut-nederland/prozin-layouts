@@ -15,6 +15,7 @@ meta:
     class="pat-inject pat-form">
     
     {% include prozin/toolbar-cms-edit.html
+        metadata="/dialogues/cms/panel-metadata-news#document-content"
         cancel="/dialogues/cms/news"
         allow="
             header 2,
@@ -42,10 +43,16 @@ meta:
 
         {% include prozin/cms-page-module-news-body-text.html
             state="open"
-            title="Broodtekst" %}
+            title="Broodtekst"
+            fixed=true %}
 
         {% include prozin/cms-page-module-video.html
-            title="Video" %}
+            title="Video"
+            fixed=true %}
+
+        {% include prozin/cms-page-module-involved-parties.html
+            title="Betrokken partijen"
+            fixed=true %}
 
         {% include prozin/cms-page-module-see-also.html %}
 
