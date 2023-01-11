@@ -40,69 +40,7 @@ meta:
 
         {% include prozin/cms-title-block.html %}
 
-        <div
-            id="section-metadata-{{ page.url | slugify }}"
-            data-pat-collapsible="store: local; scroll-selector: self; scroll-offset: 120px"
-            class="cms-page-module type-metadata pat-collapsible open">
-            <div
-                class="page-module-title">
-                <h2
-                    class="title-segment">
-                    Metadata
-                </h2>
-            </div>
-        	<fieldset 
-                class="horizontal form-panel metadata">
-                {% include prozin/cms-standard-metadata.html %}
-                <fieldset
-                    id="image-selection" 
-                	class="group image-selection">
-                	<legend>{% include patterns/i18n id="label_hero_image" %}</legend>
-                    {% if page.image %}
-                        <img
-                            alt="" 
-                            src="{{ page.image }}" />
-                        <a
-                            href="/dialogues/cms/edit-news-item#image-selection"
-                            class="small default pat-button pat-inject"
-                            type="button">{% include patterns/i18n id="label_remove_image_imp" %}</a>
-                    {% else %}
-                    	<a 
-                            href="/dialogues/image-bank/panel-select-image-image-bank#document-content"
-                            data-pat-modal="class: large panel" 
-                    		class="small default pat-button pat-modal">{% include patterns/i18n id="label_select_from_image_bank_imp" %}</a>
-                    {% endif %}
-                </fieldset>
-                <label>
-                    {% include patterns/i18n id="label_source" %}
-                    <input 
-                        type="text" 
-                        name="">
-                </label>
-                <fieldset 
-                    class="pat-checklist">
-                    <legend>{% include patterns/i18n id="label_pinning" %}</legend>
-                    <label>
-                        {% include patterns/i18n id="label_pin_on_top_of_overviews" %}
-                        <input 
-                            type="checkbox" 
-                            name="">
-                    </label>
-                </fieldset>
-                <fieldset 
-                    class="pat-checklist">
-                    <legend>{% include patterns/i18n id="label_newsletter" %}</legend>
-                    <label>
-                        {% include patterns/i18n id="label_include_in_periodical" %}
-                        <input 
-                            type="checkbox" 
-                            name="">
-                    </label>
-                </fieldset>
-            </fieldset>
-        </div>
-
-        {% include prozin/cms-page-module-rich.html
+        {% include prozin/cms-page-module-news-body-text.html
             state="open"
             title="Broodtekst" %}
 
