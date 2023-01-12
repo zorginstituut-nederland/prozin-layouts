@@ -4,7 +4,9 @@ byline: date
 page_type: news-item
 ---
 
-{% include toolbar-standard-view.html %}
+{% unless page.state == 'preview' %}
+	{% include toolbar-standard-view.html %}
+{% endunless %}
 
 <div 
 	id="main-content">
