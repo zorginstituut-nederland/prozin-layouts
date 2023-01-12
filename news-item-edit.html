@@ -41,20 +41,24 @@ meta:
 
         {% include prozin/cms-title-block.html %}
 
-        {% include prozin/cms-page-module-news-body-text.html
+        {% include prozin/cms-section.html
+            type="news-body-text"
             state="open"
             title="Broodtekst"
             fixed=true %}
 
-        {% include prozin/cms-page-module-video.html
+        {% include prozin/cms-section.html
+            type="video"
             title="Video"
             fixed=true %}
 
-        {% include prozin/cms-page-module-involved-parties.html
+        {% include prozin/cms-section.html
+            type="involved-parties"
             title="Betrokken partijen"
             fixed=true %}
 
-        {% include prozin/cms-page-module-see-also.html %}
+        {% include prozin/cms-section.html
+            type="see-also" %}
 
     </div>
 

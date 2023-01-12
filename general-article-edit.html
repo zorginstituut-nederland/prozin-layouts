@@ -39,20 +39,10 @@ meta:
         {% include prozin/cms-title-block.html %}
         
         {% for section in page.sections %}
-            {% assign this_content = section.content %}
-            {% if section.type == 'downloads' %}
-                {% include prozin/cms-page-module-downloads.html
-                    title="Bijlagen" %}
-            {% elsif section.type == 'image' %}
-                {% include prozin/cms-page-module-image.html %}
-            {% elsif section.type == 'video' %}
-                {% include prozin/cms-page-module-video.html %}
-            {% else %}
-                {% include prozin/cms-page-module-rich.html
-                    content=this_content
-                    title=section.name
-                    state="open" %}
-            {% endif %}
+            {% include prozin/cms-section.html
+                type=section.type
+                title=section.name
+                state="open" %}
         {% endfor %}
 
         <div 
@@ -66,7 +56,8 @@ meta:
                 class="pat-button">Orden secties</a>
         </div>
 
-        {% include prozin/cms-page-module-see-also.html
+        {% include prozin/cms-section.html
+            type="see-also"
             title="Zie ook" %}
 
     </div>
