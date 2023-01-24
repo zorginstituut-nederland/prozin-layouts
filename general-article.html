@@ -12,13 +12,22 @@ byline: date
 	<article>
 		{% include prozin/page-head.html %}
 	    {% include prozin/page-toc.html %}
-
-	    {% if page.sections %}
-		    {% include prozin/page-module-body-text-segmented.html %}
-		{% else %}
-			{% include prozin/page-module-body-text.html %}
-	    {% endif %}
-		{% include prozin/page-module-downloads.html %}
-		{% include prozin/page-module-links.html title="Zie ook" %}
+        {% for section in page.sections %}
+        	{% if section.type %}
+	            {% include prozin/section.html
+	                type=section.type
+	                title=section.name
+	                image=section.image
+	                caption=section.caption
+	                content=section.content
+	                poster=section.poster
+	                video=section.video
+	                transcript=section.transcript
+	                transcript_link=section.transcript_link %}
+        	{% endif %}
+        {% endfor %}
+		{% include prozin/section.html
+			type="links" 
+			title="Zie ook" %}
     </article>
 </div>

@@ -13,15 +13,21 @@ page_type: news-item
 	<article>
 		{% include prozin/page-head.html 
 			byline="document-type, pub-date" %}
-	    {% include prozin/page-module-body-text.html %}
+	    {% include prozin/section.html
+	    	type="body-text" %}
 		{% if page.video %}
-			{% include prozin/page-module-video.html %}
+			{% include prozin/section.html
+				type="video" %}
 		{% endif %}
 	    {% if page.banners %}
-		    {% include prozin/page-module-logos.html %}
+		    {% include prozin/section.html
+		    	title="Partners"
+		    	type="involved-parties" %}
 		{% endif %}
-		{% include prozin/page-module-downloads.html %}
-		{% include prozin/page-module-links.html 
+		{% include prozin/section.html
+			type="downloads" %}
+		{% include prozin/section.html 
+			type="links"
 			title="Zie ook" %}
     </article>
 </div>
