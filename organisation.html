@@ -7,12 +7,18 @@ title_in_breadcrumbs: true
 ---
 
 <div 
-    class="canvas-toolbar">
+    class="pat-toolbar pat-bumper"
+    id="cms-page-toolbar-edit">
     <div 
-        class="functions">
-        <a 
-            class="button icon-pencil pat-inject"  
-            href="/dialogues/organisations/organisation-edit#content">Bewerk</a>
+        id="cms-toolbar-edit-functions-area"
+        class="toolbar-functions-area">
+        <div 
+            class="toolbar-section quick-functions"
+            id="cms-toolbar-edit-quick-functions">
+            <a 
+                class="pat-button icon-pencil pat-inject"  
+                href="{{ page.url }}-edit#content">Bewerk</a>
+        </div>
     </div>
 </div>
 
@@ -64,10 +70,12 @@ title_in_breadcrumbs: true
             {% if page.type == 'Zorginstelling' %}
 
             <dt>
-                AGB-code
+                AGB-code(s)
             </dt>
             <dd>
-                10294385
+                {% for agb in page.agb %}
+                    {{ agb.code}} {% unless forloop.last %}<br />{% endunless %}            
+                {% endfor %}
             </dd>
             
             {% endif %}

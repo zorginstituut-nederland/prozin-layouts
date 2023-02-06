@@ -7,18 +7,25 @@ organisation: "Mees & mcRooy"
 ---
 
 <form
-    action="/organisations/mees-mcrooy-makelaars#content"
+    action="{{ page.url | remove: '-edit' }}#content"
     class="pat-inject pat-form">
     <div 
-        class="canvas-toolbar">
+        class="pat-toolbar pat-bumper"
+        id="cms-page-toolbar-edit">
         <div 
-            class="functions">
-            <a 
-                href="/organisations/mees-mcrooy-makelaars" 
-                class="button pat-inject">Annuleer</a>
-            <button 
-                type="submit" 
-                class="button default">Bewaar</button>
+            id="cms-toolbar-edit-functions-area"
+            class="toolbar-functions-area">
+            <div 
+                class="toolbar-section quick-functions"
+                id="cms-toolbar-edit-quick-functions">
+                <a 
+                    href="{{ page.url | remove: '-edit' }}" 
+                    class="pat-button pat-inject">Annuleer</a>
+                <button 
+                    type="submit" 
+                    class="pat-button default">Bewaar</button>
+
+            </div>
         </div>
     </div>
 
