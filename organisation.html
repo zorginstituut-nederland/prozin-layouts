@@ -69,14 +69,14 @@ title_in_breadcrumbs: true
 
             {% if page.type == 'Zorginstelling' %}
 
-            <dt>
-                AGB-code(s)
-            </dt>
-            <dd>
-                {% for agb in page.agb %}
-                    {{ agb.code}} {% unless forloop.last %}<br />{% endunless %}            
-                {% endfor %}
-            </dd>
+                <dt>
+                    AGB-code(s)
+                </dt>
+                <dd>
+                    {% for agb in page.agb %}
+                        {{ agb.code}} {% unless forloop.last %}<br />{% endunless %}            
+                    {% endfor %}
+                </dd>
             
             {% endif %}
 
