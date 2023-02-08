@@ -54,7 +54,7 @@ buttons:
 
     {% for object in page.history %}
             
-        {% for node in site.posts %}
+        {% for node in site.medicines %}
             {% capture nodeid %}{{ node.id | remove: "/" }}{% endcapture %}
             {% if  nodeid == object.user %}
                 {% assign user = node %}

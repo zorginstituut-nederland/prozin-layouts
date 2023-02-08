@@ -65,7 +65,7 @@ page_type: search-results
         id="result-list" 
         class="search-results visible-injection">
 
-        {% for item in site.posts %}
+        {% for item in site.medicines %}
             {% if item.title contains page.lemma %}
                 <a href="{{ item.url }}" data-pat-inject="history: record; scroll: #main" class="pat-inject result-item generic">
                     <h3 class="result-title">
