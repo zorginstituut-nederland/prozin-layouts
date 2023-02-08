@@ -8,8 +8,12 @@ byline: date
 		{% include prozin/page-head.html %}
 	    {% include page-toc-diagram.html %}
 
-	    {% include prozin/page-section-body-text-segmented.html %}
-		{% include prozin/page-section-downloads.html %}
-		{% include prozin/page-section-links.html title="Zie ook" %}
+	    {% include prozin/section.html
+	    	type="body-text-segmented" %}
+		{% include prozin/section.html
+			type="downloads" %}
+		{% include prozin/section.html
+			type="links" 
+			title="Zie ook" %}
     </article>
 </div>
