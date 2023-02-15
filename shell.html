@@ -73,7 +73,7 @@
         content="/assets/templates/503.html#error-zone"> 
 </head>
 <body 
-    class="pat-scroll-box environment-prototype product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
+    class="pat-scroll-box environment-prototype product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }} {% if site.user == 'anonymous' %}anonymous{% else %}logged-in{% endif %}">
 
     {% include prozin/global-nav.html %}
 
