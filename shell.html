@@ -76,22 +76,8 @@
     class="pat-scroll-box environment-prototype product-{{ site.product_code }} page-type-{{ layout.page_type }}{{ page.page_type }}">
 
     {% include prozin/global-nav.html %}
-    {% if page.layout == 'medicine-edit' or page.layout == 'medicine-manufacturer-edit' or page.layout == 'medicine-create' or page.layout == 'medicine-saved' or page.layout == 'medicine-create-manufacturer' or page.layout == 'medicine-manufacturer-check-edit' %}
 
-        <form 
-            action="{{ page.action }}" 
-            class="pat-validation pat-inject pat-form">
-            {% include prozin/alert-bar.html %}
-            {% include prozin/sub-nav.html %}
-            <div 
-                class="main" 
-                role="main" 
-                id="main">
-                {{ content }}
-            </div>
-        </form>
-
-    {% elsif layout.page_type == 'modal' %}
+    {% if layout.page_type == 'modal' %}
         {% unless layout.template contains 'error' or page.template contains 'error' %}
             {{ content }}
         {% endunless %}
