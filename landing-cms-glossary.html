@@ -107,7 +107,7 @@ page_type: landing-cms-folder
             </tr>
         </thead>
         <tbody>               
-            {% for item in site.pages %}
+            {% for item in site.concepts %}
                 {% if item.layout == 'prozin/glossary-term' %}
                     {% include prozin/table-row-cms-folder.html %}
                 {% endif %}

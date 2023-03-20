@@ -1,0 +1,73 @@
+---
+layout: prozin/generic
+byline: date
+parent: Beheer
+page_type: glossary-term-edit
+meta:
+  - label: label_summary
+    type: textarea
+    rows: 3
+  - label: label_publication_date
+    type: date
+---
+
+<form
+    class="pat-inject pat-form">
+    
+    {% include prozin/toolbar-cms-edit.html
+        metadata="/dialogues/cms/panel-metadata#document-content"
+        cancel="/dialogues/cms/news"
+        allow="
+            header 2,
+            header 3,
+            header 4,
+            paragraph,
+            blockquote,
+            strong,
+            emphasised,
+            deleted,
+            link,
+            horizontal rule,
+            unordered list,
+            ordered list,
+            image,
+            video,
+            table"
+             %}
+
+    <div 
+        class="cms-edit-form" 
+    	id="main-content">
+
+        {% include prozin/cms-title-block.html
+            summary=false %}
+
+        {% include prozin/cms-section.html
+            type="definition"
+            state="open"
+            title="Definitie"
+            fixed=true %}
+
+        {% include prozin/cms-section.html
+            type="rich"
+            placeholder="Optional elaboration on the above definition."
+            state="closed"
+            title="Toelichting"
+            fixed=true %}
+
+        {% comment %}
+            {% include prozin/cms-section.html
+                type="image"
+                state="closed"
+                title="Afbeelding"
+                fixed=true %}
+            {% include prozin/cms-section.html
+                type="video"
+                state="closed"
+                title="Video"
+                fixed=true %}
+        {% endcomment %}
+
+    </div>
+
+</form>
