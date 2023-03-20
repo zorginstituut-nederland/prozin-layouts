@@ -1,0 +1,117 @@
+---
+layout: prozin/generic
+page_type: landing-cms-folder
+---
+
+<form 
+    action="{{ page.url }}#listing" 
+    class="pat-toolbar pat-bumper pat-inject pat-autosubmit pat-form"
+    id="cms-section-toolbar">
+    <div 
+        class="toolbar-navigation-area">
+        <div 
+            class="toolbar-section navigation"
+            id="public-data-administration-toolbar-navigation">
+            <nav 
+                class="pat-tabs pat-button-cluster pat-navigation"
+                id="homescreen-sections-public-data"administration->
+                <a 
+                    href="/dialogues/cms/glossary"
+                    data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                    class="{% if page.title contains 'zorgaanbieders' %}current{% endif %} pat-inject {% if page.title == 'Medisch-specialistische revalidatie' %}current{% endif %}">{% include patterns/i18n id="label_local_concepts" %}</a>
+                <a 
+                    class="pat-inject" 
+                    data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                    href="/dialogues/cms/glossary-central">ProZIN Centraal</a>
+            </nav>
+        </div>
+    </div>
+    <div 
+        id="cms-section-toolbar-functions-area"
+        class="toolbar-functions-area pat-inject pat-form pat-autosubmit">
+        <div
+            class="toolbar-section view-options"
+            id="cms-section-toolbar-view-options">
+            
+        </div>
+        <div 
+            class="toolbar-section quick-functions"
+            id="cms-section-toolbar-quick-functions">
+            <a 
+                class="icon new pat-tooltip" 
+                data-pat-tooltip="position-list: tr; source: ajax" 
+                href="#new-menu">Nieuw</a>
+            <a 
+                class="icon more pat-tooltip" 
+                data-pat-tooltip="position-list: tr; source: ajax" 
+                href="#more-menu">Opties</a>
+
+            <label 
+                class="pat-toolbar-search-field">
+                <input 
+                    type="search" 
+                    placeholder="Zoeken binnen sectie">
+                <button
+                    class="assistive"
+                    type="submit">Verstuur</button>
+            </label>
+
+            <div 
+                hidden 
+                id="new-menu">
+                <ul 
+                    class="menu">
+                    <li>
+                        <a 
+                            class="close-panel pat-inject" 
+                            href="/beheer/new-concept">{% include patterns/i18n id="label_concept" %}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div 
+                hidden 
+                id="more-menu">
+                <ul 
+                    class="menu">
+                    <li>
+                        <a 
+                            class="close-panel pat-modal icon-cog" 
+                            href="/beheer/glossary-settings">{% include patterns/i18n id="label_settings" %}</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<div 
+    id="listing">
+    <table 
+        class="hd">
+        <thead>
+            <tr>
+                <th>
+                    <a 
+                        href="{{ page.url }}#listing"
+                        class="pat-inject sorting sorting-asc">Term</a></th>
+                <th><a 
+                        href="{{ page.url }}#listing"
+                        class="pat-inject sorting">Laatst bewerkt</a></th>
+                <th><a 
+                        href="{{ page.url }}#listing"
+                        class="pat-inject sorting">Status</a></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>               
+            {% for item in site.pages %}
+                {% if item.layout == 'prozin/glossary-term' %}
+                    {% include prozin/table-row-cms-folder.html %}
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

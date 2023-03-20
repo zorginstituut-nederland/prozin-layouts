@@ -1,0 +1,20 @@
+---
+layout: prozin/generic
+---
+
+{% unless page.state == 'preview' %}
+	{% include prozin/toolbar-standard-view.html %}
+{% endunless %}
+
+<div 
+	id="main-content">
+	<article>
+		{% include prozin/page-head.html %}
+    	{% include prozin/section.html
+			type="rich"
+			content=page.content %}
+		{% include prozin/section.html
+			type="links" 
+			title="Zie ook" %}
+    </article>
+</div>
