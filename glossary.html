@@ -17,11 +17,22 @@ collection_in_breadcrumbs: false;
             id="glossary-toolbar-navigation">
             <nav 
             	class="pat-tabs pat-button-cluster abecedary">
-            	{% for initial in alphabet %}
-		  			<a  
-                        class="pat-scroll" 
-		  				href="#section-{{ initial | downcase }}">{{ initial | upcase }}</a>
-		  		{% endfor %}
+                {% for initial in alphabet %}
+                    {% assign has_content = false %}
+                    {% for item in site.concepts  %}
+                        {% if item.layout == 'prozin/glossary-term' %}
+                            {% capture item_initial %}{{ item.title | truncate: 1, '' | downcase }}{% endcapture %}
+                            {% if item_initial == initial %}
+                                {% assign has_content = true %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if has_content%}
+                        <a  
+                            class="pat-scroll" 
+                            href="#section-{{ initial | downcase }}">{{ initial | downcase }}</a>
+                    {% endif %}
+                {% endfor %}
   			</nav>
         </div>
     </div>
@@ -73,7 +84,7 @@ collection_in_breadcrumbs: false;
                     class="glossary-section">
                     <h3 
                         class="glossary-section-title">
-                        {{ initial | upcase }}
+                        {{ initial | downcase }}
                     </h3>
                     <dl 
                         class="terms-list">
