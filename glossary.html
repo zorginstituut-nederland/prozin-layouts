@@ -2,19 +2,10 @@
 layout: prozin/generic
 page_type: glossary
 title_in_breadcrumbs: false;
+collection_in_breadcrumbs: false;
 ---
 
 {% assign alphabet = page.letters | split: "|" %}
-
-<article>
-	<div 
-		id="page-head" 
-		class="pat-rich">
-		<h1>
-			{% include patterns/i18n id="label_glossary" %}
-		</h1>	
-	</div>
-</article>
 
 <div 
     class="pat-toolbar pat-bumper"
@@ -52,56 +43,64 @@ title_in_breadcrumbs: false;
     </div>
 </div>
 
-<div id="main-content">
 <div 
-    class="glossary">
-
-    {% for initial in alphabet %}
-        {% assign has_content = false %}
-        {% for item in site.concepts  %}
-            {% if item.layout == 'prozin/glossary-term' %}
-                {% capture item_initial %}{{ item.title | truncate: 1, '' | downcase }}{% endcapture %}
-                {% if item_initial == initial %}
-                    {% assign has_content = true %}
+    id="main-content">
+    <article>
+        <div 
+            id="page-head" 
+            class="pat-rich">
+            <h1>
+                {% include patterns/i18n id="label_glossary" %}
+            </h1>   
+        </div>
+    </article>
+    <div 
+        class="glossary">
+        {% for initial in alphabet %}
+            {% assign has_content = false %}
+            {% for item in site.concepts  %}
+                {% if item.layout == 'prozin/glossary-term' %}
+                    {% capture item_initial %}{{ item.title | truncate: 1, '' | downcase }}{% endcapture %}
+                    {% if item_initial == initial %}
+                        {% assign has_content = true %}
+                    {% endif %}
                 {% endif %}
+            {% endfor %}
+            {% if has_content%}
+                <div 
+                	id="section-{{ initial | downcase }}" 
+                    class="glossary-section">
+                    <h3 
+                        class="glossary-section-title">
+                        {{ initial | upcase }}
+                    </h3>
+                    <dl 
+                        class="terms-list">
+                        {% for item in site.concepts  %}
+                            {% if item.layout == 'prozin/glossary-term' %}
+                                {% capture item_initial %}{{ item.title | truncate: 1, '' | downcase }}{% endcapture %}
+                                {% if initial == item_initial %}
+                                    <dt>
+                                        {{ item.title }}
+                                    </dt>
+                                    <dd>
+                                        <p>
+                                            {{ item.summary }}
+
+                                            <a 
+                                                href="{{ item.url }}" 
+                                                class="{{ item.layout }} pat-inject" 
+                                                data-pat-inject="history: record; scroll: #main"
+                                                >{% include patterns/i18n id="label_read_more_ellipsis" %}</a>
+
+                                        </p>
+                                    </dd>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </dl>
+                </div>
             {% endif %}
         {% endfor %}
-        {% if has_content%}
-            <div 
-            	id="section-{{ initial | downcase }}" 
-                class="glossary-section">
-                <h3 
-                    class="glossary-section-title">
-                    {{ initial | upcase }}
-                </h3>
-                <dl 
-                    class="terms-list">
-                    {% for item in site.concepts  %}
-                        {% if item.layout == 'prozin/glossary-term' %}
-                            {% capture item_initial %}{{ item.title | truncate: 1, '' | downcase }}{% endcapture %}
-                            {% if initial == item_initial %}
-                                <dt>
-                                    {{ item.title }}
-                                </dt>
-                                <dd>
-                                    <p>
-                                        {{ item.summary }}
-
-                                        <a 
-                                            href="{{ item.url }}" 
-                                            class="{{ item.layout }} pat-inject" 
-                                            data-pat-inject="history: record; scroll: #main"
-                                            >{% include patterns/i18n id="label_read_more_ellipsis" %}</a>
-
-                                    </p>
-                                </dd>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </dl>
-            </div>
-        {% endif %}
-    {% endfor %}
-
-</div>
+    </div>
 </div>
