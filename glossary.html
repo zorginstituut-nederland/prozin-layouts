@@ -105,6 +105,11 @@ collection_in_breadcrumbs: false
                                                 Zie <a 
                                                     href="#item-{{ item.synonym | slugify }}-definition">{{ item.synonym }}</a>.
                                             {% else %}
+                                                {% if item.synonyms %}
+                                                    {% for synonym in item.synonyms %}
+                                                        {{ synonym }}; 
+                                                    {% endfor %}
+                                                {% endif %}
                                                 {{ item.summary }}
                                             {% endif %}
                                             <a 
