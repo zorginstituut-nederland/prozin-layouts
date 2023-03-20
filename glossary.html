@@ -7,8 +7,9 @@ collection_in_breadcrumbs: false
 
 {% assign alphabet = page.letters | split: "|" %}
 
-<div 
-    class="pat-toolbar pat-bumper"
+<form 
+    action="{{ page.url }}#listing"
+    class="pat-toolbar pat-bumper pat-inject pat-autosubmit"
     id="glossary-toolbar">
     <div 
     	class="toolbar-navigation-area">
@@ -53,7 +54,7 @@ collection_in_breadcrumbs: false
 			</label>
         </div>
     </div>
-</div>
+</form>
 
 <div 
     id="main-content">
@@ -67,6 +68,7 @@ collection_in_breadcrumbs: false
         </div>
     </article>
     <div 
+        id="listing" 
         class="glossary">
         {% for initial in alphabet %}
             {% assign has_content = false %}
