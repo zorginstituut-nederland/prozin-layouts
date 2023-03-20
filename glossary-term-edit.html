@@ -16,23 +16,7 @@ meta:
     
     {% include prozin/toolbar-cms-edit.html
         metadata="/dialogues/cms/panel-metadata#document-content"
-        cancel="/dialogues/cms/news"
-        allow="
-            header 2,
-            header 3,
-            header 4,
-            paragraph,
-            blockquote,
-            strong,
-            emphasised,
-            deleted,
-            link,
-            horizontal rule,
-            unordered list,
-            ordered list,
-            image,
-            video,
-            table"
+        cancel="/dialogues/cms/glossary"
              %}
 
     <div 
@@ -40,6 +24,7 @@ meta:
     	id="main-content">
 
         {% include prozin/cms-title-block.html
+            placeholder="Begrip"
             summary=false %}
 
         {% include prozin/cms-section.html
@@ -68,6 +53,10 @@ meta:
                 title="Video"
                 fixed=true %}
         {% endcomment %}
+
+        {% include prozin/cms-section.html
+            state="closed"
+            type="see-also" %}
 
     </div>
 
