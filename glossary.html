@@ -94,13 +94,19 @@ collection_in_breadcrumbs: false
                             {% if item.layout == 'prozin/glossary-term' %}
                                 {% capture item_initial %}{{ item.title | truncate: 1, '' | downcase }}{% endcapture %}
                                 {% if initial == item_initial %}
-                                    <dt>
+                                    <dt
+                                        id="item-{{ item.title | slugify }}-term">
                                         {{ item.title }}
                                     </dt>
-                                    <dd>
+                                    <dd
+                                        id="item-{{ item.title | slugify }}-definition">
                                         <p>
-                                            {{ item.summary }}
-
+                                            {% if item.synonym %}
+                                                Zie <a 
+                                                    href="#item-{{ item.synonym | slugify }}-definition">{{ item.synonym }}</a>.
+                                            {% else %}
+                                                {{ item.summary }}
+                                            {% endif %}
                                             <a 
                                                 href="{{ item.url }}" 
                                                 class="{{ item.layout }} pat-inject" 
