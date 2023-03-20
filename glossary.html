@@ -111,12 +111,15 @@ collection_in_breadcrumbs: false
                                                     {% endfor %}
                                                 {% endif %}
                                                 {{ item.summary }}
+                                                {% unless item.content == null or item.content == '' %}
+                                                    <a 
+                                                        href="{{ item.url }}" 
+                                                        class="pat-inject" 
+                                                        data-pat-inject="history: record; scroll: #main"
+                                                        >{% include patterns/i18n 
+                                                            id="label_read_more_ell" %}</a>
+                                                {% endunless %}
                                             {% endif %}
-                                            <a 
-                                                href="{{ item.url }}" 
-                                                class="{{ item.layout }} pat-inject" 
-                                                data-pat-inject="history: record; scroll: #main"
-                                                >{% include patterns/i18n id="label_read_more_ellipsis" %}</a>
 
                                         </p>
                                     </dd>
