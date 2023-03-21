@@ -14,14 +14,14 @@ page_type: landing-cms-folder
             id="public-data-administration-toolbar-navigation">
             <nav 
                 class="pat-tabs pat-button-cluster pat-navigation"
-                id="homescreen-sections-public-data"administration->
+                id="homescreen-sections-public-data">
                 <a 
                     href="/dialogues/cms/glossary"
-                    data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
-                    class="{% if page.title contains 'zorgaanbieders' %}current{% endif %} pat-inject {% if page.title == 'Medisch-specialistische revalidatie' %}current{% endif %}">{% include patterns/i18n id="label_local_concepts" %}</a>
+                    data-pat-inject="history: record; source: #listing; target: #listing && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                    class="{% if page.title contains 'Lokale' %}current{% endif %} pat-inject">{% include patterns/i18n id="label_local_concepts" %}</a>
                 <a 
                     class="pat-inject" 
-                    data-pat-inject="history: record; source: #directory; target: #directory && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
+                    data-pat-inject="history: record; source: #listing; target: #listing && source: #public-data-administration-toolbar-functions-area::element; target: #public-data-administration-toolbar-functions-area::element"
                     href="/dialogues/cms/glossary-central">ProZIN Centraal</a>
             </nav>
         </div>
