@@ -17,7 +17,7 @@ collection_in_breadcrumbs: false
         	class="toolbar-section navigation" 
             id="glossary-toolbar-navigation">
             <nav 
-            	class="pat-tabs pat-button-cluster abecedary">
+            	class="pat-navigation pat-tabs pat-button-cluster abecedary">
                 {% for initial in alphabet %}
                     {% assign has_content = false %}
                     {% for item in site.concepts  %}
@@ -30,7 +30,7 @@ collection_in_breadcrumbs: false
                     {% endfor %}
                     {% if has_content%}
                         <a  
-                            class="pat-scroll" 
+                            class="" 
                             href="#section-{{ initial | downcase }}">{{ initial | downcase }}</a>
                     {% endif %}
                 {% endfor %}
