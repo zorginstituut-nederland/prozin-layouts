@@ -25,11 +25,17 @@ page_type: bladeren
             {% if dashboard.name == page.dashboard_name %}
                 {% for portlet in dashboard.portlets %}
                     {% assign this_id = portlet.id %}
+                    {% assign this_i18n = portlet.i18n %}
+                    {% assign this_state = portlet.state %}
+                    {% assign this_span = portlet.span %}
                     {% assign this_collection = portlet.show %}
                     {% assign this_show = portlet.show %}
                     {% assign this_height = portlet.height %}
                     {% include {{this_id}}.html 
                         height=this_height
+                        i18n=this_i18n
+                        state=this_state
+                        span=this_span
                         collection=this_collection
                         show=this_show %}
                 {% endfor %}
