@@ -32,7 +32,11 @@ page_type: search-results
             </fieldset>
             <fieldset class="group pat-collapsible filters closed" data-pat-collapsible="open-trigger: #open-trigger; close-trigger: #close-trigger">
                 <h3 class="filter-toggle">Filters</h3>
-                {% include patterns/form.html class="panel-content" src="search-filters" root="fieldset" layout="horizontal" %}
+                {% include patterns/form.html 
+                    class="panel-content" 
+                    src="search-filters" 
+                    root="fieldset" 
+                    layout="horizontal" %}
             </fieldset>
             <fieldset 
                 class="button-bar">
