@@ -32,7 +32,11 @@ page_type: search-results
             </fieldset>
             <fieldset class="group pat-collapsible filters closed" data-pat-collapsible="open-trigger: #open-trigger; close-trigger: #close-trigger">
                 <h3 class="filter-toggle">Filters</h3>
-                {% include patterns/form.html class="panel-content" src="search-filters" root="fieldset" layout="horizontal" %}
+                {% include patterns/form.html 
+                    class="panel-content" 
+                    src="search-filters" 
+                    root="fieldset" 
+                    layout="horizontal" %}
             </fieldset>
             <fieldset 
                 class="button-bar">
@@ -64,20 +68,24 @@ page_type: search-results
     <div 
         id="result-list" 
         class="search-results visible-injection">
-
-        {% for item in site.medicines %}
-            {% if item.title contains page.lemma %}
-                <a href="{{ item.url }}" data-pat-inject="history: record; scroll: #main" class="pat-inject result-item generic">
+        {% for item in site.posts %}
+            {% if item.title contains page.lemma or item.keywords contains page.lemma %}
+                <a 
+                    href="{{ item.url }}" 
+                    data-pat-inject="history: record; scroll: #main" 
+                    class="pat-inject result-item generic">
                     <h3 class="result-title">
                         {{ item.title }}
                     </h3>
                     {% if item.summary %}
-                        <p class="result-description">
+                        <p 
+                            class="result-description">
                             {{ item.summary }}
                         </p>
                     {% endif %}
                     {% if item.type or item.pub-date or item.layout == 'tool' %}
-                        <p class="meta">
+                        <p 
+                            class="meta">
                             {% if item.type %}
                                 {% if item.type == 'qs' %}
                                     <span class="byline-item">Kwaliteitsinstrument | Kwaliteitsstandaard</span>
@@ -112,8 +120,12 @@ page_type: search-results
             {% endif %}
         {% endfor %}
 
-        <p id="pagination">
-            <a href="/zoekresultaten.html" class="btn next pat-inject" data-pat-inject="trigger: autoload-visible; source: #result-list; target: #pagination::element">Meer resultaten laden…</a>
+        <p 
+            id="pagination">
+            <a 
+                href="/zoekresultaten.html" 
+                class="btn next pat-inject" 
+                data-pat-inject="trigger: autoload-visible; source: #result-list; target: #pagination::element">Meer resultaten laden…</a>
         </p>
         
     </div>
