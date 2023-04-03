@@ -16,7 +16,7 @@ byline: date
 					class="horizontal">
 					{% include prozin/newsletters-checklist.html %}
 					<label>
-						{{ site.data.prozin.ui.label_email[site.lang] }} 
+						{{ site.data.prozin.ui.label_email[site.data.config.lang] }} 
 						<input 
 							type="email" 
 							required 
@@ -28,7 +28,7 @@ byline: date
 					class="button-bar">
 					<button 
 						class="default pat-button" 
-						type="submit">{{ site.data.prozin.ui.label_subscribe[site.lang] }}</button>
+						type="submit">{{ site.data.prozin.ui.label_subscribe[site.data.config.lang] }}</button>
 				</fieldset>
 			</fieldset>
 		</form>

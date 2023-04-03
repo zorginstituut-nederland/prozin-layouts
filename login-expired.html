@@ -10,26 +10,26 @@ page_type: login
     {% include prozin/page-head-password-dialogues.html %}
     
 	<p class="pat-message warning">
-		{{ site.data.prozin.ui.message_password_expired[site.lang] }}
+		{{ site.data.prozin.ui.message_password_expired[site.data.config.lang] }}
 	</p>
     <article class="pat-rich">
     	<p>
-    		{{ site.data.prozin.ui.message_create_new_password[site.lang] }}
-    		{{ site.data.prozin.ui.message_password_policy[site.lang] }}
+    		{{ site.data.prozin.ui.message_create_new_password[site.data.config.lang] }}
+    		{{ site.data.prozin.ui.message_password_policy[site.data.config.lang] }}
     	</p>
     </article>
 	<form action="/wachtwoord-gewijzigd" class="pat-inject pat-form pat-validate">
 		<fieldset class="form-panel">
 			<fieldset class="horizontal">
 				<label>
-					{{ site.data.prozin.ui.label_new_password[site.lang] }} <input type="password" required name="password" class="pat-autofocus" />
+					{{ site.data.prozin.ui.label_new_password[site.data.config.lang] }} <input type="password" required name="password" class="pat-autofocus" />
 				</label>
 				<label>
-					{{ site.data.prozin.ui.label_repeat_new_password[site.lang] }} <input type="password" required name="password-repeat" />
+					{{ site.data.prozin.ui.label_repeat_new_password[site.data.config.lang] }} <input type="password" required name="password-repeat" />
 				</label>
 			</fieldset>
 			<fieldset class="button-bar">
-				<button class="pat-button" type="submit">{{ site.data.prozin.ui.label_change_password[site.lang] }}</button>
+				<button class="pat-button" type="submit">{{ site.data.prozin.ui.label_change_password[site.data.config.lang] }}</button>
 			</fieldset>
 		</fieldset>
 	</form>

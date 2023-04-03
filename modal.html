@@ -28,7 +28,7 @@ page_type: modal
     {% if layout.title %}
          <h1 
             class="panel-class-{{ page.panel_class }}">
-            {{ site.data.prozin.ui[layout.title][site.lang] }}
+            {{ site.data.prozin.ui[layout.title][site.data.config.lang] }}
             <button 
                 type="button"
                 class="button-fullscreen pat-fullscreen" 
@@ -37,7 +37,7 @@ page_type: modal
     {% else %}
         <h1 
             class="panel-class-{{ page.panel_class }}">
-            {{ site.data.prozin.ui[page.title][site.lang] }}
+            {{ site.data.prozin.ui[page.title][site.data.config.lang] }}
             <button 
                 type="button"
                 class="button-fullscreen pat-fullscreen" 
@@ -91,12 +91,12 @@ page_type: modal
                                 id="modal-main-submit" 
                                 type="{{ button.type }}" 
                                 class="{{ button.class }} pat-button" {{ button.validate }}>
-                                {{ site.data.prozin.ui[button.label][site.lang] }}
+                                {{ site.data.prozin.ui[button.label][site.data.config.lang] }}
                             </button>
                         {% elsif button.type == 'link' %}
                             <a 
                                 class="pat-button {{ button.class }} pat-inject" 
-                                href="{{ button.action }}#{{ button.fragment }}">{{ site.data.prozin.ui[button.label][site.lang] }}</a>
+                                href="{{ button.action }}#{{ button.fragment }}">{{ site.data.prozin.ui[button.label][site.data.config.lang] }}</a>
                         {% endif %}
                     {% endfor %}
                     {% for button in layout.buttons  %}
@@ -105,12 +105,12 @@ page_type: modal
                                 id="modal-main-submit" 
                                 type="{{ button.type }}" 
                                 class="{{ button.class }} pat-button" {{ button.validate }}>
-                                {{ site.data.prozin.ui[button.label][site.lang] }}
+                                {{ site.data.prozin.ui[button.label][site.data.config.lang] }}
                             </button>
                         {% elsif button.type == 'link' %}
                             <a 
                                 class="pat-button {{ button.class }} pat-inject" 
-                                href="{{ button.action }}#{{ button.fragment }}">{{ site.data.prozin.ui[button.label][site.lang] }}</a>
+                                href="{{ button.action }}#{{ button.fragment }}">{{ site.data.prozin.ui[button.label][site.data.config.lang] }}</a>
                         {% endif %}
                     {% endfor %}
                 </div>

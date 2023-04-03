@@ -40,7 +40,7 @@ buttons:
             class="byline">
             <em 
                 class="action">Aangemaakt</em> | <time class="modification-date pat-display-time" 
-                                                       data-pat-display-time="from-now: true; locale: {{ site.lang }}" 
+                                                       data-pat-display-time="from-now: true; locale: {{ site.data.config.lang }}" 
                                                        datetime="{{ page.last_edited_date | date: '%Y-%m-%d' }}T09:42Z" 
                                                        title="{{ page.date | date_to_long_string }}, 9:42">{{ page.last_edited_date | date_to_long_string }}, 9:42</time>
         </p>
@@ -84,7 +84,7 @@ buttons:
                 class="byline">
                 <em 
                     class="action">{{ object.mutation }}</em> | <time class="modification-date pat-display-time" 
-                                                                      data-pat-display-time="from-now: true; locale: {{ site.lang }}" 
+                                                                      data-pat-display-time="from-now: true; locale: {{ site.data.config.lang }}" 
                                                                       datetime="{{ object.date | date: '%Y-%m-%d' }}T09:42Z"
                                                                       title="{{ object.date | date_to_long_string }}, {{ object.time }}">{{ object.date | date_to_long_string }}, {{ object.time }}</time>
             </p>

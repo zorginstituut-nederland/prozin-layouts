@@ -23,10 +23,10 @@
         content="yes">
     <meta 
         name="apple-mobile-web-app-title" 
-        content="{{ site.data.ui.label_site_name[site.lang] }}">
+        content="{{ site.data.ui.label_site_name[site.data.config.lang] }}">
     <meta 
         name="mobile-web-app-title" 
-        content="{{ site.data.ui.label_site_name[site.lang] }}">
+        content="{{ site.data.ui.label_site_name[site.data.config.lang] }}">
     <meta 
         name="apple-mobile-web-app-status-bar-style" 
         content="default">
@@ -114,7 +114,7 @@
     
     {% include prozin/site-header.html %}
     {% include prozin/site-footer.html %}
-    {% if site.languages %}
+    {% if site.data.config.languages %}
         {% include prozin/site-language-switch.html %}
     {% endif %}
     

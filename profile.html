@@ -35,7 +35,7 @@ page_type: login
 			<dl 
 				class="pat-grid-list user-details">
 				<dt>
-					{{ site.data.prozin.ui.label_organisation[site.lang] }}
+					{{ site.data.prozin.ui.label_organisation[site.data.config.lang] }}
 				</dt>
 				<dd>
 					<a 
@@ -44,18 +44,18 @@ page_type: login
 						href="/organisations/mees-mcrooy-makelaars">{{ site.data.prozin.personae[page.persona].organisation }}</a>
 				</dd>
 				<dt>
-					{{ site.data.prozin.ui.label_role[site.lang] }}
+					{{ site.data.prozin.ui.label_role[site.data.config.lang] }}
 				</dt>
 				<dd>
 					{% if site.data.prozin.personae[page.persona].role == 'Administrator' %}
-						{{ site.data.prozin.ui.label_role_beheerder[site.lang] }}
+						{{ site.data.prozin.ui.label_role_beheerder[site.data.config.lang] }}
 					{% elsif site.data.prozin.personae[page.persona].role == 'Member' %}
-						{{ site.data.prozin.ui.label_regular_user[site.lang] }}
+						{{ site.data.prozin.ui.label_regular_user[site.data.config.lang] }}
 					{% endif %}
 				</dd>
 				{% if site.data.prozin.personae[page.persona].domain %}
 					<dt>
-						{{ site.data.prozin.ui.label_domain[site.lang] }}
+						{{ site.data.prozin.ui.label_domain[site.data.config.lang] }}
 					</dt>
 					<dd>
 						<!-- The following link points to the respective domain page. -->
@@ -65,7 +65,7 @@ page_type: login
 						   	data-pat-inject="history: record; scroll: #main">{{ site.data.prozin.personae[page.persona].domain }}</a>
 					</dd>
 				{% endif %}
-				<dt>{{ site.data.prozin.ui.label_email[site.lang] }}</dt>
+				<dt>{{ site.data.prozin.ui.label_email[site.data.config.lang] }}</dt>
 				<dd>
 					<a 
 						href="mailto:{{ site.data.prozin.personae[page.persona].email }}">{{ site.data.prozin.personae[page.persona].email }}</a>
