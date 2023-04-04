@@ -52,7 +52,7 @@ layout: prozin/shell
 
 <div 
     id="content" 
-    class="{% if page.compare_count %}compare-count-{{ page.compare_count }}{% endif %}">
+    class="{% if page.compare_count %}compare-count-{{ page.compare_count }}{% endif %} spotlight-off">
 	{% if page.hero %}
         {% unless page.sub_nav %}
     		<figure 
@@ -62,12 +62,12 @@ layout: prozin/shell
         {% endunless %}
 	{% endif %}
     <div 
-        class="container">    	
+        class="container">	
 	    {% if page.notification %}
 	       <p   
                 class="pat-notification success"
-	           data-pat-notification="type: banner; class: success">
-	           {{ site.data.prozin.ui[page.notification][site.data.config.lang] }}
+	            data-pat-notification="type: banner; class: success">
+	            {{ site.data.prozin.ui[page.notification][site.data.config.lang] }}
 	        </p>
 	    {% endif %}
         {{ content }}  
