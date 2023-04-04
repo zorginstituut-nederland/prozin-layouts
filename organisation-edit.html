@@ -7,7 +7,7 @@ organisation: "Mees & mcRooy"
 ---
 
 <form
-    action="{{ page.url | remove: '-edit' }}#content"
+    action="{{ page.url | remove: '-state-edit' }}#content"
     class="pat-inject pat-form">
     <div 
         class="pat-toolbar pat-bumper"
@@ -19,7 +19,7 @@ organisation: "Mees & mcRooy"
                 class="toolbar-section quick-functions"
                 id="cms-toolbar-edit-quick-functions">
                 <a 
-                    href="{{ page.url | remove: '-edit' }}" 
+                    href="{{ page.url | remove: '-state-edit' }}" 
                     class="pat-button pat-inject">Annuleer</a>
                 <button 
                     type="submit" 

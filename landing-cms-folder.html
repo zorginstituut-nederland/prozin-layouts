@@ -28,7 +28,7 @@ page_type: landing-cms-folder
             {% for content_type in page.content_types %}
                 {% for item in site[page.collection] %}
                     {% if content_type.name == item.layout %}
-                        {% unless item.url contains '-edit' or item.url contains '-preview' %}
+                        {% unless item.url contains '-state-edit' or item.url contains '-preview' %}
                             {% include prozin/table-row-cms-folder.html %}
                         {% endunless %}
                     {% endif %}
