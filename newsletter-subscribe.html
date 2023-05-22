@@ -11,25 +11,22 @@ byline: date
 			action="/dialogues/newsletter/subscribed" 
 			class="pat-form pat-validate pat-inject">
 			<fieldset 
-				class="form-panel">
-				<fieldset 
-					class="horizontal">
-					{% include prozin/newsletters-checklist.html %}
-					<label>
-						{{ site.data.prozin.ui.label_email[site.data.config.lang] }} 
-						<input 
-							type="email" 
-							required 
-							name="e-mail" />
-					</label>
-					{% include patterns/honey-pot.html %}
-				</fieldset>
-				<fieldset 
-					class="button-bar">
+				class="form-panel horizontal">
+				{% include prozin/newsletters-checklist.html %}
+				<label>
+					{% include patterns/i18n id="label_email" %}
+					<input 
+						type="email" 
+						required 
+						name="e-mail" />
+				</label>
+				{% include patterns/honey-pot.html %}
+				<div 
+					class="button-bar group">
 					<button 
 						class="default pat-button" 
-						type="submit">{{ site.data.prozin.ui.label_subscribe[site.data.config.lang] }}</button>
-				</fieldset>
+						type="submit">{% include patterns/i18n id="label_subscribe" %}</button>
+				</div>
 			</fieldset>
 		</form>
     </article>
