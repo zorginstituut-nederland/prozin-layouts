@@ -54,16 +54,22 @@ page_type: search-results
                             </option>
                             {% for content-type in site.data.content-types %}  
                                 <option>
-                                    {% for collection in content-type.collection %}
-                                        {% include patterns/i18n id=collection.i18n %}
-                                    {% endfor %}
+                                    {% include patterns/i18n id=content-type.i18n %}
                                 </option>
                             {% endfor %}
                             {% for content-type in site.data.prozin.content-types %}  
                                 <option>
-                                    {% for collection in content-type.collection %}
-                                        {% include patterns/i18n id=collection.i18n %}
-                                    {% endfor %}
+                                    {% include patterns/i18n id=content-type.i18n %}
+                                </option>
+                            {% endfor %}
+                            {% for document-type in site.data.document-types %}  
+                                <option>
+                                    {% include patterns/i18n id=document-type.i18n %}
+                                </option>
+                            {% endfor %}
+                            {% for document-type in site.data.prozin.document-types %}  
+                                <option>
+                                    {% include patterns/i18n id=document-type.i18n %}
                                 </option>
                             {% endfor %}
                         </select>
