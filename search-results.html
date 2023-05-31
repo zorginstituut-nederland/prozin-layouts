@@ -44,11 +44,33 @@ page_type: search-results
                 data-pat-collapsible="open-trigger: #open-trigger; close-trigger: #close-trigger">
                 <h3 
                     class="filter-toggle">Filters</h3>
-                    {% include patterns/form.html 
-                        class="panel-content" 
-                        src="search-filters" 
-                        root="fieldset" 
-                        layout="horizontal" %}
+                <fieldset 
+                    class="form-panel section horizontal panel-content">
+                    <label>
+                        {% include patterns/i18n id="label_type" %}
+                        <select>
+                            <option>
+                                {% include patterns/i18n id="label_all_publications" %}
+                            </option>
+                            {% for content-type in site.data.content-types %}  
+                                <option>
+                                    {% for collection in content-type.collection %}
+                                        {% include patterns/i18n id=collection.i18n %}
+                                    {% endfor %}
+                                </option>
+                            {% endfor %}
+                            {% for content-type in site.data.prozin.content-types %}  
+                                <option>
+                                    {% for collection in content-type.collection %}
+                                        {% include patterns/i18n id=collection.i18n %}
+                                    {% endfor %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        {% include patterns/form-help.html 
+                            content="message_help_document_type" %}
+                    </label>                        
+                </fieldset>
             </fieldset>
             <div 
                 class="group button-bar">
