@@ -47,7 +47,7 @@ Parent folder: {{ page_path[2] }}
                 {% assign item_path = item.url | split: "/" | reverse %}
 
                 {% if item_path[0] == 'index' %}
-                    {% unless item.title == page.title %}
+                    {% unless item.title == page.title or item.url contains '-state-' %}
                          {% if item_path[2] == page_path[1] %}
                             <li>
                                 <a 
@@ -64,7 +64,7 @@ Parent folder: {{ page_path[2] }}
             {% for item in this_scope %}
                 {% assign item_path = item.url | split: "/" | reverse %}
                 {% if item_path[1] == page_path[1] %}
-                    {% unless item.title == page.title %}
+                    {% unless item.title == page.title or item.url contains '-state-' %}
                         <li>
                             <a 
                                 href="{{ item.url }}" 
