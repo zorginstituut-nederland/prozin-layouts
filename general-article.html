@@ -32,6 +32,24 @@ byline: date
 			        enlarge=section.enlarge %}
         	{% endif %}
         {% endfor %}
+        {% if page.content != null %}
+            {% include prozin/section.html
+                type='rich'
+                title=section.name
+                image=section.image
+                caption=section.caption
+                content=page.content
+                poster=section.poster
+                video=section.video
+                transcript=section.transcript
+                transcript_link=section.transcript_link
+                height=section.height
+		        width=section.width
+		        source=section.source
+		        hosting=section.hosting
+		        interaction=section.interaction
+		        enlarge=section.enlarge %}
+        {% endif %}
 		{% if page.tags.size >= 1 or page.links %}
 			{% include prozin/section.html
 				type="links" 
