@@ -22,6 +22,8 @@ title_in_breadcrumbs: true
                 <select>
                     <option>Ongegroepeerd</option>
                     <option
+                        disabled>Gegroepeerd op werkstroomstaat</option>
+                    <option
                         disabled>Gegroepeerd op collectie</option>
                     <option
                         disabled>Gegroepeerd op tag</option>
@@ -78,17 +80,20 @@ title_in_breadcrumbs: true
     id="listing">
     <nav
         id="image-collection-image-bank"
-        class="image-selector col-6 cropping-cover titles-hidden pat-navigation">        {% for item in site.pages %}
+        class="image-selector col-6 cropping-cover titles-hidden pat-navigation">        
+        {% for item in site.pages %}
             {% if item.layout == 'prozin/image' %}
-                <a
-                    class="item image pat-inject"
-                    data-pat-inject="scroll: #main; history: record"
-                    href="{{ item.url }}"
-                    title="{{ item.title }}">
-                    <img
-                        src="{{ item.url }}.jpg"
-                        alt="{{ item.alt_text }}" />
-                </a>
+                {% unless item.url contains '-state' %}
+                    <a
+                        class="item image pat-inject state-{{ item.state | slugify }}"
+                        data-pat-inject="scroll: #main; history: record"
+                        href="{{ item.url }}"
+                        title="{{ item.title }}">
+                        <img
+                            src="{{ item.url }}.jpg"
+                            alt="{{ item.alt_text }}" />
+                    </a>
+                {% endunless %}
             {% endif %}
         {% endfor %}
         <a  
