@@ -63,7 +63,7 @@ Parent folder: {{ page_path[2] }}
 
             {% for item in this_scope %}
                 {% assign item_path = item.url | split: "/" | reverse %}
-                {% if item_path[1] == page_path[1] %}
+                {% if item_path[1] == page_path[1] %}bla
                     {% unless item.title == page.title %}
                         <li>
                             <a 
