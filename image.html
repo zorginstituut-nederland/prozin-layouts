@@ -5,46 +5,9 @@ page_type: news-item
 parent: Beeldbank
 ---
 
-<form 
-    action="{{ page.url }}#main-content" 
-    class="pat-toolbar pat-bumper pat-inject pat-autosubmit pat-form"
-    id="image-toolbar">
-
-    <div 
-        id="image-toolbar-functions-area"
-        class="toolbar-functions-area">
-        <div
-            class="toolbar-section view-options"
-            id="image-toolbar-view-options">
-
-        </div>
-        <div 
-            class="toolbar-section quick-functions"
-            id="image-toolbar-quick-functions">
-            <a 
-		        href="/dialogues/image-bank/edit" 
-		        data-pat-inject="scroll: #main"
-		        class="pat-button pat-inject edit icon-pencil">{{ site.data.prozin.ui.label_edit[site.data.config.lang] }}</a>
-            <a 
-                class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
-                href="#id-{{ item.title | slugify }}" 
-                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-            <div
-                hidden
-                id="id-{{ item.title | slugify }}">
-                <ul 
-                    class="menu">
-                    <li>
-                        <a 
-                            href="/dialogues/image-bank/delete-image#document-content" 
-                            data-pat-modal="class: medium panel"
-                            class="icon-trash pat-modal close-panel">Verwijder</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</form>
+{% unless page.state == 'preview' %}
+	{% include prozin/toolbar-standard-view.html %}
+{% endunless %}
 
 <div 
 	id="main-content">
