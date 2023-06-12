@@ -5,7 +5,7 @@ parent: Beheer
 ---
 
 <form
-    class="pat-form">
+    class="pat-form panel-style">
     <div 
         class="pat-toolbar pat-bumper"
         id="cms-settings-toolbar">
@@ -34,6 +34,87 @@ parent: Beheer
     </div>
     <div 
         id="listing">
-        
+        <div
+            class="form-panel pat-collapsible open"
+            data-pat-collapsible="
+                store: local; 
+                scroll-selector: self; 
+                scroll-offset: 120px"
+            id="language-settings-well">
+            <h2 
+                class="form-separation-header">
+                {% include patterns/i18n id="patterns.label_language" %}    
+            </h2> 
+            <fieldset 
+                class="horizontal">
+                <fieldset 
+                    class="pat-checklist">
+                    <legend>{% include patterns/i18n id="label_supported_languages" %}</legend>  
+                    <label
+                        class="disabled">
+                        {% include patterns/i18n id="patterns.label_dutch" %}
+                        <input
+                            disabled
+                            checked 
+                            type="checkbox" 
+                            name="language">
+                    </label>  
+                    <label>
+                        {% include patterns/i18n id="patterns.label_english" %}
+                        <input
+                            checked 
+                            type="checkbox" 
+                            name="language">
+                    </label>    
+                </fieldset>
+                <label>
+                    {% include patterns/i18n id="label_default_language" %}
+                    <select>
+                        <option>{% include patterns/i18n id="patterns.label_dutch" %}</option>
+                        <option>{% include patterns/i18n id="patterns.label_english" %}</option>
+                    </select>
+                </label>
+            </fieldset>
+        </div>
+        <div
+            class="form-panel pat-collapsible open"
+            data-pat-collapsible="
+                store: local; 
+                scroll-selector: self; 
+                scroll-offset: 120px"
+            id="homepage-settings-well">
+            <h2 
+                class="form-separation-header">
+                {% include patterns/i18n id="label_homepage" %}    
+            </h2> 
+            <fieldset 
+                class="horizontal">
+                <h3 
+                    class="form-section-header">
+                    {% include patterns/i18n id="label_swimlane_hero" %}
+                </h3>
+                <label>
+                    {% include patterns/i18n id="label_survey_url" %}
+                    <input 
+                        type="url" 
+                        name="">
+                    {% include patterns/form-help.html
+                        content="message_help_promo_url" %}
+                </label>
+                <label>
+                    {% include patterns/i18n id="label_breaking_news" %}
+                    <select
+                        class="pat-autosuggest">
+                        <option>{% include patterns/i18n id="label_no_breaking_news" %}</option>
+                        {% for item in site.news %}
+                            <option>{{ item.title }}</option>
+                        {% endfor %}
+                    </select>
+                    {% include patterns/form-help.html
+                        content="message_help_breaking_news" %}
+                </label>
+            </fieldset>
+        </div>
+        {{ content }}
     </div>
 </form>
