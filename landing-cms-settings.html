@@ -5,7 +5,8 @@ parent: Beheer
 ---
 
 <form
-    class="pat-form panel-style">
+    action="{{ page.url }}#listing"
+    class="pat-form panel-style pat-inject">
     <div 
         class="pat-toolbar pat-bumper"
         id="cms-settings-toolbar">
@@ -78,16 +79,16 @@ parent: Beheer
                 </label>
                 <fieldset 
                     class="group pat-checklist radio">
-                    <legend>Fallback</legend>
+                    <legend>{% include patterns/i18n id="label_fallback" %}</legend>
                     <label>
-                        Toon in overzichten contentobjecten in een alternatieve taal wanneer beschikbaar. 
+                        {% include patterns/i18n id="label_show_objects_in_alternate_language" %}
                         <input 
                             checked 
                             type="radio" 
                             name="language_fallback">
                     </label>
                     <label>
-                        Toon in overzichten alleen contentobjecten in de taal die de gebruiker geselecteerd heeft
+                        {% include patterns/i18n id="label_hide_objects_in_alternate_language" %}
                         <input 
                             type="radio" 
                             name="language_fallback">
