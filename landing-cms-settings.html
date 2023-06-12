@@ -50,7 +50,7 @@ parent: Beheer
             <fieldset 
                 class="horizontal">
                 <fieldset 
-                    class="pat-checklist">
+                    class="group pat-checklist">
                     <legend>{% include patterns/i18n id="label_supported_languages" %}</legend>  
                     <label
                         class="disabled">
@@ -67,7 +67,7 @@ parent: Beheer
                             checked 
                             type="checkbox" 
                             name="language">
-                    </label>    
+                    </label>  
                 </fieldset>
                 <label>
                     {% include patterns/i18n id="label_default_language" %}
@@ -76,6 +76,22 @@ parent: Beheer
                         <option>{% include patterns/i18n id="patterns.label_english" %}</option>
                     </select>
                 </label>
+                <fieldset 
+                    class="group pat-checklist radio">
+                    <legend>Fallback</legend>
+                    <label>
+                        Toon in overzichten alleen content in de taal die de gebruiker geselecteerd heeft
+                        <input 
+                            type="radio" 
+                            name="language_fallback">
+                    </label>
+                    <label>
+                        Toon in overzichten content in een alternatieve taal wanneer beschikbaar. 
+                        <input 
+                            type="radio" 
+                            name="language_fallback">
+                    </label>
+                </fieldset>
             </fieldset>
         </div>
         <div
