@@ -123,7 +123,8 @@ parent: Beheer
                         placeholder="Selecteer maximaal 5 pagina's" 
                         data-pat-autosuggest='
                             allow-new-words: false;  
-                            ajax-search-index: text; 
+                            ajax-search-index: text;
+                            maximum-selection-size: 5; 
                             ajax-url: /dialogues/cms/news-items.json;' />
                     {% include patterns/form-help.html
                         content="message_help_directly_to" %}
