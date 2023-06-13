@@ -114,9 +114,25 @@ parent: Beheer
                     {% include patterns/i18n id="label_swimlane_hero" %}
                 </h3>
                 <label>
+                    {% include patterns/i18n id="label_directly_to" %}
+                    <input 
+                        class="pat-autosuggest"
+                        required
+                        name="mi"
+                        type="text"
+                        placeholder="Selecteer maximaal 5 pagina's" 
+                        data-pat-autosuggest='
+                            allow-new-words: false;  
+                            ajax-search-index: text; 
+                            ajax-url: /dialogues/cms/news-items.json;' />
+                    {% include patterns/form-help.html
+                        content="message_help_directly_to" %}
+                </label>
+                <label>
                     {% include patterns/i18n id="label_survey_url" %}
                     <input 
                         type="url" 
+                        placeholder="https://www…" 
                         name="">
                     {% include patterns/form-help.html
                         content="message_help_promo_url" %}
