@@ -26,8 +26,10 @@ page_type: news-item
 		{% endif %}
 		{% include prozin/section.html
 			type="downloads" %}
-		{% include prozin/section.html 
-			type="links"
-			title="Zie ook" %}
+		{% if page.tags.size >= 1 or page.links %}
+			{% include prozin/section.html
+				type="links" 
+				title="Zie ook" %}
+		{% endif %}
     </article>
 </div>
