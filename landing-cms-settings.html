@@ -38,7 +38,8 @@ parent: Beheer
     <div 
         id="listing">
         <div
-            class="form-panel pat-collapsible open"
+            id="settings-panel-language"
+            class="form-panel pat-collapsible closed"
             data-pat-collapsible="
                 store: local; 
                 scroll-selector: self; 
@@ -97,7 +98,8 @@ parent: Beheer
             </fieldset>
         </div>
         <div
-            class="form-panel pat-collapsible open"
+            id="settings-panel-homepage"
+            class="form-panel pat-collapsible closed"
             data-pat-collapsible="
                 store: local; 
                 scroll-selector: self; 
@@ -151,6 +153,43 @@ parent: Beheer
                     {% include patterns/form-help.html
                         content="message_help_breaking_news" %}
                 </label>
+            </fieldset>
+        </div>
+        <div
+            id="settings-panel-login"
+            class="form-panel pat-collapsible open"
+            data-pat-collapsible="
+                store: local; 
+                scroll-selector: self; 
+                scroll-offset: 120px"
+            id="homepage-settings-well">
+            <h2 
+                class="form-separation-header">
+                {% include patterns/i18n id="label_login" %}    
+            </h2> 
+            <p
+                class="pat-message info">
+                You may provide some text that will be displayed on the Request account page.
+            </p>
+            <fieldset 
+                class="horizontal">
+                <label>
+                    Summary
+                    <textarea 
+                        name="" 
+                        id="" 
+                        rows="2"></textarea>
+                </label>
+                <fieldset
+                    class="group">
+                    {% include patterns/i18n id="label_body_text" %}
+                    {% include patterns/form-field-rich-editor.html
+                        allow="
+                            strong,
+                            emphasised,
+                            link,"
+                             %}
+                </fieldset>
             </fieldset>
         </div>
         {{ content }}
