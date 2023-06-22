@@ -113,7 +113,7 @@ parent: Beheer
                 class="horizontal">
                 <h3 
                     class="form-section-header">
-                    {% include patterns/i18n id="label_swimlane_hero" %}
+                    {% include patterns/i18n id="label_swim_lane_hero" %}
                 </h3>
                 <label>
                     {% include patterns/i18n id="label_directly_to" %}
@@ -153,6 +153,41 @@ parent: Beheer
                     {% include patterns/form-help.html
                         content="message_help_breaking_news" %}
                 </label>
+                <h3 
+                    class="form-section-header">
+                    {% include patterns/i18n id="label_swim_lane_news" %}
+                </h3>
+                <label>
+                    Number of rows
+                    <input 
+                        type="number"
+                        value="2" />
+                </label>
+                <fieldset 
+                    class="pat-checklist">
+                    <label>
+                        Show images when available
+                        <input 
+                            checked
+                            type="checkbox" />
+                    </label>
+                </fieldset>
+                <h3 
+                    class="form-section-header">
+                    {% include patterns/i18n id="label_swim_lane_browse" %}
+                </h3>
+                <label>
+                    {% include patterns/i18n id="label_help_see_also" %}   
+                    <input 
+                        class="pat-autosuggest"
+                        required
+                        name="mi"
+                        type="text"
+                        data-pat-autosuggest='
+                            allow-new-words: false;  
+                            ajax-search-index: text; 
+                            ajax-url: /dialogues/cms/general.json;' />
+                </label>
             </fieldset>
         </div>
         <div
@@ -184,6 +219,7 @@ parent: Beheer
                     class="group">
                     {% include patterns/i18n id="label_body_text" %}
                     {% include patterns/form-field-rich-editor.html
+                        content="<p>Please use the <a href='/dialogues/contact/'>Contact form</a> to request an account.</p>"
                         allow="
                             strong,
                             emphasised,
