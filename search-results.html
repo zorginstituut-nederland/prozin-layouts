@@ -54,12 +54,9 @@ page_type: search-results
                             {% for item in site.data.content-types %}
                                 <option>{{ item.name }}</option>
                             {% endfor %}
-                            <optgroup
-                                label="Standaardtypen">
-                                {% for item in site.data.prozin.content-types %}
-                                    <option>{{ item.name }}</option>
-                                {% endfor %}
-                            </optgroup>
+                            {% for item in site.data.prozin.content-types %}
+                                <option>{{ item.name }}</option>
+                            {% endfor %}
                         </select>
                         {% include patterns/form-help.html 
                             content="message_help_document_type" %}
