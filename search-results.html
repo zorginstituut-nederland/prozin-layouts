@@ -49,29 +49,17 @@ page_type: search-results
                     <label>
                         {% include patterns/i18n id="label_type" %}
                         <select>
-                            <option>
-                                {% include patterns/i18n id="label_all_publications" %}
-                            </option>
-                            {% for content-type in site.data.content-types %}  
-                                <option>
-                                    {% include patterns/i18n id=content-type.i18n %}
-                                </option>
+                            <option 
+                                value="all">{%- include patterns/i18n id="label_all_document_types" -%}</option>
+                            {% for item in site.data.content-types %}
+                                <option>{{ item.name }}</option>
                             {% endfor %}
-                            {% for content-type in site.data.prozin.content-types %}  
-                                <option>
-                                    {% include patterns/i18n id=content-type.i18n %}
-                                </option>
-                            {% endfor %}
-                            {% for document-type in site.data.document-types %}  
-                                <option>
-                                    {% include patterns/i18n id=document-type.i18n %}
-                                </option>
-                            {% endfor %}
-                            {% for document-type in site.data.prozin.document-types %}  
-                                <option>
-                                    {% include patterns/i18n id=document-type.i18n %}
-                                </option>
-                            {% endfor %}
+                            <optgroup
+                                label="Standaardtypen">
+                                {% for item in site.data.prozin.content-types %}
+                                    <option>{{ item.name }}</option>
+                                {% endfor %}
+                            </optgroup>
                         </select>
                         {% include patterns/form-help.html 
                             content="message_help_document_type" %}
