@@ -92,7 +92,7 @@ page_type: search-results
 
     <div 
         id="result-list" 
-        class="search-results visible-injection">
+        class="search-results">
         {% for item in site.posts %}
             {% if item.title contains page.lemma or item.keywords contains page.lemma %}
                 <a 
