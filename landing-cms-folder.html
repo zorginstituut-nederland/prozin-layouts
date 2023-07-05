@@ -25,7 +25,10 @@ parent: Beheer
                 <th></th>
             </tr>
         </thead>
-        <tbody>               
+        <tbody>    
+            {%- for item in page.folders -%}
+                {% include prozin/table-row-cms-folder.html %}
+            {%- endfor -%}       
             {% for content_type in page.content_types %}
                 {% for item in site[page.collection] %}
                     {% if content_type.name == item.layout %}
