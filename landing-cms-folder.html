@@ -31,7 +31,7 @@ parent: Beheer
             {%- endfor -%}       
             {% for content_type in page.content_types %}
                 {% for item in site[page.collection] %}
-                    {% if content_type.name == item.layout %}
+                    {% if content_type.name == item.layout or item.parent == page.title %}
                         {% unless item.url contains '-state-edit' or item.url contains '-preview' %}
                             {% include prozin/table-row-cms-folder.html %}
                         {% endunless %}
