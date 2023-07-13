@@ -88,8 +88,10 @@ title_in_breadcrumbs: true
                         class="
                             item 
                             image 
-                            pat-inject 
-                            {%- if item.url contains 'missing' -%}no-image{%- endif -%}
+                            pat-inject      
+                            {% if item.url contains 'missing' %}
+                                no-image      
+                            {% endif %} 
                             state-{{ item.state | slugify }}"
                         data-pat-inject="scroll: #main; history: record"
                         href="{{ item.url }}"
