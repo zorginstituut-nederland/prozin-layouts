@@ -85,13 +85,20 @@ title_in_breadcrumbs: true
             {% if item.layout == 'prozin/image' %}
                 {% unless item.url contains '-state' %}
                     <a
-                        class="item image pat-inject state-{{ item.state | slugify }}"
+                        class="
+                            item 
+                            image 
+                            pat-inject 
+                            {%- if item.url contains 'missing' -%}no-image{%- endif -%}
+                            state-{{ item.state | slugify }}"
                         data-pat-inject="scroll: #main; history: record"
                         href="{{ item.url }}"
                         title="{{ item.title }}">
-                        <img
-                            src="{{ item.url }}.jpg"
-                            alt="{{ item.alt_text }}" />
+                        {%- unless item.url contains 'missing' -%}
+                            <img
+                                src="{{ item.url }}.jpg"
+                                alt="{{ item.alt_text }}" />
+                        {%- endunless -%}
                     </a>
                 {% endunless %}
             {% endif %}

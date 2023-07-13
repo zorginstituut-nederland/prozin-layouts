@@ -28,28 +28,30 @@ parent: Beeldbank
 				{{ page.alt_text }}
 			</dd>
 		</dl>
-		<article 
-			class="pat-rich">
-		    <figure>	
-		    	<a 
-		    		href="{{ page.url }}.jpg" 
-		    		class="pat-gallery">
-                    <picture
-                    	class="picture">
-				    	<img 
-				    		src="{{ page.url }}.jpg"
-				    		alt="{{ page.alt_text }}" />
-				    	{% if page.copyright == 'Copyright' %}
-	                        <small 
-	                            class="copyright-mention type-{{ page.copyright | slugify }}">{{ page.author }}</small>
-				    	{% elsif page.copyright == 'Creative Commons' %}
-	                        <small 
-	                            class="copyright-mention type-{{ page.copyright | slugify }}">{{ page.author }}</small>
-				    	{% endif %}
-                    </picture>
-	    		</a>
-	    	</figure>
-	    </article>
+		{%- unless page.url contains 'missing' -%}
+			<article 
+				class="pat-rich">
+				<figure>	
+					<a 
+						href="{{ page.url }}.jpg" 
+						class="pat-gallery">
+						<picture
+							class="picture">
+							<img 
+								src="{{ page.url }}.jpg"
+								alt="{{ page.alt_text }}" />
+							{% if page.copyright == 'Copyright' %}
+								<small 
+									class="copyright-mention type-{{ page.copyright | slugify }}">{{ page.author }}</small>
+							{% elsif page.copyright == 'Creative Commons' %}
+								<small 
+									class="copyright-mention type-{{ page.copyright | slugify }}">{{ page.author }}</small>
+							{% endif %}
+						</picture>
+					</a>
+				</figure>
+			</article>
+		{%- endunless -%}
 
 	    <div 
 	    	class="page-module type-rich">
