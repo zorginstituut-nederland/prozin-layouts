@@ -15,13 +15,13 @@ parent: Beheer
                 <th>
                     <a 
                         href="{{ page.url }}#listing"
-                        class="pat-inject sorting sorting-asc">Naam</a></th>
+                        class="pat-inject sorting sorting-asc">{%- include patterns/i18n id="label_name" -%}</a></th>
                 <th><a 
                         href="{{ page.url }}#listing"
-                        class="pat-inject sorting">Laatst bewerkt</a></th>
+                        class="pat-inject sorting">{%- include patterns/i18n id="label_last_modified" -%}</a></th>
                 <th><a 
                         href="{{ page.url }}#listing"
-                        class="pat-inject sorting">Status</a></th>
+                        class="pat-inject sorting">{%- include patterns/i18n id="label_status" -%}</a></th>
                 <th></th>
             </tr>
         </thead>
