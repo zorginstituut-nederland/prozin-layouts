@@ -96,7 +96,8 @@ page_type: organisations
                     id="organisations-overview-body">
                     {% for item in organisations %}
                         <tr>
-                            <th>
+                            <th
+                                class="item-name">
                                  <a 
                                     href="/organisations/{{ item.name | slugify }}"
                                     class="pat-inject"

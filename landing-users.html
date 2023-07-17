@@ -67,7 +67,8 @@ page_type: users
                             {% endif %}
                             {% unless show_this == false %}
                                 <tr>
-                                <th>
+                                <th
+                                    class="item-name">
                                      <a 
                                         href="/users/{{ this_persona.first_name | slugify }}-{{ this_persona.last_name | slugify }}"
                                         class="pat-inject"
