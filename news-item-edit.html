@@ -12,7 +12,8 @@ meta:
 ---
 
 <form
-    class="pat-inject pat-form">
+    action="{{ page.url }}"
+    class="pat-inject pat-form pat-validation">
     
     {% include prozin/toolbar-cms-edit.html
         metadata="/dialogues/cms/panel-metadata-news#document-content"
