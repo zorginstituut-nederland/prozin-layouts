@@ -139,7 +139,6 @@ page_type: search-results
                                 <span class="byline-item"><time datetime="{{ item.date | date: "%Y-%m-%dT%H:%M" }}Z">{{ item.date | date: "%-d %B %Y" }}</time></span>
                             {% endif %}
                         </p>
-                        </p>
                     {% endif %}
                 </a>
             {% endif %}
@@ -150,7 +149,10 @@ page_type: search-results
             <a 
                 href="/zoekresultaten.html" 
                 class="btn next pat-inject" 
-                data-pat-inject="trigger: autoload-visible; source: #result-list; target: #pagination::element">Meer resultaten laden…</a>
+                data-pat-inject="
+                    trigger: autoload-visible; 
+                    source: #result-list; 
+                    target: #pagination::element">{% include patterns/i18n id="label_load_more_results" %}</a>
         </p>
         
     </div>
