@@ -5,21 +5,23 @@ page_type: landing-topics
 
 <div 
     id="main-content">
-    <article 
+    <div 
+        id="page-head" 
         class="pat-rich">
-        <div 
-            class="introduction" 
-            id="page-intro">
-            {% if page.summary %}
+        <h1
+            class="assistive">
+            {{ page.title }}
+        </h1>
+        {% if page.summary %}
+            <div 
+                class="introduction" 
+                id="page-intro">
                 <p>
                     {{ page.summary }}
                 </p>
-            {% endif %}
-        </div>
-
-        {{ content }}
-
-    </article>
+            </div>
+        {% endif %}
+    </div>
 </div>
 
 <div 
@@ -31,11 +33,15 @@ page_type: landing-topics
         {% unless page.title == item.title %}
             {% unless item.parent %}
                 <div 
-                    class="topic-list-section">
-                    <h3 
-                        class="topic-list-section-title">
+                    class="page-module type-topics">
+                    <h2 
+                        class="page-module-title">
                         {{ item.title }}</a>
-                    </h3>
+                    </h2>
+                    {% if item.summary %}
+                        <p 
+                            class="page-module-summary">{{ item.summary }}</p>
+                    {% endif %}
                     <ul 
                         class="link-list col-4">
                         {% for subitem in site[this_scope] %}
