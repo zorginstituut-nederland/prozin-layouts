@@ -38,7 +38,7 @@ title_in_breadcrumbs: true
                     {% if item.layout == 'prozin/general-article' and item.parent == page.title %}
                         <li>
                             <a 
-                                href="{{ subitem.url }}" 
+                                href="{{ item.url }}" 
                                 class="pat-inject" 
                                 data-pat-inject="history: record; scroll: #main"
                                 title="{{ item.summary }}">{{ item.title }}</a>
