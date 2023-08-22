@@ -29,34 +29,57 @@ page_type: landing-topics
 
     {% capture this_scope %}{{ page.collection }}{% endcapture %}
 
+    <ul 
+        class="link-list col-4 expanded">
+        {% for item in site[this_scope] %}
+            {% unless page.title == item.title %}
+                {% unless item.url contains '-state-' %}
+                    {% if item.layout == 'prozin/general-article' and item.parent == page.title %}
+                        <li>
+                            <a 
+                                href="{{ subitem.url }}" 
+                                class="pat-inject" 
+                                data-pat-inject="history: record; scroll: #main"
+                                title="{{ item.summary }}">{{ item.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endunless %}
+            {% endunless %}
+        {% endfor %}
+    </ul>
+
     {% for item in site[this_scope] %}
         {% unless page.title == item.title %}
-            {% unless item.parent %}
-                <div 
-                    class="page-module type-topics">
-                    <h2 
-                        class="page-module-title">
-                        {{ item.title }}</a>
-                    </h2>
-                    {% if item.summary %}
-                        <p 
-                            class="page-module-summary">{{ item.summary }}</p>
-                    {% endif %}
-                    <ul 
-                        class="link-list col-4 expanded">
-                        {% for subitem in site[this_scope] %}
-                            {% if subitem.parent == item.title %}
-                                <li>
-                                    <a 
-                                        href="{{ subitem.url }}"
-                                        class="pat-inject"
-                                        data-pat-inject="history: record; scroll: #main" 
-                                        title="{{ item.summary }}">{{ subitem.title }}</a>
-                                </li>                            
+            {% unless item.url contains '-state-' %}
+                {% if item.layout == 'prozin/landing-toc' or item.layout == 'prozin/landing-topics' %}
+                    {% unless item.parent %}
+                        <div 
+                            class="page-module type-topics">
+                            <h2 
+                                class="page-module-title">
+                                {{ item.title }}</a>
+                            </h2>
+                            {% if item.summary %}
+                                <p 
+                                    class="page-module-summary">{{ item.summary }}</p>
                             {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
+                            <ul 
+                                class="link-list col-4 expanded">
+                                {% for subitem in site[this_scope] %}
+                                    {% if subitem.parent == item.title %}
+                                        <li>
+                                            <a 
+                                                href="{{ subitem.url }}"
+                                                class="pat-inject"
+                                                data-pat-inject="history: record; scroll: #main" 
+                                                title="{{ item.summary }}">{{ subitem.title }}</a>
+                                        </li>                            
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endunless %}
+                {% endif %}
             {% endunless %}
         {% endunless %}
     {% endfor %}
