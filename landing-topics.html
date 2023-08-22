@@ -43,7 +43,7 @@ page_type: landing-topics
                             class="page-module-summary">{{ item.summary }}</p>
                     {% endif %}
                     <ul 
-                        class="link-list col-4">
+                        class="link-list col-4 expanded">
                         {% for subitem in site[this_scope] %}
                             {% if subitem.parent == item.title %}
                                 <li>
