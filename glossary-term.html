@@ -9,20 +9,8 @@ layout: prozin/generic
 <div 
 	id="main-content">
 	<article>
-		<div 
-			id="page-head" 
-			class="pat-rich">
-			<h1>
-				{{ page.title }}
-			</h1>	
-			<section 
-				class="introduction" 
-				id="page-intro">
-		        <p>
-		            {{ page.summary }}
-		        </p>
-		    </section>
-		</div>
+		{% include prozin/page-head.html
+			byline=true %}
 
     	{% include prozin/section.html
     		content=page.content
