@@ -37,7 +37,8 @@ page_type: organisations
                         class="context-menu-label menu-trigger icon">Filters</strong>
                     <p 
                         class="close-menu">Sluit</p>
-                    <fieldset class="vertical">
+                    <fieldset 
+                        class="vertical">
                         <fieldset 
                             class="pat-checklist radio">
                             <legend>{% include patterns/i18n id="label_organisation_types" %}</legend>
@@ -102,8 +103,7 @@ page_type: organisations
                                     href="/organisations/{{ item.name | slugify }}"
                                     class="pat-inject"
                                     data-pat-inject="history: record; scroll: #main">{{ item.name }}</a>
-                                <div 
-                                    hidden="" 
+                                <template 
                                     id="org-{{ item.name | slugify }}">
                                     <ul 
                                         class="menu">
@@ -122,7 +122,7 @@ page_type: organisations
                                                 class="close-panel pat-modal icon-3909-kruis">Verwijder uit {{ site.title }}</a>
                                         </li> -->
                                     </ul>
-                                </div>
+                                </template>
                             </th>
                             <td>{{ item.type }}</td>
                             <td
@@ -135,7 +135,7 @@ page_type: organisations
                             <td
                                 class="functions">
                                 <a 
-                                    class="iconified icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+                                    class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
                                     href="#org-{{ item.name | slugify }}" 
                                     data-pat-tooltip="source: ajax; position-list: tr">More…</a>
                             </td>

@@ -73,8 +73,7 @@ page_type: users
                                         href="/users/{{ this_persona.first_name | slugify }}-{{ this_persona.last_name | slugify }}"
                                         class="pat-inject"
                                         data-pat-inject="history: record; scroll: #main">{{ this_persona.first_name }} {{ this_persona.last_name }}</a>
-                                    <div 
-                                        hidden
+                                    <template
                                         id="user-{{ this_persona.last_name | slugify }}">
                                         <ul 
                                             class="menu">
@@ -132,7 +131,7 @@ page_type: users
                                                     class="close-panel pat-modal icon-3909-kruis">Verwijder {{ this_persona.first_name }} {{ this_persona.last_name }} uit {{ site.title[site.data.config.lang] }} </a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </template>
                                 </th>
                                 {% if page.role == 'Owner' %}
                                     <td>{{ this_persona.organisation }}</td>
@@ -151,7 +150,7 @@ page_type: users
                                 <td
                                     class="functions">
                                     <a 
-                                        class="iconified icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+                                        class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
                                         href="#user-{{ this_persona.last_name | slugify }}" 
                                         data-pat-tooltip="source: ajax; position-list: tr">More…</a>
                                     </td>
