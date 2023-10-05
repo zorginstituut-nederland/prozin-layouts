@@ -14,10 +14,16 @@ parent: Beheer
             <tr>
                 <th 
                     class="select">
-                    <label>
+                    <label
+                        data-pat-inject="
+                            source: #listing;
+                            target: #listing;
+                            url: {{ page.url }};
+                        "
+                        class="pat-autosubmit pat-inject">
                         Select all
-                        <input 
-                            class="toggle-all"
+                        <input
+                            name="select-all"
                             type="checkbox">
                     </label>
                 </th>
