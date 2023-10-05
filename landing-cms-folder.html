@@ -59,6 +59,19 @@ parent: Beheer
                     {% endif %}
                 {% endfor %}
             {% endfor %}
+            <tr
+                id="collection-overview-load-more">
+                <td
+                    colspan="5">
+                    <a  
+                        class="pat-inject infinite-scrolling-trigger"
+                        data-pat-inject="
+                            source: #collection-overview-body; 
+                            target: #collection-overview-load-more::element;
+                            trigger: autoload-visible" 
+                        href="{{ page.url }}">{%- include patterns/i18n id="label_load_more_results" -%}</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
