@@ -46,7 +46,8 @@ parent: Beheer
                 <th></th>
             </tr>
         </thead>
-        <tbody>    
+        <tbody
+            id="collection-overview-body">    
             {%- for item in page.folders -%}
                 {% include prozin/table-row-cms-folder.html %}
             {%- endfor -%}       
