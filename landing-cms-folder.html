@@ -71,8 +71,9 @@ parent: Beheer
                 {% endfor %}
                 <tr
                     id="collection-overview-load-more">
+                    {%- assign colspan = 5 | plus: page.columns.size -%}
                     <td
-                        colspan="5">
+                        colspan="{{ colspan }}">
                         <a  
                             class="pat-inject infinite-scrolling-trigger"
                             data-pat-inject="
