@@ -6,79 +6,83 @@ parent: Beheer
 
 {% include prozin/toolbar-cms-section.html %}
 
-<div 
-    id="listing">
-    <table 
-        class="hd pat-checklist">
-        <thead>
-            <tr>
-                <th 
-                    class="select">
-                    <label
-                        data-pat-inject="
-                            source: #listing;
-                            target: #listing;
-                            url: {{ page.url }};
-                        "
-                        class="pat-autosubmit pat-inject">
-                        Select all
-                        <input
-                            name="select-all"
-                            type="checkbox">
-                    </label>
-                </th>
-                <th>
-                    <a 
-                        href="{{ page.url }}#listing"
-                        class="pat-inject sorting sorting-asc">{%- include patterns/i18n id="label_name" -%}</a>
-                </th>
-                {% for item in page.columns %}
-                    <th>
-                        <a
-                            href="{{ page.url }}#listing"
-                            class="pat-inject sorting">{%- include patterns/i18n id=item.i18n -%}</a>
+<form 
+    action="{{ page.url }}#listing" 
+    class="pat-bumper pat-inject pat-form">
+    <div 
+        id="listing">
+        <table 
+            class="hd pat-checklist">
+            <thead>
+                <tr>
+                    <th 
+                        class="select">
+                        <label
+                            data-pat-inject="
+                                source: #listing;
+                                target: #listing;
+                                url: {{ page.url }};
+                            "
+                            class="pat-autosubmit pat-inject">
+                            Select all
+                            <input
+                                name="select-all"
+                                type="checkbox">
+                        </label>
                     </th>
+                    <th>
+                        <a 
+                            href="{{ page.url }}#listing"
+                            class="pat-inject sorting sorting-asc">{%- include patterns/i18n id="label_name" -%}</a>
+                    </th>
+                    {% for item in page.columns %}
+                        <th>
+                            <a
+                                href="{{ page.url }}#listing"
+                                class="pat-inject sorting">{%- include patterns/i18n id=item.i18n -%}</a>
+                        </th>
+                    {% endfor %}
+                    <th>
+                        <a 
+                            href="{{ page.url }}#listing"
+                            class="pat-inject sorting">{%- include patterns/i18n id="label_last_modified" -%}</a>
+                    </th>
+                    <th>
+                        <a 
+                            href="{{ page.url }}#listing"
+                            class="pat-inject sorting">{%- include patterns/i18n id="label_status" -%}</a>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody
+                id="collection-overview-body">    
+                {%- for item in page.folders -%}
+                    {% include prozin/table-row-cms-folder.html %}
+                {%- endfor -%}       
+                {% for content_type in page.content_types %}
+                    {% for item in site[page.collection] %}
+                        {% if content_type.name == item.layout or item.parent == page.title %}
+                            {% unless item.url contains '-state-edit' or item.url contains '-preview' %}
+                                {% include prozin/table-row-cms-folder.html %}
+                            {% endunless %}
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
-                <th>
-                    <a 
-                        href="{{ page.url }}#listing"
-                        class="pat-inject sorting">{%- include patterns/i18n id="label_last_modified" -%}</a>
-                </th>
-                <th>
-                    <a 
-                        href="{{ page.url }}#listing"
-                        class="pat-inject sorting">{%- include patterns/i18n id="label_status" -%}</a>
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody
-            id="collection-overview-body">    
-            {%- for item in page.folders -%}
-                {% include prozin/table-row-cms-folder.html %}
-            {%- endfor -%}       
-            {% for content_type in page.content_types %}
-                {% for item in site[page.collection] %}
-                    {% if content_type.name == item.layout or item.parent == page.title %}
-                        {% unless item.url contains '-state-edit' or item.url contains '-preview' %}
-                            {% include prozin/table-row-cms-folder.html %}
-                        {% endunless %}
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
-            <tr
-                id="collection-overview-load-more">
-                <td
-                    colspan="5">
-                    <a  
-                        class="pat-inject infinite-scrolling-trigger"
-                        data-pat-inject="
-                            source: #collection-overview-body; 
-                            target: #collection-overview-load-more::element;
-                            trigger: autoload-visible" 
-                        href="{{ page.url }}">{%- include patterns/i18n id="label_load_more_results" -%}</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                <tr
+                    id="collection-overview-load-more">
+                    <td
+                        colspan="5">
+                        <a  
+                            class="pat-inject infinite-scrolling-trigger"
+                            data-pat-inject="
+                                source: #collection-overview-body; 
+                                target: #collection-overview-load-more::element;
+                                trigger: autoload-visible" 
+                            href="{{ page.url }}">{%- include patterns/i18n id="label_load_more_results" -%}</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>
