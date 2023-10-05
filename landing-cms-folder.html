@@ -15,22 +15,19 @@ parent: Beheer
             class="hd pat-checklist">
             <thead>
                 <tr>
-                    <th 
-                        class="select">
+                    <th>
                         <label
                             data-pat-inject="
                                 source: #listing;
                                 target: #listing;
                                 url: {{ page.url }};
                             "
-                            class="pat-autosubmit pat-inject">
-                            Select all
+                            class="pat-autosubmit pat-inject select-all-items">
+                            Select
                             <input
-                                name="select-all"
+                                name="select-all-items"
                                 type="checkbox">
                         </label>
-                    </th>
-                    <th>
                         <a 
                             href="{{ page.url }}#listing"
                             class="pat-inject sorting sorting-asc">{%- include patterns/i18n id="label_name" -%}</a>
