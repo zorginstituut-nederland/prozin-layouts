@@ -3,6 +3,9 @@ layout: prozin/generic
 byline: date
 page_type: mailing-list
 parent: Nieuwsbrieven
+settings_checklist: 
+  - label: label_allow_opt_in_mailing_list
+  - label: label_ticked_by_default
 ---
 
 <form 
@@ -20,11 +23,18 @@ parent: Nieuwsbrieven
             summary=true %}
 
         {% include prozin/cms-section.html
+            type="settings-mailing-list"
+            state="open"
+            title="Settings" %}
+
+        {% include prozin/cms-section.html
             type="user-groups-mailing-list"
+            state="open"
             title="Organisations" %}
 
         {% include prozin/cms-section.html
             type="user-groups-registrations"
+            state="open"
             title="Registrations" %}
 
     </div>
