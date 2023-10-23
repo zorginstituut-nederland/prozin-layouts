@@ -24,16 +24,19 @@ settings_checklist:
 
         {% include prozin/cms-section.html
             type="settings-mailing-list"
+            action=page.url
             state="open"
             title="Settings" %}
 
         {% include prozin/cms-section.html
+            action=page.url
             type="user-groups-mailing-list"
             state="open"
             title="Organisations" %}
 
         {% include prozin/cms-section.html
             type="user-groups-registrations"
+            action=page.url
             state="open"
             title="Registrations" %}
 

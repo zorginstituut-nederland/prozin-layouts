@@ -66,20 +66,22 @@ parent: Beheer
                         {% endif %}
                     {% endfor %}
                 {% endfor %}
-                <tr
-                    id="collection-overview-load-more">
-                    {%- assign colspan = 5 | plus: page.columns.size -%}
-                    <td
-                        colspan="{{ colspan }}">
-                        <a  
-                            class="pat-inject infinite-scrolling-trigger"
-                            data-pat-inject="
-                                source: #collection-overview-body; 
-                                target: #collection-overview-load-more::element;
-                                trigger: autoload-visible" 
-                            href="{{ page.url }}">{%- include patterns/i18n id="label_load_more_results" -%}</a>
-                    </td>
-                </tr>
+                {%- if page.infinite_scrolling -%}
+                    <tr
+                        id="collection-overview-load-more">
+                        {%- assign colspan = 5 | plus: page.columns.size -%}
+                        <td
+                            colspan="{{ colspan }}">
+                            <a  
+                                class="pat-inject infinite-scrolling-trigger"
+                                data-pat-inject="
+                                    source: #collection-overview-body; 
+                                    target: #collection-overview-load-more::element;
+                                    trigger: autoload-visible" 
+                                href="{{ page.url }}">{%- include patterns/i18n id="label_load_more_results" -%}</a>
+                        </td>
+                    </tr>
+                {%- endif -%}
             </tbody>
         </table>
     </div>
