@@ -1,0 +1,32 @@
+---
+layout: prozin/generic
+byline: date
+page_type: mailing-list
+parent: Nieuwsbrieven
+---
+
+<form 
+    action="{{ page.url }}" 
+    class="pat-validation pat-inject pat-form">
+
+    {% include prozin/toolbar-cms-edit.html
+        cancel="/dialogues/cms/mailing-lists" %}
+
+    <div 
+        class="cms-edit-form" 
+        id="main-content">
+
+        {% include prozin/cms-title-block.html
+            summary=true %}
+
+        {% include prozin/cms-section.html
+            type="user-groups-mailing-list"
+            title="Organisations" %}
+
+        {% include prozin/cms-section.html
+            type="user-groups-registrations"
+            title="Registrations" %}
+
+    </div>
+
+</form>
