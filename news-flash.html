@@ -1,0 +1,21 @@
+---
+layout: prozin/generic
+byline: date
+page_type: news-flash
+parent: Nieuwsbrieven
+---
+
+{% include prozin/toolbar-standard-view.html %}
+
+<div 
+	id="main-content">
+		{% include prozin/page-head.html 
+			byline="document-type" %}
+
+	    {%- include prozin/section.html
+            type="object"
+            width="900px"
+            height="1000px"
+            source="/newsletters/newsletter-juli" -%}
+
+</div>
