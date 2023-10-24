@@ -24,7 +24,15 @@ parent: Nieuwsbrieven
             type="settings-news-flash"
             action=page.url
             state="open"
+            action=page.url
             title="Settings" %}
+
+        {% include prozin/cms-section.html
+            type="news-flash-body-text"
+            state="open"
+            title="Inhoud"
+            action=page.url
+            fixed=true %}
 
     </div>
 
