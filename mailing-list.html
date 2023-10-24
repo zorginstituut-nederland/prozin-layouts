@@ -15,9 +15,34 @@ parent: Nieuwsbrieven
 	    <div 
 	    	class="page-module type-organisations">
             <h2
-            	class="page-module-title">
-                {%- include patterns/i18n id="label_organisations" -%}
+                class="page-module-title">
+                {% include patterns/i18n id="label_recipients" %}
             </h2>
+            <!-- <h3
+            	class="page-module-group-title">
+                Organisatietypen
+            </h3> -->
+            <div 
+                class="pat-rich">
+                <p>
+                    {%- include patterns/i18n id="message_help_mailing_list_organisation_types" -%}
+                </p>
+            </div>
+            <ul
+                class="link-list">
+                {% for item in site.organisations %}
+                    <li>
+                        <a 
+                            class="pat-inject"
+                            data-pat-inect="history: record;"
+                            href="{{ item.url }}">Fabrikanten</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <!-- <h3
+            	class="page-module-group-title">
+                {%- include patterns/i18n id="label_organisations" -%}
+            </h3> -->
             <div 
                 class="pat-rich">
                 <p>
@@ -35,14 +60,10 @@ parent: Nieuwsbrieven
                     </li>
                 {% endfor %}
             </ul>
-	    </div>        
-
-	    <div 
-	    	class="page-module registrations">
-            <h2
-            	class="page-module-title">
+            <!-- <h3
+            	class="page-module-group-title">
                 {% include patterns/i18n id="label_registrations" %} <sup class="counter">{{ page.registrations.size }}</span>
-            </h2>
+            </h3> -->
             <div 
                 class="pat-rich">
                 <p>

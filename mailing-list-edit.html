@@ -29,16 +29,26 @@ settings_checklist:
             title="Settings" %}
 
         {% include prozin/cms-section.html
+            type="recipients-mailing-list"
             action=page.url
-            type="user-groups-mailing-list"
             state="open"
-            title="Organisations" %}
+            title="Recipients" %}
 
-        {% include prozin/cms-section.html
-            type="user-groups-registrations"
-            action=page.url
-            state="open"
-            title="Registrations" %}
+        {%- comment -%}
+
+            {% include prozin/cms-section.html
+                action=page.url
+                type="user-groups-mailing-list"
+                state="open"
+                title="Organisations" %}
+
+            {% include prozin/cms-section.html
+                type="user-groups-registrations"
+                action=page.url
+                state="open"
+                title="Registrations" %}
+
+        {%- endcomment -%}
 
     </div>
 
