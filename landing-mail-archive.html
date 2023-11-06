@@ -35,7 +35,7 @@ page_type: landing-mail-archive
         class="toc">
         <tbody 
             class="link-list">
-			{% assign archive = site.newsletters | sort: 'date' | reverse %}
+			{% assign archive = site.mails | sort: 'date' | reverse %}
 			
             {% for item in archive %}
                 {% unless item.layout == 'prozin/landing-mail-archive' %}
