@@ -1,0 +1,58 @@
+---
+layout: prozin/generic
+title: label_not_found
+---
+
+<article 
+    id="main-content">
+    <div 
+        id="page-head" 
+        class="pat-rich">
+        <h1 {% if include.icon %}class="icon-{{ include.icon }}"{% endif %}>
+            {{ site.data.prozin.ui[page.title][site.lang] }}
+        </h1>
+        <div 
+            class="introduction" 
+            id="page-intro">
+            <p>
+                {{ site.data.prozin.ui.message_404_intro[site.lang] }}
+            </p>
+        </div>
+    </div>
+
+    <div 
+        class="page-module type-links">
+        <h2 
+            class="page-module-title">
+            Of ga naar:
+        </h2>
+        <ul 
+            class="link-list">
+            <li>
+                <a href="https://www.farmacotherapeutischkompas.nl/">Homepage {{ site.domain }}</a>
+            </li>
+            <li>
+                <a href="https://www.zorginstituutnederland.nl/">Homepage {{ site.organisation }}</a>
+            </li>
+            <li>
+                <a href="/zoekresultaten">{{ site.data.prozin.ui.label_to_search[site.lang] }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div 
+        class="page-module type-rich">
+        <h2 
+            class="page-module-title">{{ site.data.prozin.ui.label_wrong_address[site.lang] }}</h2>
+        <div 
+            class="pat-rich">
+            <p>
+                {{ site.data.prozin.ui.message_check_the_url[site.lang] }}
+            </p>
+            <p 
+                class="meta">
+                {{ site.data.prozin.ui.label_error_code[site.lang] }}: 404
+            </p>
+        </div>
+    </div>
+</article>
