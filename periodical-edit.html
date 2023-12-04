@@ -1,0 +1,39 @@
+---
+layout: prozin/generic
+byline: date
+page_type: news-flash
+parent: Nieuwsbrieven
+---
+
+
+<form 
+    action="{{ page.url }}" 
+    class="pat-validation pat-inject pat-form">
+
+    {% include prozin/toolbar-cms-edit.html
+        cancel="/dialogues/cms/mailing-lists" %}
+
+    <div 
+        class="cms-edit-form" 
+        id="main-content">
+
+        {% include prozin/cms-title-block.html
+            summary=true %}
+
+        {% include prozin/cms-section.html
+            type="settings-news-flash"
+            action=page.url
+            state="open"
+            action=page.url
+            title="Settings" %}
+
+        {% include prozin/cms-section.html
+            type="periodical-body-text"
+            state="open"
+            title="Inhoud"
+            action=page.url
+            fixed=true %}
+
+    </div>
+
+</form>
