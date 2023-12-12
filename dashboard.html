@@ -6,7 +6,9 @@ page_type: bladeren
 
 {{ content }}
 
-{%- include prozin/toolbar-dashboard.html -%}
+{% if page.url contains 'beheer' %}
+    {% include prozin/toolbar-dashboard.html %}
+{% endif %}
 
 <div 
     id="dashboard" 
