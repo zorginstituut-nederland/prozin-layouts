@@ -103,12 +103,11 @@ parent: Beheer
             data-pat-collapsible="
                 store: local; 
                 scroll-selector: self; 
-                scroll-offset: 120px"
-            id="homepage-settings-well">
+                scroll-offset: 120px">
             <h2 
                 class="form-separation-header">
-                    {% include patterns/i18n id="label_homepage" %}    
-                </h2> 
+                {% include patterns/i18n id="label_homepage" %}    
+            </h2> 
             <fieldset 
                 class="horizontal">
                 <h3 
@@ -206,6 +205,74 @@ parent: Beheer
                 </label>
             </fieldset>
         </div>
+
+        <div
+            id="settings-panel-content-updates"
+            class="form-panel pat-collapsible closed"
+            data-pat-collapsible="
+                store: local; 
+                scroll-selector: self; 
+                scroll-offset: 120px">
+            <h2 
+                class="form-separation-header">
+                {% include patterns/i18n id="label_content_updates" %}    
+            </h2> 
+            <fieldset 
+                class="horizontal">
+                <h3 
+                    class="form-section-header">
+                    Indexeren
+                </h3>
+                <div 
+                    class="pat-well info">
+                    <p>
+                        {{ site.data.ui.message_indexation[site.lang] }}
+                    </p>
+                    <p 
+                        class="button-bar">
+                        <button 
+                            class="default pat-button" 
+                            type="submit" 
+                            formaction="/index-opgebouwd">{{ site.data.ui.label_build_index[site.lang] }}</button>
+                    </p>
+                </div>
+                <h3 
+                    class="form-section-header">
+                    Wizarddata
+                </h3>
+                <div 
+                    class="pat-well info">
+                    <p>
+                        {{ site.data.ui.message_wizard_data_generation[site.lang] }}
+                    </p>
+                    <p 
+                        class="button-bar">
+                        <button 
+                            class="default pat-button" 
+                            type="submit" 
+                            formaction="/data-gegenereerd">{{ site.data.ui.label_generate_wizard_data[site.lang] }}</button>
+                    </p>
+                </div>
+                <h3 
+                    class="form-section-header">
+                    Redactionele content
+                </h3>
+                <div 
+                    class="pat-well info">
+                    <p>
+                        {{ site.data.ui.message_wizard_content_update[site.lang] }}
+                    </p>
+                    <p 
+                        class="button-bar">
+                        <button 
+                            class="default pat-button" 
+                            type="submit" 
+                            formaction="/content-bijgewerkt">{{ site.data.ui.label_update[site.lang] }}</button>
+                    </p>
+                </div>
+            </fieldset>
+        </div>
+
         <div
             id="settings-panel-login"
             class="form-panel pat-collapsible open"
