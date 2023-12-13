@@ -37,6 +37,7 @@ parent: Beheer
     </div>
     <div 
         id="listing">
+
         <div
             id="settings-panel-language"
             class="form-panel pat-collapsible closed"
@@ -97,6 +98,7 @@ parent: Beheer
                 </fieldset>
             </fieldset>
         </div>
+
         <div
             id="settings-panel-homepage"
             class="form-panel pat-collapsible closed"
@@ -206,111 +208,115 @@ parent: Beheer
             </fieldset>
         </div>
 
-        <div
-            id="settings-panel-content-updates"
-            class="form-panel pat-collapsible closed"
-            data-pat-collapsible="
-                store: local; 
-                scroll-selector: self; 
-                scroll-offset: 120px">
-            <h2 
-                class="form-separation-header">
-                {% include patterns/i18n id="label_content_updates" %}    
-            </h2> 
-            <fieldset 
-                class="horizontal">
-                <h3 
-                    class="form-section-header">
-                    Indexeren
-                </h3>
-                <div 
-                    class="pat-well info">
-                    <p>
-                        {{ site.data.ui.message_indexation[site.lang] }}
-                    </p>
-                    <p 
-                        class="button-bar">
-                        <button 
-                            class="default pat-button" 
-                            type="submit" 
-                            formaction="/index-opgebouwd">{{ site.data.ui.label_build_index[site.lang] }}</button>
-                    </p>
-                </div>
-                <h3 
-                    class="form-section-header">
-                    Wizarddata
-                </h3>
-                <div 
-                    class="pat-well info">
-                    <p>
-                        {{ site.data.ui.message_wizard_data_generation[site.lang] }}
-                    </p>
-                    <p 
-                        class="button-bar">
-                        <button 
-                            class="default pat-button" 
-                            type="submit" 
-                            formaction="/data-gegenereerd">{{ site.data.ui.label_generate_wizard_data[site.lang] }}</button>
-                    </p>
-                </div>
-                <h3 
-                    class="form-section-header">
-                    Redactionele content
-                </h3>
-                <div 
-                    class="pat-well info">
-                    <p>
-                        {{ site.data.ui.message_wizard_content_update[site.lang] }}
-                    </p>
-                    <p 
-                        class="button-bar">
-                        <button 
-                            class="default pat-button" 
-                            type="submit" 
-                            formaction="/content-bijgewerkt">{{ site.data.ui.label_update[site.lang] }}</button>
-                    </p>
-                </div>
-            </fieldset>
-        </div>
-
-        <div
-            id="settings-panel-login"
-            class="form-panel pat-collapsible open"
-            data-pat-collapsible="
-                store: local; 
-                scroll-selector: self; 
-                scroll-offset: 120px"
-            id="homepage-settings-well">
-            <h2 
-                class="form-separation-header">
-                {% include patterns/i18n id="label_login" %}    
-            </h2> 
-            <p
-                class="pat-message info">
-                You may provide some text that will be displayed on the Request account page.
-            </p>
-            <fieldset 
-                class="horizontal">
-                <label>
-                    Summary
-                    <textarea 
-                        name="" 
-                        id="" 
-                        rows="2"></textarea>
-                </label>
-                <fieldset
-                    class="group">
-                    {% include patterns/i18n id="label_body_text" %}
-                    {% include patterns/form-field-rich-editor.html
-                        content="<p>Please use the <a href='/dialogues/contact/'>Contact form</a> to request an account.</p>"
-                        allow="
-                            strong,
-                            emphasised,
-                            link,"
-                             %}
+        {% if site.product_code == 'gip' or site.produce_code == 'zor' %}
+            <div
+                id="settings-panel-content-updates"
+                class="form-panel pat-collapsible closed"
+                data-pat-collapsible="
+                    store: local; 
+                    scroll-selector: self; 
+                    scroll-offset: 120px">
+                <h2 
+                    class="form-separation-header">
+                    {% include patterns/i18n id="label_content_updates" %}    
+                </h2> 
+                <fieldset 
+                    class="horizontal">
+                    <h3 
+                        class="form-section-header">
+                        Indexeren
+                    </h3>
+                    <div 
+                        class="pat-well info">
+                        <p>
+                            {{ site.data.ui.message_indexation[site.lang] }}
+                        </p>
+                        <p 
+                            class="button-bar">
+                            <button 
+                                class="default pat-button" 
+                                type="submit" 
+                                formaction="/index-opgebouwd">{{ site.data.ui.label_build_index[site.lang] }}</button>
+                        </p>
+                    </div>
+                    <h3 
+                        class="form-section-header">
+                        Wizarddata
+                    </h3>
+                    <div 
+                        class="pat-well info">
+                        <p>
+                            {{ site.data.ui.message_wizard_data_generation[site.lang] }}
+                        </p>
+                        <p 
+                            class="button-bar">
+                            <button 
+                                class="default pat-button" 
+                                type="submit" 
+                                formaction="/data-gegenereerd">{{ site.data.ui.label_generate_wizard_data[site.lang] }}</button>
+                        </p>
+                    </div>
+                    <h3 
+                        class="form-section-header">
+                        Redactionele content
+                    </h3>
+                    <div 
+                        class="pat-well info">
+                        <p>
+                            {{ site.data.ui.message_wizard_content_update[site.lang] }}
+                        </p>
+                        <p 
+                            class="button-bar">
+                            <button 
+                                class="default pat-button" 
+                                type="submit" 
+                                formaction="/content-bijgewerkt">{{ site.data.ui.label_update[site.lang] }}</button>
+                        </p>
+                    </div>
                 </fieldset>
-            </fieldset>
-        </div>
-        {{ content }}
+            </div>
+        {% endif %}
+
+        {%- comment -%}
+            <div
+                id="settings-panel-login"
+                class="form-panel pat-collapsible open"
+                data-pat-collapsible="
+                    store: local; 
+                    scroll-selector: self; 
+                    scroll-offset: 120px"
+                id="homepage-settings-well">
+                <h2 
+                    class="form-separation-header">
+                    {% include patterns/i18n id="label_login" %}    
+                </h2> 
+                <p
+                    class="pat-message info">
+                    You may provide some text that will be displayed on the Request account page.
+                </p>
+                <fieldset 
+                    class="horizontal">
+                    <label>
+                        Summary
+                        <textarea 
+                            name="" 
+                            id="" 
+                            rows="2"></textarea>
+                    </label>
+                    <fieldset
+                        class="group">
+                        {% include patterns/i18n id="label_body_text" %}
+                        {% include patterns/form-field-rich-editor.html
+                            content="<p>Please use the <a href='/dialogues/contact/'>Contact form</a> to request an account.</p>"
+                            allow="
+                                strong,
+                                emphasised,
+                                link,"
+                                %}
+                    </fieldset>
+                </fieldset>
+            </div>
+        {%- endcomment -%}
+
     </div>
 </form>
