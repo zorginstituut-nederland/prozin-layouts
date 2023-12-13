@@ -290,15 +290,42 @@ parent: Beheer
             </h2> 
             <fieldset 
                 class="horizontal">
-                <h3 
-                    class="form-section-header">
-                    Service
-                </h3>
-                
-                <h3 
-                    class="form-section-header">
-                    Over deze site
-                </h3>
+                <fieldset
+                    class="group">
+                    <legend>{% include patterns/i18n id="label_service" %}</legend>
+                    <input 
+                        class="pat-autosuggest"
+                        required
+                        name="mi"
+                        type="text"
+                        placeholder="Selecteer maximaal 5 pagina's" 
+                        data-pat-autosuggest='
+                            allow-new-words: false;  
+                            ajax-search-index: text;
+                            maximum-selection-size: 5; 
+                            ajax-url: /dialogues/cms/content-items-with-path.json;' />
+                    {% include patterns/form-help.html
+                        position-list="bl tl"
+                        content="message_help_service" %}
+                </fieldset>
+                <fieldset
+                    class="group">
+                    <legend>{% include patterns/i18n id="label_about_this_site" %}</legend>
+                    <input 
+                        class="pat-autosuggest"
+                        required
+                        name="mi"
+                        type="text"
+                        placeholder="Selecteer maximaal 5 pagina's" 
+                        data-pat-autosuggest='
+                            allow-new-words: false;  
+                            ajax-search-index: text;
+                            maximum-selection-size: 5; 
+                            ajax-url: /dialogues/cms/content-items-with-path.json;' />
+                    {% include patterns/form-help.html
+                        position-list="bl tl"
+                        content="message_help_about_this_site" %}
+                </fieldset>
             </fieldset>
         </div>
 
