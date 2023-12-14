@@ -190,7 +190,8 @@ parent: Beheer
                             ajax-search-index: text; 
                             ajax-url: /dialogues/cms/general.json;' />
                 </label>
-                <h3 class="form-section-header">
+                <h3 
+                    class="form-section-header">
                     {% include patterns/i18n id="label_swim_lane_quote" %}
                 </h3>
                 <label>
@@ -225,10 +226,11 @@ parent: Beheer
                     <div 
                         class="pat-well info">
                         <h3 
-                            class="form-section-header">
+                            class="well-separation-header">
                             Indexeren
                         </h3>
-                        <p>
+                        <p
+                            class="desription">
                             {{ site.data.ui.message_indexation[site.lang] }}
                         </p>
                         <p 
@@ -242,10 +244,11 @@ parent: Beheer
                     <div 
                         class="pat-well info">
                         <h3 
-                            class="form-section-header">
+                            class="well-separation-header">
                             Wizarddata
                         </h3>
-                        <p>
+                        <p
+                            class="description">
                             {{ site.data.ui.message_wizard_data_generation[site.lang] }}
                         </p>
                         <p 
@@ -259,10 +262,11 @@ parent: Beheer
                     <div 
                         class="pat-well info">
                         <h3 
-                            class="form-section-header">
+                            class="well-separation-header">
                             Redactionele content
                         </h3>
-                        <p>
+                        <p
+                            class="desription">
                             {{ site.data.ui.message_wizard_content_update[site.lang] }}
                         </p>
                         <p 
