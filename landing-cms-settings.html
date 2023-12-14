@@ -224,7 +224,12 @@ parent: Beheer
                 <fieldset 
                     class="horizontal">
                     <div 
-                        class="pat-well info">
+                        id="well-indexation"
+                        data-pat-inject="
+                            source: #well-indexation;
+                            target: #well-indexation;
+                            "
+                        class="pat-well info pat-subform pat-inject">
                         <h3 
                             class="well-separation-header">
                             Indexeren
@@ -238,11 +243,16 @@ parent: Beheer
                             <button 
                                 class="default pat-button" 
                                 type="submit" 
-                                formaction="/index-opgebouwd">{{ site.data.ui.label_build_index[site.lang] }}</button>
+                                formaction="/index-opgebouwd#well-indexation">{{ site.data.ui.label_build_index[site.lang] }}</button>
                         </p>
                     </div>
                     <div 
-                        class="pat-well info">
+                        id="well-wizard-data"
+                        data-pat-inject="
+                            source: #well-wizard-data;
+                            target: #well-wizard-data;
+                            "
+                        class="pat-well info pat-subform pat-inject">
                         <h3 
                             class="well-separation-header">
                             Wizarddata
@@ -256,11 +266,16 @@ parent: Beheer
                             <button 
                                 class="default pat-button" 
                                 type="submit" 
-                                formaction="/data-gegenereerd">{{ site.data.ui.label_generate_wizard_data[site.lang] }}</button>
+                                formaction="/data-gegenereerd#well-wizard-data">{{ site.data.ui.label_generate_wizard_data[site.lang] }}</button>
                         </p>
                     </div>
                     <div 
-                        class="pat-well info">
+                        id="well-editorial-content"
+                        data-pat-inject="
+                            source: #well-editorial-content;
+                            target: #well-editorial-content;
+                            "
+                        class="pat-well info pat-subform pat-inject">
                         <h3 
                             class="well-separation-header">
                             Redactionele content
@@ -274,7 +289,7 @@ parent: Beheer
                             <button 
                                 class="default pat-button" 
                                 type="submit" 
-                                formaction="/content-bijgewerkt">{{ site.data.ui.label_update[site.lang] }}</button>
+                                formaction="/content-bijgewerkt#well-editorial-content">{{ site.data.ui.label_update[site.lang] }}</button>
                         </p>
                     </div>
                 </fieldset>
