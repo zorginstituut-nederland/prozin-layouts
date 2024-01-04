@@ -8,35 +8,13 @@ title: apps
     class="page-module type-apps">
     <nav 
         class="app-icons">
-        <a 
-            href="/cms/settings" 
-            data-pat-inject="history: record; scroll: #main"
-            class="app-icon pat-inject settings">
-            {%- include patterns/i18n id="label_settings" -%}
-        </a>
-        <a 
-            href="/dialogues/image-bank/" 
-            data-pat-inject="history: record; scroll: #main"
-            class="app-icon pat-inject image-bank">
-            {%- include patterns/i18n id="label_image_bank" -%}
-        </a>
-        <a 
-            href="/apps/organisations/" 
-            data-pat-inject="history: record; scroll: #main"
-            class="app-icon pat-inject organisations">
-            {%- include patterns/i18n id="label_organisation" -%}
-        </a>
-        <a 
-            href="/apps/users/" 
-            data-pat-inject="history: record; scroll: #main"
-            class="app-icon pat-inject users">
-            User management
-        </a>
-        <a 
-            href="/apps/documents/" 
-            data-pat-inject="history: record; scroll: #main"
-            class="app-icon pat-inject documents">
-            pDocs
-        </a>
+        {% for item in page.apps %}
+            <a
+                href="{{ item.url }}"
+                data-pat-inject="history: record; scroll: #main" 
+                class="app-icon pat-inject {{ item.name | slugify }}">
+                {%- include patterns/i18n id=item.i18n -%}
+            </a>
+        {% endfor %}
     </nav>
 </div>
