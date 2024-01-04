@@ -50,16 +50,14 @@ app_name: Organisations
                                     value="all">
                                 {% include patterns/i18n id="label_all_adv" %}
                             </label>
-                            {% for item in site.data.prozin.organisations-types %}
-                                {% if site.organisation_types contains item.name %}
-                                    <label>
-                                        <input 
-                                            type="radio" 
-                                            name="org_type"
-                                            value="{{ item.name | slugify }}">
-                                        {% include patterns/i18n id=item.i18n-plural %}
-                                    </label>
-                                {% endif %}
+                            {% for item in site.data.prozin.organisation-types %}
+                                <label>
+                                    <input 
+                                        type="radio" 
+                                        name="org_type"
+                                        value="{{ item.name | slugify }}">
+                                    {% include patterns/i18n id=item.i18n-plural %}
+                                </label>
                             {% endfor %}
                         </fieldset>
                     </fieldset>
@@ -84,12 +82,13 @@ app_name: Organisations
         <div    
             class="scroll-table">  
             <table
+                class="hd"
                 id="organisations-overview">
                 <thead>
                     <tr>
                         <th>Naam</th>
                         <th>{% include patterns/i18n id="label_type" %}</th>
-                        <th>Beheerder</th>
+                        <th>Contactpersoon</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -126,7 +125,7 @@ app_name: Organisations
                             </th>
                             <td>{{ item.type }}</td>
                             <td
-                                class="administrator">
+                                class="contact-person">
                                 <a 
                                     href="/users/{{ item.administrator | slugify }}"
                                     class="pat-inject"

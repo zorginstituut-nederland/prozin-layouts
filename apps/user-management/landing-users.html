@@ -58,7 +58,8 @@ app_name: User management
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody
+                    id="users-overview-body">
                      {% for item in site.data.personae %}
                         {% assign this_persona = item[1] %}
                         {% if this_persona.role == 'Member' or this_persona.role == 'Administrator' or this_persona.role == 'Contributor' %}
@@ -160,6 +161,20 @@ app_name: User management
                             {% endunless %}
                         {% endif %}
                     {% endfor %}
+
+                    <tr
+                        id="users-overview-load-more">
+                        <td
+                            colspan="4">
+                            <a  
+                                class="pat-inject infinite-scrolling-trigger"
+                                data-pat-inject="
+                                    source: #users-overview-body; 
+                                    target: #users-overview-load-more::element;
+                                    trigger: autoload-visible" 
+                                href="{{ page.url }}">Loading more…</a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
