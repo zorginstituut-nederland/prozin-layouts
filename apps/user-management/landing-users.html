@@ -1,0 +1,167 @@
+---
+layout: prozin/generic
+title: User management
+page_type: user-management
+app_name: User management
+---
+
+<form
+    action="{{ page.url }}#listing"
+    class="pat-form panel-style pat-inject">
+    <div 
+        id="user-management-toolbar" 
+        class="pat-toolbar pat-bumper">
+        <!-- <div 
+            class="toolbar-navigation-area">
+            <div 
+                class="toolbar-section navigation"
+                id="user-management-toolbar-navigation">
+                
+            </div>
+        </div> -->
+        <div 
+            id="user-management-toolbar-functions-area"
+            data-pat-inject="
+                url: {{ page.url }};
+                source: #listing;
+                target: #listing"
+            class="toolbar-functions-area pat-subform pat-inject pat-autosubmit">
+            <div
+                class="toolbar-section view-options"
+                id="user-management-toolbar-toolbar-view-options">
+                
+            </div>
+            <div 
+                class="toolbar-section quick-functions"
+                id="user-management-toolbar-quick-functions">
+                <a 
+                    class="pat-button icon-plus pat-modal" 
+                    data-pat-modal="class: medium panel" 
+                    href="/dialogues/users/new{% unless page.role == 'owner' %}-organisation{% endunless %}#document-content">{% include patterns/i18n id="label_user" %}</a>
+                {% include prozin/toolbar-component-search.html %}
+            </div>
+        </div>
+    </div>
+
+    <div 
+        id="listing">
+        <div    
+            class="scroll-table">  
+            <table
+                class="hd"
+                id="users-overview">
+                <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>{% include patterns/i18n id="label_organisations" %}</th>
+                        <th>{% include patterns/i18n id="label_products" %}</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for item in site.data.personae %}
+                        {% assign this_persona = item[1] %}
+                        {% if this_persona.role == 'Member' or this_persona.role == 'Administrator' or this_persona.role == 'Contributor' %}
+                            {% if page.role == 'Regular' and this_persona.role == 'Owner' %}
+                                {% assign show_this = false %}
+                            {% endif %}
+                            {% unless show_this == false %}
+                                <tr>
+                                <th
+                                    class="item-name">
+                                     <a 
+                                        href="/users/{{ this_persona.first_name | slugify }}-{{ this_persona.last_name | slugify }}"
+                                        class="pat-inject"
+                                        data-pat-inject="history: record; scroll: #main">{{ this_persona.first_name }} {{ this_persona.last_name }}</a>
+                                    <template
+                                        id="user-{{ this_persona.last_name | slugify }}">
+                                        <ul 
+                                            class="menu">
+                                            <li>
+                                                {% if page.role == 'Owner' %}
+                                                    <a 
+                                                        href="/dialogues/users/edit#document-content" 
+                                                        class="icon-pencil pat-modal close-panel" 
+                                                        data-pat-modal="class: medium panel" 
+                                                        title="Bewerk gebruikersgegevens">Bewerk</a>
+                                                {% else %}
+                                                    <a 
+                                                        href="/dialogues/users/edit-regular#document-content" 
+                                                        class="icon-pencil pat-modal close-panel" 
+                                                        data-pat-modal="class: medium panel" 
+                                                        title="Bewerk gebruikersgegevens">Bewerk</a>
+                                                {% endif %}
+                                            </li>
+                                            {% if page.role == 'Owner' %}
+                                                {% if this_persona.last_name == 'Papadopoulus' %}
+                                                    <!-- In case the user is deactivated, print the following markup: -->
+                                                    <li>
+                                                        <form
+                                                            class="pat-inject"
+                                                            action="/dialogues/users/#content">
+                                                            <button 
+                                                                title="Heractiveer gebruiker" 
+                                                                class="close-panel icon-ok-1">Heractiveer</button>
+                                                        </form>
+                                                    </li>
+                                                {% else %}  
+                                                    <li>
+                                                        <a 
+                                                            href="/dialogues/users/deactivate#document-content" 
+                                                            title="Deactiveer gebruiker" 
+                                                            data-pat-modal="class: small panel" 
+                                                            class="close-panel pat-modal icon-3909-kruis">Deactiveer</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endif %}
+                                            {% if this_persona.accepted == false %}
+                                                <li>
+                                                    <a 
+                                                        href="/dialogues/users/resend-invite#document-content" 
+                                                        title="Stuur opnieuw de uitnodiging om het gebruikersaccount te accepteren." 
+                                                        data-pat-modal="class: small panel" 
+                                                        class="close-panel pat-modal icon-mail">{% include patterns/i18n id="label_resend_invite" %}</a>
+                                                </li>
+                                            {% endif %}
+                                            <li>
+                                                <a 
+                                                    href="/dialogues/users/remove#document-content" 
+                                                    title="Verwijder gebruiker" 
+                                                    data-pat-modal="class: small panel" 
+                                                    class="close-panel pat-modal icon-3909-kruis">Verwijder {{ this_persona.first_name }} {{ this_persona.last_name }} uit {{ site.title[site.data.config.lang] }} </a>
+                                            </li>
+                                        </ul>
+                                    </template>
+                                </th>
+                                <td>
+                                    <a 
+                                        data-pat-inject="history: record; scroll: #main" 
+                                        href="#" 
+                                        class="pat-inject">{{ this_persona.organisation }}</a>
+                                </td>
+                                <td>
+                                    <span 
+                                        class="pat-comma-separated">
+                                        <a 
+                                            href="https://www.horizonscangeneesmiddelen.nl" 
+                                            class="segment">Horizonscan geneesmiddelen</a>
+                                        <a 
+                                            href="https://www.istandaarden.nl" 
+                                            class="segment">iStandaarden</a>
+                                    </span>
+                                <td
+                                    class="functions">
+                                    <a 
+                                        class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+                                        href="#user-{{ this_persona.last_name | slugify }}" 
+                                        data-pat-tooltip="source: ajax; position-list: tr">More…</a>
+                                    </td>
+                                </tr>
+                            {% endunless %}
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
