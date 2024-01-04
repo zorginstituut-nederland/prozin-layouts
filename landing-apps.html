@@ -11,13 +11,10 @@ title: apps
         {% for item in page.apps %}
             <a
                 href="{{ item.url }}"
-                data-pat-switch="
-                    selector: #global-nav
-                    add: app"
                 data-pat-inject="
                     history: record; 
                     scroll: #main" 
-                class="app-icon pat-inject pat-switch {{ item.name | slugify }}">
+                class="app-icon pat-switch {{ item.name | slugify }}">
                 {%- include patterns/i18n id=item.i18n -%}
             </a>
         {% endfor %}
