@@ -16,7 +16,30 @@ app_name: Settings
             <div 
                 class="toolbar-section navigation"
                 id="cms-settings-toolbar-navigation">
-                {% include prozin/toolbar-nav-settings.html %}
+                <nav 
+                    class="pat-tabs pat-button-cluster pat-navigation"
+                    id="homescreen-sections-public-data">
+                    <a 
+                        href="/dialogues/cms/settings"
+                        data-pat-inject="
+                            history: record; 
+                            source: #listing; 
+                            target: #listing 
+                                && 
+                            source: #cms-settings-toolbar-functions-area::element; 
+                            target: #cms-settings-toolbar-functions-area::element"
+                        class="pat-inject current">{% include patterns/i18n id="label_general" %}</a>
+                    <a 
+                        href="/dialogues/users/"
+                        data-pat-inject="
+                            history: record; 
+                            source: #listing; 
+                            target: #listing 
+                                && 
+                            source: #cms-settings-toolbar-functions-area::element; 
+                            target: #cms-settings-toolbar-functions-area::element"
+                        class="pat-inject">{% include patterns/i18n id="label_users" %}</a>
+                </nav>
             </div>
         </div>
         <div 
