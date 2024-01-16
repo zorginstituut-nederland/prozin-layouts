@@ -93,7 +93,9 @@ title_in_breadcrumbs: true
                                 no-image      
                             {% endif %} 
                             state-{{ item.state | slugify }}"
-                        data-pat-inject="scroll: #main; history: record"
+                        data-pat-inject="
+                            scroll: top; 
+                            history: record"
                         href="{{ item.url }}"
                         title="{{ item.title }}">
                         {%- unless item.url contains 'missing' -%}
