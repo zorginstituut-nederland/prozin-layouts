@@ -37,7 +37,7 @@ page_type: landing-mail-archive
             class="link-list">
 			{% assign archive = site.mails | sort: 'date' | reverse %}
 			
-            {% for item in mails %}
+            {% for item in archive %}
                 {% unless item.layout == 'prozin/landing-mail-archive' %}
                     <tr>
                     	<td>
