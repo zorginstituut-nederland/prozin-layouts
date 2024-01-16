@@ -4,6 +4,10 @@ page_type: organisation
 title: Organisatie
 parent: Beheer
 title_in_breadcrumbs: true
+app_name: Organisations
+back_button:
+  label: Organisations
+  url: /dialogues/apps/organisations/
 ---
 
 <div 
@@ -12,6 +16,11 @@ title_in_breadcrumbs: true
     <div 
         id="cms-toolbar-edit-functions-area"
         class="toolbar-functions-area">
+        <div
+            class="toolbar-section view-options"
+            id="cms-page-toolbar-view-options">
+            {% include prozin/toolbar-component-back-button.html %}
+        </div>
         <div 
             class="toolbar-section quick-functions"
             id="cms-toolbar-edit-quick-functions">
