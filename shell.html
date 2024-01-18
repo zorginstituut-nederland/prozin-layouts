@@ -112,11 +112,13 @@
         </div>
     {% endif %}
     
-    {% include prozin/site-header.html %}
-    {% include prozin/site-footer.html %}
-    {% if site.data.config.languages %}
-        {% include prozin/site-language-switch.html %}
-    {% endif %}
+    {% unless layout.app_name %}
+        {% include prozin/site-header.html %}
+        {% include prozin/site-footer.html %}
+        {% if site.data.config.languages %}
+            {% include prozin/site-language-switch.html %}
+        {% endif %}
+    {% endunless %}
     
     <!-- <div class="cookiewarning clearfix" style="display: block;">
         Het Farmacotherapeutisch Kompas gebruikt analytische cookies om het gebruik van de website te analyseren en daarmee de website te kunnen verbeteren.<br>
