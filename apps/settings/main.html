@@ -1,7 +1,6 @@
 ---
 layout: prozin/app
 page_type: landing-settings
-parent: Beheer
 app_name: Settings
 ---
 
@@ -24,7 +23,7 @@ app_name: Settings
                             class="pat-tabs pat-button-cluster pat-navigation"
                             id="homescreen-sections-public-data">
                             <a 
-                                href="/dialogues/cms/settings"
+                                href="/dialogues/apps/settings/"
                                 data-pat-inject="
                                     history: record; 
                                     source: #listing; 
@@ -32,9 +31,9 @@ app_name: Settings
                                         && 
                                     source: #cms-settings-toolbar-functions-area::element; 
                                     target: #cms-settings-toolbar-functions-area::element"
-                                class="pat-inject current">{% include patterns/i18n id="label_general" %}</a>
+                                class="pat-inject">{% include patterns/i18n id="label_general" %}</a>
                             <a 
-                                href="/dialogues/users/"
+                                href="/dialogues/apps/settings/users"
                                 data-pat-inject="
                                     history: record; 
                                     source: #listing; 
