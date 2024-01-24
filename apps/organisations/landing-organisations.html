@@ -1,161 +1,89 @@
 ---
-layout: prozin/generic
+layout: prozin/apps/organisations/main
 title: Organisaties
 page_type: organisations
 app_name: Organisations
 ---
 
-<form
-    action="{{ page.url }}#listing"
-    class="pat-form panel-style pat-inject">
-    <div 
-        id="organisations-toolbar" 
-        class="pat-toolbar pat-bumper">
-        <!-- <div 
-            class="toolbar-navigation-area">
-            <div 
-                class="toolbar-section navigation"
-                id="organisations-toolbar-navigation">
+{% assign organisations = site.data.organisations | sort: 'name' %}
 
-            </div>
-        </div> -->
-        <div 
-            id="organisations-toolbar-functions-area"
-            data-pat-inject="
-                url: {{ page.url }};
-                source: #listing;
-                target: #listing"
-            class="toolbar-functions-area pat-subform pat-inject pat-autosubmit">
-            <div
-                class="toolbar-section view-options"
-                id="organisations-toolbar-toolbar-view-options">
-                <div 
-                    class="pat-collapsible button context-menu align-left no-label icon-filter closed" 
-                    data-pat-collapsible="close-trigger: .context-menu:not(#filters-menu),.close-menu" 
-                    id="filters-menu">
-                    <strong 
-                        class="context-menu-label menu-trigger icon">Filters</strong>
-                    <p 
-                        class="close-menu">Sluit</p>
-                    <fieldset 
-                        class="vertical">
-                        <fieldset 
-                            class="pat-checklist radio">
-                            <legend>{% include patterns/i18n id="label_organisation_types" %}</legend>
-                            <label>
-                                <input 
-                                    checked
-                                    name="org_type"
-                                    type="radio" 
-                                    value="all">
-                                {% include patterns/i18n id="label_all_adv" %}
-                            </label>
-                            {% for item in site.data.prozin.organisation-types %}
-                                <label>
-                                    <input 
-                                        type="radio" 
-                                        name="org_type"
-                                        value="{{ item.name | slugify }}">
-                                    {% include patterns/i18n id=item.i18n-plural %}
-                                </label>
-                            {% endfor %}
-                        </fieldset>
-                    </fieldset>
-                </div>
-            </div>
-            <div 
-                class="toolbar-section quick-functions"
-                id="organisations-toolbar-quick-functions">
-                <a 
-                    class="pat-button icon-plus pat-modal" 
-                    data-pat-modal="class: medium panel" 
-                    href="/dialogues/organisations/new-zin#document-content">{% include patterns/i18n id="label_organisation" %}</a>
-                {% include prozin/toolbar-component-search.html %}
-            </div>
-        </div>
-    </div>
-
-    {% assign organisations = site.data.organisations | sort: 'name' %}
-
-    <div 
-        id="listing">
-        <div    
-            class="scroll-table">  
-            <table
-                class="hd"
-                id="organisations-overview">
-                <thead>
+<div 
+    id="listing">
+    <div    
+        class="scroll-table">  
+        <table
+            class="hd"
+            id="organisations-overview">
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>{% include patterns/i18n id="label_type" %}</th>
+                    <th>Contactpersoon</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody
+                id="organisations-overview-body">
+                {% for item in organisations %}
                     <tr>
-                        <th>Naam</th>
-                        <th>{% include patterns/i18n id="label_type" %}</th>
-                        <th>Contactpersoon</th>
-                        <th>&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody
-                    id="organisations-overview-body">
-                    {% for item in organisations %}
-                        <tr>
-                            <th
-                                class="item-name">
-                                 <a 
-                                    href="/organisations/{{ item.name | slugify }}"
-                                    class="pat-inject"
-                                    data-pat-inject="history: record; scroll: #main">{{ item.name }}</a>
-                                <template 
-                                    id="org-{{ item.name | slugify }}">
-                                    <ul 
-                                        class="menu">
-                                        <li>
-                                            <a 
-                                                href="/dialogues/organisations/edit#document-content" 
-                                                class="icon-edit pat-modal close-panel" 
-                                                data-pat-modal="class: medium panel" 
-                                                title="Bewerk organisatie">Bewerk</a>
-                                        </li>
-    <!--                                     <li>
-                                            <a 
-                                                href="/dialogues/organisations/delete#document-content" 
-                                                title="Verwijder organisatie" 
-                                                data-pat-modal="class: small panel" 
-                                                class="close-panel pat-modal icon-3909-kruis">Verwijder uit {{ site.title }}</a>
-                                        </li> -->
-                                    </ul>
-                                </template>
-                            </th>
-                            <td>{{ item.type }}</td>
-                            <td
-                                class="contact-person">
+                        <th
+                            class="item-name">
                                 <a 
-                                    href="/users/{{ item.administrator | slugify }}"
-                                    class="pat-inject"
-                                    data-pat-inject="history: record; scroll: #main">{{ item.administrator }}</a>
-                            </td>
-                            <td
-                                class="functions">
-                                <a 
-                                    class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
-                                    href="#org-{{ item.name | slugify }}" 
-                                    data-pat-tooltip="source: ajax; position-list: tr">More…</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    <tr
-                        id="organisations-overview-load-more">
+                                href="/organisations/{{ item.name | slugify }}"
+                                class="pat-inject"
+                                data-pat-inject="history: record; scroll: #main">{{ item.name }}</a>
+                            <template 
+                                id="org-{{ item.name | slugify }}">
+                                <ul 
+                                    class="menu">
+                                    <li>
+                                        <a 
+                                            href="/dialogues/organisations/edit#document-content" 
+                                            class="icon-edit pat-modal close-panel" 
+                                            data-pat-modal="class: medium panel" 
+                                            title="Bewerk organisatie">Bewerk</a>
+                                    </li>
+<!--                                     <li>
+                                        <a 
+                                            href="/dialogues/organisations/delete#document-content" 
+                                            title="Verwijder organisatie" 
+                                            data-pat-modal="class: small panel" 
+                                            class="close-panel pat-modal icon-3909-kruis">Verwijder uit {{ site.title }}</a>
+                                    </li> -->
+                                </ul>
+                            </template>
+                        </th>
+                        <td>{{ item.type }}</td>
                         <td
-                            colspan="4">
-                            <a  
-                                class="pat-inject infinite-scrolling-trigger"
-                                data-pat-inject="
-                                    source: #organisations-overview-body; 
-                                    target: #organisations-overview-load-more::element;
-                                    trigger: autoload-visible" 
-                                href="{{ page.url }}">Loading more…</a>
+                            class="contact-person">
+                            <a 
+                                href="/users/{{ item.administrator | slugify }}"
+                                class="pat-inject"
+                                data-pat-inject="history: record; scroll: #main">{{ item.administrator }}</a>
+                        </td>
+                        <td
+                            class="functions">
+                            <a 
+                                class="icon icon-ellipsis-hor pat-tooltip tooltip-inactive" 
+                                href="#org-{{ item.name | slugify }}" 
+                                data-pat-tooltip="source: ajax; position-list: tr">More…</a>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-        </div>
+                {% endfor %}
+                <tr
+                    id="organisations-overview-load-more">
+                    <td
+                        colspan="4">
+                        <a  
+                            class="pat-inject infinite-scrolling-trigger"
+                            data-pat-inject="
+                                source: #organisations-overview-body; 
+                                target: #organisations-overview-load-more::element;
+                                trigger: autoload-visible" 
+                            href="{{ page.url }}">Loading more…</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-</form>
+</div>
