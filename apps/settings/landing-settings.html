@@ -1,437 +1,365 @@
 ---
-layout: prozin/generic
+layout: prozin/apps/settings/main
 page_type: landing-settings
 parent: Beheer
 app_name: Settings
 ---
 
-<form
-    action="{{ page.url }}#listing"
-    class="pat-form panel-style pat-inject">
-    <div 
-        class="pat-toolbar pat-bumper"
-        id="cms-settings-toolbar">
-        <div 
-            class="toolbar-navigation-area">
-            <div 
-                class="toolbar-section navigation"
-                id="cms-settings-toolbar-navigation">
-                <nav 
-                    class="pat-tabs pat-button-cluster pat-navigation"
-                    id="homescreen-sections-public-data">
-                    <a 
-                        href="/dialogues/cms/settings"
-                        data-pat-inject="
-                            history: record; 
-                            source: #listing; 
-                            target: #listing 
-                                && 
-                            source: #cms-settings-toolbar-functions-area::element; 
-                            target: #cms-settings-toolbar-functions-area::element"
-                        class="pat-inject current">{% include patterns/i18n id="label_general" %}</a>
-                    <a 
-                        href="/dialogues/users/"
-                        data-pat-inject="
-                            history: record; 
-                            source: #listing; 
-                            target: #listing 
-                                && 
-                            source: #cms-settings-toolbar-functions-area::element; 
-                            target: #cms-settings-toolbar-functions-area::element"
-                        class="pat-inject">{% include patterns/i18n id="label_users" %}</a>
-                </nav>
-            </div>
-        </div>
-        <div 
-            id="cms-settings-toolbar-functions-area"
-            class="toolbar-functions-area pat-inject pat-form pat-autosubmit">
-            <div
-                class="toolbar-section view-options"
-                id="cms-settings-view-options">
-                <a 
-                    href="#organisation-menu" 
-                    data-pat-tooltip="source: ajax; position: tl"
-                    class="pat-tooltip pat-select icon-globe">Zorginstituut Nederland</a>
-                <template 
-                    id="organisation-menu">
-                    <ul 
-                        class="menu pat-navigation">
-                        {% for item in site.data.prozin.products %}
-                            <li>
-                                <a 
-                                    class="pat-inject"
-                                    data-pat-inject="history: record"
-                                    href="https://proto.{{ item.name | slugify }}.nl/dialogues/apps/settings/">{{ item.name }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </template>
-            </div>
-            <div 
-                class="toolbar-section quick-functions"
-                id="cms-settings-quick-functions">
-                <button
-                    class="pat-button default"
-                    type="submit">{% include patterns/i18n id="label_save_imp" %}</button>
-            </div>
-        </div>
-    </div>
-    <div 
-        id="listing">
+<div 
+    id="listing">
 
+    <div
+        id="settings-panel-language"
+        class="form-panel pat-collapsible closed"
+        data-pat-collapsible="
+            store: local; 
+            scroll-selector: self; 
+            scroll-offset: 120px"
+        id="language-settings-well">
+        <h2 
+            class="form-separation-header">
+            {% include patterns/i18n id="patterns.label_language" %}    
+        </h2> 
+        <fieldset 
+            class="horizontal">
+            <fieldset 
+                class="group pat-checklist">
+                <legend>{% include patterns/i18n id="label_supported_languages" %}</legend>  
+                <label
+                    class="disabled">
+                    {% include patterns/i18n id="patterns.label_dutch" %}
+                    <input
+                        disabled
+                        checked 
+                        type="checkbox" 
+                        name="language">
+                </label>  
+                <label>
+                    {% include patterns/i18n id="patterns.label_english" %}
+                    <input
+                        checked 
+                        type="checkbox" 
+                        name="language">
+                </label>  
+            </fieldset>
+            <label>
+                {% include patterns/i18n id="label_default_language" %}
+                <select>
+                    <option>{% include patterns/i18n id="patterns.label_dutch" %}</option>
+                    <option>{% include patterns/i18n id="patterns.label_english" %}</option>
+                </select>
+            </label>
+            <fieldset 
+                class="group pat-checklist radio">
+                <legend>{% include patterns/i18n id="label_fallback" %}</legend>
+                <label>
+                    {% include patterns/i18n id="label_show_objects_in_alternate_language" %}
+                    <input 
+                        checked 
+                        type="radio" 
+                        name="language_fallback">
+                </label>
+                <label>
+                    {% include patterns/i18n id="label_hide_objects_in_alternate_language" %}
+                    <input 
+                        type="radio" 
+                        name="language_fallback">
+                </label>
+            </fieldset>
+        </fieldset>
+    </div>
+
+    <div
+        id="settings-panel-homepage"
+        class="form-panel pat-collapsible closed"
+        data-pat-collapsible="
+            store: local; 
+            scroll-selector: self; 
+            scroll-offset: 120px">
+        <h2 
+            class="form-separation-header">
+            {% include patterns/i18n id="label_homepage" %}    
+        </h2> 
+        <fieldset 
+            class="horizontal">
+            <h3 
+                class="form-section-header">
+                {% include patterns/i18n id="label_swim_lane_hero" %}
+            </h3>
+            <label>
+                {% include patterns/i18n id="label_directly_to" %}
+                <input 
+                    class="pat-autosuggest"
+                    required
+                    name="mi"
+                    type="text"
+                    placeholder="Selecteer maximaal 5 pagina's" 
+                    data-pat-autosuggest='
+                        allow-new-words: false;  
+                        ajax-search-index: text;
+                        maximum-selection-size: 5; 
+                        ajax-url: /dialogues/cms/content-items-with-path.json;' />
+                {% include patterns/form-help.html
+                    position-list="bl tl"
+                    content="message_help_directly_to" %}
+            </label>
+            <label>
+                {% include patterns/i18n id="label_survey_url" %}
+                <input 
+                    type="url" 
+                    placeholder="https://www…" 
+                    name="">
+                {% include patterns/form-help.html
+                    content="message_help_promo_url" %}
+            </label>
+            <label>
+                {% include patterns/i18n id="label_breaking_news" %}
+                <select
+                    class="pat-autosuggest">
+                    <option>{% include patterns/i18n id="label_no_breaking_news" %}</option>
+                    {% for item in site.news %}
+                        <option>{{ item.title }}</option>
+                    {% endfor %}
+                </select>
+                {% include patterns/form-help.html
+                    content="message_help_breaking_news" %}
+            </label>
+            <h3 
+                class="form-section-header">
+                {% include patterns/i18n id="label_swim_lane_news" %}
+            </h3>
+            <label>
+                Number of rows
+                <input 
+                    type="number"
+                    max="3"
+                    value="2" />
+            </label>
+            <fieldset 
+                class="pat-checklist">
+                <label>
+                    Show images when available
+                    <input 
+                        checked
+                        type="checkbox" />
+                </label>
+            </fieldset>
+            <h3 
+                class="form-section-header">
+                {% include patterns/i18n id="label_swim_lane_browse" %}
+            </h3>
+            <label>
+                {% include patterns/i18n id="label_help_see_also" %}   
+                <input 
+                    class="pat-autosuggest"
+                    required
+                    name="mi"
+                    type="text"
+                    placeholder="Selecteer maximaal 5 pagina's" 
+                    data-pat-autosuggest='
+                        allow-new-words: false;  
+                        ajax-search-index: text;
+                        maximum-selection-size: 5; 
+                        ajax-url: /dialogues/cms/general.json;' />
+            </label>
+            <h3 
+                class="form-section-header">
+                {% include patterns/i18n id="label_swim_lane_quote" %}
+            </h3>
+            <label>
+                {% include patterns/i18n id="label_quote" %}
+                <textarea 
+                    rows="3"
+                    placeholder="In der Beschränkung zeigt sich erst der Meister, und das Gesetz nur kann uns Freiheit geben."></textarea>
+            </label>
+            <label>
+                {% include patterns/i18n id="label_author" %}
+                <input 
+                    type="text"
+                    placeholder="Johann Wolfgang von Goethe" />
+            </label>
+        </fieldset>
+    </div>
+
+    {% if site.product_code == 'gip' or site.product_code == 'zor' %}
         <div
-            id="settings-panel-language"
+            id="settings-panel-content-updates"
             class="form-panel pat-collapsible closed"
+            data-pat-collapsible="
+                store: local; 
+                scroll-selector: self; 
+                scroll-offset: 120px">
+            <h2 
+                class="form-separation-header">
+                {% include patterns/i18n id="label_content_updates" %}    
+            </h2> 
+            <fieldset 
+                class="horizontal">
+                <div 
+                    id="well-indexation"
+                    data-pat-inject="
+                        source: #well-indexation;
+                        target: #well-indexation;
+                        "
+                    class="pat-well info pat-subform pat-inject">
+                    <h3 
+                        class="well-separation-header">
+                        Indexeren
+                    </h3>
+                    <p
+                        class="desription">
+                        {{ site.data.ui.message_indexation[site.lang] }}
+                    </p>
+                    <p 
+                        class="button-bar">
+                        <button 
+                            class="default pat-button" 
+                            type="submit" 
+                            formaction="/index-opgebouwd#well-indexation">{{ site.data.ui.label_build_index[site.lang] }}</button>
+                    </p>
+                </div>
+                <div 
+                    id="well-wizard-data"
+                    data-pat-inject="
+                        source: #well-wizard-data;
+                        target: #well-wizard-data;
+                        "
+                    class="pat-well info pat-subform pat-inject">
+                    <h3 
+                        class="well-separation-header">
+                        Wizarddata
+                    </h3>
+                    <p
+                        class="description">
+                        {{ site.data.ui.message_wizard_data_generation[site.lang] }}
+                    </p>
+                    <p 
+                        class="button-bar">
+                        <button 
+                            class="default pat-button" 
+                            type="submit" 
+                            formaction="/data-gegenereerd#well-wizard-data">{{ site.data.ui.label_generate_wizard_data[site.lang] }}</button>
+                    </p>
+                </div>
+                <div 
+                    id="well-editorial-content"
+                    data-pat-inject="
+                        source: #well-editorial-content;
+                        target: #well-editorial-content;
+                        "
+                    class="pat-well info pat-subform pat-inject">
+                    <h3 
+                        class="well-separation-header">
+                        Redactionele content
+                    </h3>
+                    <p
+                        class="desription">
+                        {{ site.data.ui.message_wizard_content_update[site.lang] }}
+                    </p>
+                    <p 
+                        class="button-bar">
+                        <button 
+                            class="default pat-button" 
+                            type="submit" 
+                            formaction="/content-bijgewerkt#well-editorial-content">{{ site.data.ui.label_update[site.lang] }}</button>
+                    </p>
+                </div>
+            </fieldset>
+        </div>
+    {% endif %}
+
+    <div
+        id="settings-panel-footer"
+        class="form-panel pat-collapsible closed"
+        data-pat-collapsible="
+            store: local; 
+            scroll-selector: self; 
+            scroll-offset: 120px">
+        <h2 
+            class="form-separation-header">
+            Footer    
+        </h2> 
+        <fieldset 
+            class="horizontal">
+            <fieldset
+                class="group">
+                <legend>{% include patterns/i18n id="label_service" %}</legend>
+                <input 
+                    class="pat-autosuggest"
+                    required
+                    name="mi"
+                    type="text"
+                    value="Proclaimer,Copyright,Cookies"
+                    placeholder="Selecteer maximaal 5 pagina's" 
+                    data-pat-autosuggest='
+                        allow-new-words: false;  
+                        ajax-search-index: text;
+                        maximum-selection-size: 5; 
+                        ajax-url: /dialogues/cms/general.json;' />
+                {% include patterns/form-help.html
+                    position-list="bl tl"
+                    content="message_help_service" %}
+            </fieldset>
+            <fieldset
+                class="group">
+                <legend>{% include patterns/i18n id="label_about_this_site" %}</legend>
+                <input 
+                    class="pat-autosuggest"
+                    required
+                    name="mi"
+                    type="text"
+                    placeholder="Selecteer maximaal 5 pagina's" 
+                    data-pat-autosuggest='
+                        allow-new-words: false;  
+                        ajax-search-index: text;
+                        maximum-selection-size: 5; 
+                        ajax-url: /dialogues/cms/general.json;' />
+                {% include patterns/form-help.html
+                    position-list="bl tl"
+                    content="message_help_about_this_site" %}
+            </fieldset>
+        </fieldset>
+    </div>
+
+    {%- comment -%}
+        <div
+            id="settings-panel-login"
+            class="form-panel pat-collapsible open"
             data-pat-collapsible="
                 store: local; 
                 scroll-selector: self; 
                 scroll-offset: 120px"
-            id="language-settings-well">
+            id="homepage-settings-well">
             <h2 
                 class="form-separation-header">
-                {% include patterns/i18n id="patterns.label_language" %}    
+                {% include patterns/i18n id="label_login" %}    
             </h2> 
+            <p
+                class="pat-message info">
+                You may provide some text that will be displayed on the Request account page.
+            </p>
             <fieldset 
                 class="horizontal">
-                <fieldset 
-                    class="group pat-checklist">
-                    <legend>{% include patterns/i18n id="label_supported_languages" %}</legend>  
-                    <label
-                        class="disabled">
-                        {% include patterns/i18n id="patterns.label_dutch" %}
-                        <input
-                            disabled
-                            checked 
-                            type="checkbox" 
-                            name="language">
-                    </label>  
-                    <label>
-                        {% include patterns/i18n id="patterns.label_english" %}
-                        <input
-                            checked 
-                            type="checkbox" 
-                            name="language">
-                    </label>  
-                </fieldset>
                 <label>
-                    {% include patterns/i18n id="label_default_language" %}
-                    <select>
-                        <option>{% include patterns/i18n id="patterns.label_dutch" %}</option>
-                        <option>{% include patterns/i18n id="patterns.label_english" %}</option>
-                    </select>
-                </label>
-                <fieldset 
-                    class="group pat-checklist radio">
-                    <legend>{% include patterns/i18n id="label_fallback" %}</legend>
-                    <label>
-                        {% include patterns/i18n id="label_show_objects_in_alternate_language" %}
-                        <input 
-                            checked 
-                            type="radio" 
-                            name="language_fallback">
-                    </label>
-                    <label>
-                        {% include patterns/i18n id="label_hide_objects_in_alternate_language" %}
-                        <input 
-                            type="radio" 
-                            name="language_fallback">
-                    </label>
-                </fieldset>
-            </fieldset>
-        </div>
-
-        <div
-            id="settings-panel-homepage"
-            class="form-panel pat-collapsible closed"
-            data-pat-collapsible="
-                store: local; 
-                scroll-selector: self; 
-                scroll-offset: 120px">
-            <h2 
-                class="form-separation-header">
-                {% include patterns/i18n id="label_homepage" %}    
-            </h2> 
-            <fieldset 
-                class="horizontal">
-                <h3 
-                    class="form-section-header">
-                    {% include patterns/i18n id="label_swim_lane_hero" %}
-                </h3>
-                <label>
-                    {% include patterns/i18n id="label_directly_to" %}
-                    <input 
-                        class="pat-autosuggest"
-                        required
-                        name="mi"
-                        type="text"
-                        placeholder="Selecteer maximaal 5 pagina's" 
-                        data-pat-autosuggest='
-                            allow-new-words: false;  
-                            ajax-search-index: text;
-                            maximum-selection-size: 5; 
-                            ajax-url: /dialogues/cms/content-items-with-path.json;' />
-                    {% include patterns/form-help.html
-                        position-list="bl tl"
-                        content="message_help_directly_to" %}
-                </label>
-                <label>
-                    {% include patterns/i18n id="label_survey_url" %}
-                    <input 
-                        type="url" 
-                        placeholder="https://www…" 
-                        name="">
-                    {% include patterns/form-help.html
-                        content="message_help_promo_url" %}
-                </label>
-                <label>
-                    {% include patterns/i18n id="label_breaking_news" %}
-                    <select
-                        class="pat-autosuggest">
-                        <option>{% include patterns/i18n id="label_no_breaking_news" %}</option>
-                        {% for item in site.news %}
-                            <option>{{ item.title }}</option>
-                        {% endfor %}
-                    </select>
-                    {% include patterns/form-help.html
-                        content="message_help_breaking_news" %}
-                </label>
-                <h3 
-                    class="form-section-header">
-                    {% include patterns/i18n id="label_swim_lane_news" %}
-                </h3>
-                <label>
-                    Number of rows
-                    <input 
-                        type="number"
-                        max="3"
-                        value="2" />
-                </label>
-                <fieldset 
-                    class="pat-checklist">
-                    <label>
-                        Show images when available
-                        <input 
-                            checked
-                            type="checkbox" />
-                    </label>
-                </fieldset>
-                <h3 
-                    class="form-section-header">
-                    {% include patterns/i18n id="label_swim_lane_browse" %}
-                </h3>
-                <label>
-                    {% include patterns/i18n id="label_help_see_also" %}   
-                    <input 
-                        class="pat-autosuggest"
-                        required
-                        name="mi"
-                        type="text"
-                        placeholder="Selecteer maximaal 5 pagina's" 
-                        data-pat-autosuggest='
-                            allow-new-words: false;  
-                            ajax-search-index: text;
-                            maximum-selection-size: 5; 
-                            ajax-url: /dialogues/cms/general.json;' />
-                </label>
-                <h3 
-                    class="form-section-header">
-                    {% include patterns/i18n id="label_swim_lane_quote" %}
-                </h3>
-                <label>
-                    {% include patterns/i18n id="label_quote" %}
+                    Summary
                     <textarea 
-                        rows="3"
-                        placeholder="In der Beschränkung zeigt sich erst der Meister, und das Gesetz nur kann uns Freiheit geben."></textarea>
+                        name="" 
+                        id="" 
+                        rows="2"></textarea>
                 </label>
-                <label>
-                    {% include patterns/i18n id="label_author" %}
-                    <input 
-                        type="text"
-                        placeholder="Johann Wolfgang von Goethe" />
-                </label>
-            </fieldset>
-        </div>
-
-        {% if site.product_code == 'gip' or site.product_code == 'zor' %}
-            <div
-                id="settings-panel-content-updates"
-                class="form-panel pat-collapsible closed"
-                data-pat-collapsible="
-                    store: local; 
-                    scroll-selector: self; 
-                    scroll-offset: 120px">
-                <h2 
-                    class="form-separation-header">
-                    {% include patterns/i18n id="label_content_updates" %}    
-                </h2> 
-                <fieldset 
-                    class="horizontal">
-                    <div 
-                        id="well-indexation"
-                        data-pat-inject="
-                            source: #well-indexation;
-                            target: #well-indexation;
-                            "
-                        class="pat-well info pat-subform pat-inject">
-                        <h3 
-                            class="well-separation-header">
-                            Indexeren
-                        </h3>
-                        <p
-                            class="desription">
-                            {{ site.data.ui.message_indexation[site.lang] }}
-                        </p>
-                        <p 
-                            class="button-bar">
-                            <button 
-                                class="default pat-button" 
-                                type="submit" 
-                                formaction="/index-opgebouwd#well-indexation">{{ site.data.ui.label_build_index[site.lang] }}</button>
-                        </p>
-                    </div>
-                    <div 
-                        id="well-wizard-data"
-                        data-pat-inject="
-                            source: #well-wizard-data;
-                            target: #well-wizard-data;
-                            "
-                        class="pat-well info pat-subform pat-inject">
-                        <h3 
-                            class="well-separation-header">
-                            Wizarddata
-                        </h3>
-                        <p
-                            class="description">
-                            {{ site.data.ui.message_wizard_data_generation[site.lang] }}
-                        </p>
-                        <p 
-                            class="button-bar">
-                            <button 
-                                class="default pat-button" 
-                                type="submit" 
-                                formaction="/data-gegenereerd#well-wizard-data">{{ site.data.ui.label_generate_wizard_data[site.lang] }}</button>
-                        </p>
-                    </div>
-                    <div 
-                        id="well-editorial-content"
-                        data-pat-inject="
-                            source: #well-editorial-content;
-                            target: #well-editorial-content;
-                            "
-                        class="pat-well info pat-subform pat-inject">
-                        <h3 
-                            class="well-separation-header">
-                            Redactionele content
-                        </h3>
-                        <p
-                            class="desription">
-                            {{ site.data.ui.message_wizard_content_update[site.lang] }}
-                        </p>
-                        <p 
-                            class="button-bar">
-                            <button 
-                                class="default pat-button" 
-                                type="submit" 
-                                formaction="/content-bijgewerkt#well-editorial-content">{{ site.data.ui.label_update[site.lang] }}</button>
-                        </p>
-                    </div>
-                </fieldset>
-            </div>
-        {% endif %}
-
-        <div
-            id="settings-panel-footer"
-            class="form-panel pat-collapsible closed"
-            data-pat-collapsible="
-                store: local; 
-                scroll-selector: self; 
-                scroll-offset: 120px">
-            <h2 
-                class="form-separation-header">
-                Footer    
-            </h2> 
-            <fieldset 
-                class="horizontal">
                 <fieldset
                     class="group">
-                    <legend>{% include patterns/i18n id="label_service" %}</legend>
-                    <input 
-                        class="pat-autosuggest"
-                        required
-                        name="mi"
-                        type="text"
-                        value="Proclaimer,Copyright,Cookies"
-                        placeholder="Selecteer maximaal 5 pagina's" 
-                        data-pat-autosuggest='
-                            allow-new-words: false;  
-                            ajax-search-index: text;
-                            maximum-selection-size: 5; 
-                            ajax-url: /dialogues/cms/general.json;' />
-                    {% include patterns/form-help.html
-                        position-list="bl tl"
-                        content="message_help_service" %}
-                </fieldset>
-                <fieldset
-                    class="group">
-                    <legend>{% include patterns/i18n id="label_about_this_site" %}</legend>
-                    <input 
-                        class="pat-autosuggest"
-                        required
-                        name="mi"
-                        type="text"
-                        placeholder="Selecteer maximaal 5 pagina's" 
-                        data-pat-autosuggest='
-                            allow-new-words: false;  
-                            ajax-search-index: text;
-                            maximum-selection-size: 5; 
-                            ajax-url: /dialogues/cms/general.json;' />
-                    {% include patterns/form-help.html
-                        position-list="bl tl"
-                        content="message_help_about_this_site" %}
+                    {% include patterns/i18n id="label_body_text" %}
+                    {% include patterns/form-field-rich-editor.html
+                        content="<p>Please use the <a href='/dialogues/contact/'>Contact form</a> to request an account.</p>"
+                        allow="
+                            strong,
+                            emphasised,
+                            link,"
+                            %}
                 </fieldset>
             </fieldset>
         </div>
+    {%- endcomment -%}
 
-        {%- comment -%}
-            <div
-                id="settings-panel-login"
-                class="form-panel pat-collapsible open"
-                data-pat-collapsible="
-                    store: local; 
-                    scroll-selector: self; 
-                    scroll-offset: 120px"
-                id="homepage-settings-well">
-                <h2 
-                    class="form-separation-header">
-                    {% include patterns/i18n id="label_login" %}    
-                </h2> 
-                <p
-                    class="pat-message info">
-                    You may provide some text that will be displayed on the Request account page.
-                </p>
-                <fieldset 
-                    class="horizontal">
-                    <label>
-                        Summary
-                        <textarea 
-                            name="" 
-                            id="" 
-                            rows="2"></textarea>
-                    </label>
-                    <fieldset
-                        class="group">
-                        {% include patterns/i18n id="label_body_text" %}
-                        {% include patterns/form-field-rich-editor.html
-                            content="<p>Please use the <a href='/dialogues/contact/'>Contact form</a> to request an account.</p>"
-                            allow="
-                                strong,
-                                emphasised,
-                                link,"
-                                %}
-                    </fieldset>
-                </fieldset>
-            </div>
-        {%- endcomment -%}
-
-    </div>
-</form>
+</div>

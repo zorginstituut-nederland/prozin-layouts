@@ -1,0 +1,86 @@
+---
+layout: prozin/app
+page_type: landing-settings
+parent: Beheer
+app_name: Settings
+---
+
+<div 
+    class="app-body">
+    <div 
+        class="container">
+        <form
+            action="{{ page.url }}#listing"
+            class="pat-form panel-style pat-inject">
+            <div 
+                class="pat-toolbar pat-bumper"
+                id="cms-settings-toolbar">
+                <div 
+                    class="toolbar-navigation-area">
+                    <div 
+                        class="toolbar-section navigation"
+                        id="cms-settings-toolbar-navigation">
+                        <nav 
+                            class="pat-tabs pat-button-cluster pat-navigation"
+                            id="homescreen-sections-public-data">
+                            <a 
+                                href="/dialogues/cms/settings"
+                                data-pat-inject="
+                                    history: record; 
+                                    source: #listing; 
+                                    target: #listing 
+                                        && 
+                                    source: #cms-settings-toolbar-functions-area::element; 
+                                    target: #cms-settings-toolbar-functions-area::element"
+                                class="pat-inject current">{% include patterns/i18n id="label_general" %}</a>
+                            <a 
+                                href="/dialogues/users/"
+                                data-pat-inject="
+                                    history: record; 
+                                    source: #listing; 
+                                    target: #listing 
+                                        && 
+                                    source: #cms-settings-toolbar-functions-area::element; 
+                                    target: #cms-settings-toolbar-functions-area::element"
+                                class="pat-inject">{% include patterns/i18n id="label_users" %}</a>
+                        </nav>
+                    </div>
+                </div>
+                <div 
+                    id="cms-settings-toolbar-functions-area"
+                    class="toolbar-functions-area pat-inject pat-form pat-autosubmit">
+                    <div
+                        class="toolbar-section view-options"
+                        id="cms-settings-view-options">
+                        <a 
+                            href="#organisation-menu" 
+                            data-pat-tooltip="source: ajax; position: tl"
+                            class="pat-tooltip pat-select icon-globe">Zorginstituut Nederland</a>
+                        <template 
+                            id="organisation-menu">
+                            <ul 
+                                class="menu pat-navigation">
+                                {% for item in site.data.prozin.products %}
+                                    <li>
+                                        <a 
+                                            class="pat-inject"
+                                            data-pat-inject="history: record"
+                                            href="https://proto.{{ item.name | slugify }}.nl/dialogues/apps/settings/">{{ item.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </template>
+                    </div>
+                    <div 
+                        class="toolbar-section quick-functions"
+                        id="cms-settings-quick-functions">
+                        <button
+                            class="pat-button default"
+                            type="submit">{% include patterns/i18n id="label_save_imp" %}</button>
+                    </div>
+                </div>
+            </div>
+            {{ content }}
+        </form>
+    </div>
+</div>
