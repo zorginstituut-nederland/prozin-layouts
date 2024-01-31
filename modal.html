@@ -88,6 +88,7 @@ page_type: modal
                     {% for button in page.buttons  %}
                         {% if button.type == 'submit' or button.type == 'button' %}
                             <button 
+                                tabindex="1"
                                 id="modal-main-submit" 
                                 type="{{ button.type }}" 
                                 class="{{ button.class }} pat-button" {{ button.validate }}>
@@ -102,6 +103,7 @@ page_type: modal
                     {% for button in layout.buttons  %}
                         {% if button.type == 'submit' or button.type == 'button' %}
                             <button 
+                                tabindex="1"
                                 id="modal-main-submit" 
                                 type="{{ button.type }}" 
                                 class="{{ button.class }} pat-button" {{ button.validate }}>
