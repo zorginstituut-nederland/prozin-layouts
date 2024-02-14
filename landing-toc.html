@@ -9,24 +9,7 @@ page_type: landing-toc
 
 <div 
     id="main-content">
-    <article 
-        class="pat-rich">
-        <h1>
-            {{ page.title }}
-        </h1>
-        <div 
-            class="introduction" 
-            id="page-intro">
-            {% if page.summary %}
-                <p>
-                    {{ page.summary }}
-                </p>
-            {% endif %}
-        </div>
-
-        {{ content }}
-
-    </article>
+    {% include prozin/page-head.html %}
 
     <div 
         class="toc">
