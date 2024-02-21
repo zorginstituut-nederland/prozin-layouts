@@ -41,19 +41,11 @@ app_name: User management
                                     <ul 
                                         class="menu">
                                         <li>
-                                            {% if page.role == 'Owner' %}
-                                                <a 
-                                                    href="/dialogues/users/edit#document-content" 
-                                                    class="icon-pencil pat-modal close-panel" 
-                                                    data-pat-modal="class: medium panel" 
-                                                    title="Bewerk gebruikersgegevens">{%- include patterns/i18n id="label_edit" -%}</a>
-                                            {% else %}
-                                                <a 
-                                                    href="/dialogues/users/edit-regular#document-content" 
-                                                    class="icon-pencil pat-modal close-panel" 
-                                                    data-pat-modal="class: medium panel" 
-                                                    title="Bewerk gebruikersgegevens">{%- include patterns/i18n id="label_edit" -%}</a>
-                                            {% endif %}
+                                            <a 
+                                                href="/dialogues/users/edit#document-content" 
+                                                class="icon-pencil pat-modal close-panel" 
+                                                data-pat-modal="class: medium panel" 
+                                                title="Bewerk gebruikersgegevens">{%- include patterns/i18n id="label_edit" -%}</a>
                                         </li>
 
                                         {% if this_persona.last_name == 'Papadopoulus' %}
