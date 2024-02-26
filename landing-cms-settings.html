@@ -151,6 +151,79 @@ parent: Beheer
                             maximum-selection-size: 5; 
                             ajax-url: /dialogues/cms/general.json;' />
                 </label>
+
+                {% include patterns/form-field-name-value-list.html
+                    id="fields-category"
+                    add-button-label="label_rule"
+                    label="label_category" %}
+                {% include patterns/form-field-name-value-list.html
+                    id="fields-table-or-report"
+                    add-button-label="label_rule"
+                    label="label_table_or_report" %}
+                {% include patterns/form-field-name-value-list.html
+                    id="fields-data-type"
+                    add-button-label="label_rule"
+                    label="label_data_type" %}
+                {% include patterns/form-field-name-value-list.html
+                    id="fields-specification"
+                    add-button-label="label_rule"
+                    label="label_specification" %}
+
+                <h3 
+                    class="form-section-header">
+                    {% include patterns/i18n id="label_swim_lane_browse" %}
+                </h3>
+                <label>
+                    {% include patterns/i18n id="label_help_see_also" %}   
+                    <input 
+                        class="pat-autosuggest"
+                        required
+                        name="mi"
+                        type="text"
+                        placeholder="Selecteer maximaal 5 pagina's" 
+                        data-pat-autosuggest='
+                            allow-new-words: false;  
+                            ajax-search-index: text;
+                            maximum-selection-size: 5; 
+                            ajax-url: /dialogues/cms/general.json;' />
+                </label>
+                <label>
+                    {% include patterns/i18n id="label_category" %}
+                    <textarea 
+                        class="code-field"
+                        name="" 
+                        rows="5">time: 20:03:47
+player: playerTwo
+action: strike (hit)</textarea>
+                </label>
+                <label>
+                    {% include patterns/i18n id="label_table_or_report" %}
+                    <textarea 
+                        class="code-field"
+                        name="" 
+                        rows="5">time: 20:03:47
+player: playerTwo
+action: strike (hit)</textarea>
+                </label>
+                <label>
+                    {% include patterns/i18n id="label_data_type" %}
+                    <textarea 
+                        class="code-field"
+                        name="" 
+                        rows="5">time: 20:03:47
+player: playerTwo
+action: strike (hit)</textarea>
+                </label>
+                <label>
+                    {% include patterns/i18n id="label_specification" %}
+                    <textarea 
+                        class="code-field"
+                        name="" 
+                        rows="5">time: 20:03:47
+player: playerTwo
+action: strike (hit)</textarea>
+                </label>
+
                 <h3 
                     class="form-section-header">
                     {% include patterns/i18n id="label_swim_lane_quote" %}

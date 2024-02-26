@@ -9,36 +9,9 @@ page_type: landing-toc
 
 <div 
     id="main-content">
-    <article 
-        class="pat-rich">
-        <h1>
-            {{ page.title }}
-        </h1>
-        <div 
-            class="introduction" 
-            id="page-intro">
-            {% if page.summary %}
-                <p>
-                    {{ page.summary }}
-                </p>
-            {% endif %}
-        </div>
-
-        {{ content }}
-
-    </article>
-
-    <div 
+    {% include prozin/page-head.html %}
+    <nav 
         class="toc">
-
-<!-- <pre>
-PATH: {{ page.path }}
-URL: {{ page.url }}
-This page: {{ page_path[0] }}
-This folder: {{ page_path[1] }}
-Parent folder: {{ page_path[2] }}
-</pre> -->
-
         <ul 
             class="link-list">
 
@@ -75,5 +48,5 @@ Parent folder: {{ page_path[2] }}
                 {% endif %}
             {% endfor %}
         </ul>
-    </div>
+    </nav>
 </div>
