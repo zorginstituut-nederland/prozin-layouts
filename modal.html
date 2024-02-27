@@ -44,25 +44,36 @@ page_type: modal
                 data-pat-fullscreen="selector:#modal-object">Full screen</button>
         </h1>
     {% endif %}
-    {% if page.action %}
+    {% if page.action or layout.action %}
+        {%- if page.action -%}
+            {%- assign this_action = page.action -%}
+            {%- assign this_panel_class = page.panel_class -%}
+            {%- assign this_inject = page.inject -%}
+            {%- assign this_target = page.target -%}
+        {%- else -%}
+            {%- assign this_action = layout.action -%}
+            {%- assign this_panel_class = layout.panel_class -%}
+            {%- assign this_inject = layout.inject -%}
+            {%- assign this_target = layout.target -%}
+        {%- endif -%}
         <form 
-            action="{{ page.action }}" 
+            action="{{ this_action }}" 
             class="
-                pat-form wizard-box panel-class-{{ page.panel_class }} 
-                {% if page.inject %}
+                pat-form wizard-box panel-class-{{ this_panel_class }} 
+                {% if page.inject or layout.inject %}
                     pat-inject
                 {% endif %} 
-                {% if page.validate %}
+                {% if page.validate or layout.validate %}
                     pat-validation
                 {% endif %}" 
-            {% if page.validate %}
+            {% if page.validate or layout.validate %}
                 data-pat-validation="disable-selector:#modal-main-submit"
             {% endif %}
-            {% if page.inject %}
-                data-pat-inject="{{page.inject}}"
+            {% if page.inject or layout.inject %}
+                data-pat-inject="{{ this_inject }}"
             {% endif %} 
-            {% if page.target %}
-                target="{{ page.target }}"
+            {% if page.target or layout.target %}
+                target="{{ this_target }}"
             {% endif %}>
     {% endif %}
         {% if page.source %}

@@ -1,0 +1,75 @@
+---
+layout: prozin/modal
+title: label_add_section
+action: '/general/apenkooi-state-extra-section'
+inject: 'source: #user-defined-sections; target: #user-defined-sections::after && source: #button-bar-organise-sections; target: #button-bar-organise-sections'
+buttons:
+  - label: label_insert_imp
+    type: submit
+    class: 'default close-panel icon-ok-circle'
+  - label: label_cancel_imp
+    type: button
+    class: 'close-panel icon-cancel-circle'
+panel_class: panel medium add-section
+
+---
+
+<fieldset 
+    class="horizontal">
+    <label>
+        {% include patterns/i18n id="label_section_name" %}
+        <input 
+            type="text"
+            required 
+            class="pat-autofocus" 
+            name="">
+    </label>
+    <label>
+        {% include patterns/i18n id="label_type" %}
+        <select>
+            {%- if page.allow contains "rich" -%}
+                <option>{%- include patterns/i18n id="label_rich_text" -%}</option>  
+            {%- endif -%}
+            {%- if page.allow contains "image" -%}
+                <option>{%- include patterns/i18n id="label_image" -%}</option>
+            {%- endif -%}
+            {%- if page.allow contains "attachments" -%}
+                <option>{%- include patterns/i18n id="label_attachments" -%}</option>
+            {%- endif -%}
+            {%- if page.allow contains "video" -%}
+                <option>{%- include patterns/i18n id="label_video" -%}</option>
+            {%- endif -%}
+            {%- if page.allow contains "presentation" -%}
+                <option>{%- include patterns/i18n id="label_presentation" -%}</option>
+            {%- endif -%}
+            {%- if page.allow contains "process-step" -%}
+                <option>{%- include patterns/i18n id="label_process_step" -%}</option>
+            {%- endif -%}
+            {%- if page.allow contains "involved-parties" -%}
+                <option>{%- include patterns/i18n id="label_involved_parties" -%}</option>
+            {%- endif -%}
+        </select>
+    </label>
+    <fieldset 
+        class="pat-checklist">
+        <label
+            {% if page.show_section_name_state == 'disabled' %}
+                class="disabled"
+            {% endif %}>
+            {% include patterns/i18n id="label_show_section_header" %}
+            <input 
+                type="checkbox"
+                {% if page.show_section_name_state %}
+                    disabled
+                {% endif %}
+                checked 
+                name="">
+        </label>
+    </fieldset>
+</fieldset>
+
+<!-- <p 
+    class="pat-message notice">
+    Bij het toevoegen van een sectie worden alle wijzigingen op deze pagina tussentijds opgeslagen. 
+</p> -->
+

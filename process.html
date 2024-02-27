@@ -3,6 +3,10 @@ layout: prozin/generic
 byline: date
 ---
 
+{% unless page.state == 'preview' %}
+	{% include prozin/toolbar-standard-view.html %}
+{% endunless %}
+
 <div 
 	id="main-content">
 	<article>
