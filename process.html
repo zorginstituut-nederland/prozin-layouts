@@ -7,14 +7,27 @@ byline: date
 	id="main-content">
 	<article>
 		{% include prozin/page-head.html %}
-	    {% include page-toc-diagram.html %}
 
-	    {% include prozin/section.html
-	    	type="rich" %}
+		{% include prozin/section.html
+			type="process-diagram" %}
+
+		{% for item in page.sections %}
+			{%- capture this_section_name -%}{%- include patterns/i18n id=item.name -%}{%- endcapture -%}
+			{%- capture this_section_id -%}section-{{ item.name | slugify }}{%- endcapture -%}
+			{% include prozin/section.html
+				content=item.content
+				title=this_section_name
+				section_id=this_section_id
+				type="rich" %}
+		{% endfor %}
+
 		{% include prozin/section.html
 			type="downloads" %}
-		{% include prozin/section.html
-			type="links" 
-			title="Zie ook" %}
+		
+		{% if page.tags.size >= 1 or page.links %}
+			{% include prozin/section.html
+				type="links" 
+				title="Zie ook" %}
+		{% endif %}
     </article>
 </div>
