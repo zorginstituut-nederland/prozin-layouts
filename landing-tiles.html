@@ -1,6 +1,7 @@
 ---
 layout: prozin/generic
 title_in_breadcrumbs: true 
+page_type: landing-tiles
 collection_in_breadcrumbs: false
 ---
 
@@ -9,67 +10,69 @@ collection_in_breadcrumbs: false
 {% assign page_path = page.url | split: "/" | reverse %}
 
 <div 
-    id="page-head" 
-    class="pat-rich">
+    id="main-content">
     <div 
-        class="introduction" 
-        id="page-intro">
-        <p>
-            {{ page.summary }}
-        </p>
+        id="page-head" 
+        class="pat-rich">
+        <div 
+            class="introduction" 
+            id="page-intro">
+            <p>
+                {{ page.summary }}
+            </p>
+        </div>
     </div>
-</div>
+    <div 
+        class="page-module type-tile-navigation">
+        <h2 
+            class="page-module-title assistive">
+            Modules
+        </h2>
+        <nav 
+            class="tile-navigation col-3">
+            {% for item in this_scope %}
+                {% assign item_path = item.url | split: "/" | reverse %}
+                    {% if item_path[0] == 'index' %}
+                        {% unless item.title == page.title or item.url contains '-state-' %}
+                            {% if item_path[2] == page_path[1] %}
+                                <a 
+                                    class="pat-inject tile-navigation-follow"
+                                    data-pat-inject="history: record"
+                                    href="{{ item.url }}">
+                                    <h3 
+                                        class="title">
+                                        {{ item.title }}
+                                    </h3>
+                                    <p 
+                                        class="byline">
+                                        {{ item.summary }}
+                                    </p>
+                                </a>
+                            {% endif %}  
+                        {% endunless %}
+                    {% endif %}
+            {% endfor %}
 
-<div 
-    class="page-module type-tile-navigation">
-    <h2 
-        class="page-module-title assistive">
-        Modules
-    </h2>
-    <nav 
-        class="tile-navigation col-3">
-        {% for item in this_scope %}
-            {% assign item_path = item.url | split: "/" | reverse %}
-                {% if item_path[0] == 'index' %}
+            {% for item in this_scope %}
+                {% assign item_path = item.url | split: "/" | reverse %}
+                {% if item_path[1] == page_path[1] %}
                     {% unless item.title == page.title or item.url contains '-state-' %}
-                        {% if item_path[2] == page_path[1] %}
-                            <a 
-                                class="pat-inject tile-navigation-follow"
-                                data-pat-inject="history: record"
-                                href="{{ item.url }}">
-                                <h3 
-                                    class="title">
-                                    {{ item.title }}
-                                </h3>
-                                <p 
-                                    class="byline">
-                                    {{ item.summary }}
-                                </p>
-                            </a>
-                        {% endif %}  
+                        <a 
+                            class="pat-inject tile-navigation-follow"
+                            data-pat-inject="history: record"
+                            href="{{ item.url }}">
+                            <h3 
+                                class="title">
+                                {{ item.title }}
+                            </h3>
+                            <p 
+                                class="byline">
+                                {{ item.summary }}
+                            </p>
+                        </a>   
                     {% endunless %}
                 {% endif %}
-        {% endfor %}
-
-         {% for item in this_scope %}
-            {% assign item_path = item.url | split: "/" | reverse %}
-            {% if item_path[1] == page_path[1] %}
-                {% unless item.title == page.title or item.url contains '-state-' %}
-                    <a 
-                        class="pat-inject tile-navigation-follow"
-                        data-pat-inject="history: record"
-                        href="{{ item.url }}">
-                        <h3 
-                            class="title">
-                            {{ item.title }}
-                        </h3>
-                        <p 
-                            class="byline">
-                            {{ item.summary }}
-                        </p>
-                    </a>   
-                {% endunless %}
-            {% endif %}
-        {% endfor %}
-    </nav>
+            {% endfor %}
+        </nav>
+    </div>
 </div>
