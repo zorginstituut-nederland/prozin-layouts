@@ -1,0 +1,53 @@
+---
+layout: prozin/generic
+byline: date
+parent: Beheer
+page_type: news-item-edit
+collapsible_toggles: true
+meta:
+  - label: label_summary
+    type: textarea
+    rows: 3
+  - label: label_publication_date
+    type: date
+---
+
+<form
+    action="{{ page.url }}"
+    class="pat-inject pat-form pat-validation">
+    
+    {% include prozin/toolbar-cms-edit.html
+        cancel="/dialogues/cms/news"
+        allow="
+            header 3,
+            header 4,
+            paragraph,
+            blockquote,
+            strong,
+            emphasised,
+            deleted,
+            link,
+            horizontal rule,
+            unordered list,
+            ordered list,
+            image,
+            video,
+            table"
+             %}
+
+    <div 
+        class="cms-edit-form" 
+    	id="main-content">
+        {% include prozin/cms-title-block.html %}
+
+        {% include prozin/cms-user-defined-area.html
+            panel="/dialogues/cms/panel-add-section-process-step" %}
+
+        {% include prozin/cms-section.html
+            type="see-also"
+            allow="general, news"
+            title="Zie ook" %}
+
+    </div>
+
+</form>
