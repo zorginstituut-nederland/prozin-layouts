@@ -1,0 +1,47 @@
+---
+layout: prozin/generic
+title_in_breadcrumbs: true 
+collection_in_breadcrumbs: false
+---
+
+{%- comment -%} {% include prozin/page-head.html %} {%- endcomment -%}
+
+<div 
+    id="page-head" 
+    class="pat-rich">
+    <div 
+        class="introduction" 
+        id="page-intro">
+        <p>
+            {{ page.summary }}
+        </p>
+    </div>
+</div>
+
+<div 
+    class="page-module type-tile-navigation">
+    <h2 
+        class="page-module-title assistive">
+        Modules
+    </h2>
+    <nav 
+        class="tile-navigation col-3">
+        {% for item in site.modules %}
+            {% if item.layout == 'prozin/landing-toc' and page.url contains 'index' %}
+                <a 
+                    class="pat-inject tile-navigation-follow"
+                    data-pat-inject="history: record"
+                    href="{{ item.url }}">
+                    <h3 
+                        class="title">
+                        {{ item.title }}
+                    </h3>
+                    <p 
+                        class="byline">
+                        {{ item.summary }}
+                    </p>
+                </a>       
+            {% endif %}
+        {% endfor %}
+    </nav>
+</div>
