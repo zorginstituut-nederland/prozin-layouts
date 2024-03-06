@@ -3,7 +3,7 @@ layout: prozin/generic
 page_type: landing-toc
 ---
 
-{% capture this_collection %}{{ page.collection }}{% endcapture %}
+{% capture this_collection %}{{ page.collection | default: 'general' }}{% endcapture %}
 {% assign this_scope = site[this_collection] | sort: 'title' %}
 {% assign page_path = page.url | split: "/" | reverse %}
 

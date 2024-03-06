@@ -5,7 +5,7 @@ page_type: landing-tiles
 collection_in_breadcrumbs: false
 ---
 
-{% capture this_collection %}{{ page.collection }}{% endcapture %}
+{% capture this_collection %}{{ page.collection| default: 'general' }}{% endcapture %}
 {% assign this_scope = site[this_collection] | sort: 'title' %}
 {% assign page_path = page.url | split: "/" | reverse %}
 
