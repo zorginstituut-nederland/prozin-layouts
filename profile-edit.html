@@ -9,12 +9,14 @@ page_type: login
 	action="/users/riwka-rubinstein"
 	class="pat-inject pat-form">
 	<div 
-		class="canvas-toolbar">
+		class="pat-toolbar">
 		<div 
-			class="functions">
-	        <button 
-	        	class="default button pat-inject">{% include patterns/i18n id="label_save" %}</button>
-	    </div>
+			class="toolbar-section quick-functions">
+			<button 
+				class="default pat-button pat-inject">
+				{%- include patterns/i18n id="label_save" -%}
+			</button>
+		</div>
 	</div>
 
 	<div 
