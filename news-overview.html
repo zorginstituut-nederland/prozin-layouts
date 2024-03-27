@@ -6,32 +6,43 @@ title: Nieuws
 
 {% if site.news_tags %}
 	<form 
-		class="canvas-toolbar" 
+		class="pat-toolbar" 
 		action="{{ page.url }}"
 		id="toolbar-news-overview" 
-		data-pat-inject="source: #news-feed; target: #news-feed">
-		<fieldset 
-			class="button-cluster pat-checklist free-form align-centre">
-			<label
-				class="button">
-				Alle nieuws 
-				<input 
-					type="radio" 
-					name="category"
-					value="all"
-					checked>
-			</label>
-			{% for tag in site.news_tags %}
-				<label
-					class="button">
-					{{ tag }}
-					<input 
-						type="radio" 
-						name="category"
-						value="{{ tag | slugify }}">
-				</label>
-			{% endfor %}
-		</fieldset>
+		data-pat-inject="
+			source: #news-feed; 
+			target: #news-feed">
+			<div 
+				class="toolbar-functions-areas">
+				<div class="toolbar-section navigation">
+				<fieldset 
+					class="
+						pat-button-cluster 
+						pat-tabs
+						pat-checklist 
+						free-form">
+					<label
+						class="button">
+						Alle nieuws 
+						<input 
+							type="radio" 
+							name="category"
+							value="all"
+							checked>
+					</label>
+					{% for tag in site.news_tags %}
+						<label
+							class="button">
+							{{ tag }}
+							<input 
+								type="radio" 
+								name="category"
+								value="{{ tag | slugify }}">
+						</label>
+					{% endfor %}
+				</fieldset>
+			</div>
+		</div>
 	</form>
 {% endif %}
 
